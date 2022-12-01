@@ -33,7 +33,7 @@ const App = () => {
             <h1>Acme Shopping</h1>
             <div>
                 <nav>
-                    <Link to='/'>Home</Link>
+                    <Link to='/'>Hooooooooome</Link>
                 </nav>
                 <Routes>
                     <Route path='/' element={<Home />} />
