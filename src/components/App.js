@@ -31,6 +31,7 @@ const App = () => {
     return (
         <div>
             <h1>Hi, My name is totally Ben!!!!</h1>
+            <h1>My Name is Louis!!</h1>
             <div>
                 <nav>
                     <Link to='/'>Hooooooooome</Link>
