@@ -30,7 +30,6 @@ const App = () => {
     if (!user.id) return <Login />
     return (
         <div>
-            <h1>Hi, My name is totally Ben!!!!</h1>
             <h1>My Name is Louis!!</h1>
             <div>
                 <nav>
