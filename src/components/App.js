@@ -30,7 +30,7 @@ const App = () => {
     if (!user.id) return <Login />
     return (
         <div>
-            <h1>Acme Shopping</h1>
+            <h1>My Name is Louis!!</h1>
             <div>
                 <nav>
                     <Link to='/'>Hooooooooome</Link>
