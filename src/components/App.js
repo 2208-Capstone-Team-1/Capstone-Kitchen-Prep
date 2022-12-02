@@ -30,7 +30,7 @@ const App = () => {
     if (!user.id) return <Login />
     return (
         <div>
-            <h1>Hi, My name is ben!</h1>
+            <h1>Hi, My name is totally Ben!!!!</h1>
             <div>
                 <nav>
                     <Link to='/'>Hooooooooome</Link>
