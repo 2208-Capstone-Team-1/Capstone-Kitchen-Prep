@@ -1,15 +1,16 @@
 {
-  "name": "capstone-2208-fsa-pt",
+  "name": "capstone-kitchen-helper-2208-fsa-pt",
   "version": "1.0.0",
   "description": "",
-  "main": "server/index.js",
+  "main": "server/index.ts",
   "scripts": {
     "build": "webpack",
     "build:dev": "npm run build -- --watch --mode=development",
     "test": "JWT=shhhhh mocha",
-    "test:dev": "DATABASE_URL=postgres://localhost/acme_shopping_test_db npm run test -- --watch",
+    "test:dev": "DATABASE_URL=postgres://localhost/kitchen_helper npm run test -- --watch",
     "test:dev:quiet": "QUIET=true npm run test:dev",
-    "start:dev": "JWT=felix nodemon server/index.ts --ignore dist/ --ignore src/ & npm run build:dev"
+    "start:dev": "JWT=felix nodemon server/index.ts --ignore dist/ --ignore src/ & npm run build:dev",
+    "start:seed": "SEED=true JWT=felix nodemon server/index.ts --ignore dist/ --ignore src/ & npm run build:dev"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +26,7 @@
     "morgan": "^1.10.0",
     "pg": "^8.8.0",
     "sequelize": "^6.25.3",
+    "ts-node": "^10.9.1",
     "volleyball": "^1.5.1"
   },
   "devDependencies": {
