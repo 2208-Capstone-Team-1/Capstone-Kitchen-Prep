@@ -1,5 +1,5 @@
 import db from "./db";
-import Sequelize from "sequelize";
+import Sequelize, { BOOLEAN, NUMBER } from "sequelize";
 import bcrypt from "bcrypt";
 import jwt, { JwtPayload, Secret } from "jsonwebtoken";
 import {
@@ -22,9 +22,12 @@ interface UserModel
     InferCreationAttributes<UserModel>
   > {
   id: CreationOptional<number>;
-  username: string;
+  first_name: string;
+  last_name: string;
   password: string;
-  email: CreationOptional<string>;
+  email: string;
+  phoneNumber: string;
+  isAdmin: boolean;
 }
 
 const User = db.define<UserModel>("user", {
@@ -33,13 +36,13 @@ const User = db.define<UserModel>("user", {
     primaryKey: true,
     defaultValue: UUIDV4,
   },
-  username: {
+  first_name: {
     type: STRING,
     allowNull: false,
-    validate: {
-      notEmpty: true,
-    },
-    unique: true,
+  },
+  last_name:{
+    type: STRING,
+    allowNull: false,
   },
   password: {
     type: STRING,
@@ -50,7 +53,28 @@ const User = db.define<UserModel>("user", {
   },
   email: {
     type: STRING,
+    allowNull: false,
+    validate: {
+      isEmail: true,
+    },
+    unique: true,
   },
+  phoneNumber: {
+    type: STRING,
+    allowNull: false,
+    validate:{
+      isNumeric: true,
+      len: [10, 12]
+    }
+  },
+  isAdmin: {
+    type: BOOLEAN,
+    allowNull: false,
+    defaultValue: false,
+    validate: {
+      notEmpty: true,
+    }
+  }
 });
 
 User.addHook("beforeSave", async (user: UserModel) => {
@@ -80,15 +104,15 @@ User.prototype.generateToken = function () {
 };
 
 interface AuthUser {
-  username: string;
+  email: string;
   password: string;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-(User as any).authenticate = async function ({ username, password }: AuthUser) {
+(User as any).authenticate = async function ({ email, password }: AuthUser) {
   const user = await this.findOne({
     where: {
-      username,
+      email,
     },
   });
   if (user && (await bcrypt.compare(password, user.password))) {
