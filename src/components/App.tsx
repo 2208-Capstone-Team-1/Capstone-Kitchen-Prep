@@ -28,14 +28,14 @@ const App = () => {
     loginWithToken();
   }, []);
 
-  if (!user.id) return <Login />;
+  // remove login requirement for now, will implement later
+  // if (!user.id) return <Login />;
   return (
     <div>
-      <h1>Hi, My name is totally Ben!!!!</h1>
-      <h1>My Name is Louis!!</h1>
+      <h1>Kicthen Helper</h1>
       <div>
         <nav>
-          <Link to="/">Hooooooooome</Link>
+          <Link to="/">Home</Link>
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
