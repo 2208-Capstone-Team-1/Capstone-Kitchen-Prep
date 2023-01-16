@@ -1,7 +1,6 @@
 {
   "name": "capstone-kitchen-helper-2208-fsa-pt",
   "version": "1.0.0",
-  "description": "",
   "main": "server/index.ts",
   "scripts": {
     "build": "webpack",
@@ -62,5 +61,14 @@
     "typescript": "^4.9.4",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2208-Capstone-Team-1/Capstone-Kitchen-Prep.git"
+  },
+  "bugs": {
+    "url": "https://github.com/2208-Capstone-Team-1/Capstone-Kitchen-Prep/issues"
+  },
+  "homepage": "https://github.com/2208-Capstone-Team-1/Capstone-Kitchen-Prep#readme",
+  "description": ""
 }
