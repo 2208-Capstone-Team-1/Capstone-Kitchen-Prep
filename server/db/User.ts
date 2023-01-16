@@ -1,5 +1,5 @@
 import db from "./db";
-import Sequelize, { BOOLEAN, NUMBER } from "sequelize";
+import Sequelize, { BOOLEAN } from "sequelize";
 import bcrypt from "bcrypt";
 import jwt, { JwtPayload, Secret } from "jsonwebtoken";
 import {
@@ -21,7 +21,7 @@ interface UserModel
     InferAttributes<UserModel>,
     InferCreationAttributes<UserModel>
   > {
-  id: CreationOptional<number>;
+  id: CreationOptional<string>;
   first_name: string;
   last_name: string;
   password: string;

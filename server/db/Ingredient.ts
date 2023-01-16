@@ -1,5 +1,5 @@
 import db from "./db";
-import { UUID, INTEGER, NUMBER, Sequelize, STRING } from "sequelize";
+import { UUID, INTEGER, UUIDV4, STRING } from "sequelize";
 import {
   CreationOptional,
   InferAttributes,
@@ -16,17 +16,15 @@ interface IngredientModel
     InferAttributes<IngredientModel>,
     InferCreationAttributes<IngredientModel>
   > {
-  id: CreationOptional<number>;
+  id: CreationOptional<string>;
   ingredient: string;
   quantity: number;
 }
 
 const Ingredient = db.define<IngredientModel>("ingredient", {
   id: {
-    // type: NUMBER,
-    // type: UUID,
-    type: INTEGER,
-
+    type: UUID,
+    defaultValue: UUIDV4,
     allowNull: false,
     primaryKey: true,
   },
@@ -37,7 +35,6 @@ const Ingredient = db.define<IngredientModel>("ingredient", {
   },
   quantity: {
     type: INTEGER,
-    // type: UUID,
     defaultValue: 0,
     allowNull: true,
   },

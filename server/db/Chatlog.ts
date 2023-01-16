@@ -1,5 +1,5 @@
 import db from "./db";
-import { INTEGER, UUID, NUMBER, Sequelize, STRING } from "sequelize";
+import { UUID, UUIDV4, STRING } from "sequelize";
 import {
   CreationOptional,
   InferAttributes,
@@ -12,16 +12,14 @@ interface ChatlogModel
     InferAttributes<ChatlogModel>,
     InferCreationAttributes<ChatlogModel>
   > {
-  id: number;
+  id: CreationOptional<string>;
   log: string;
 }
 
 const Chatlog = db.define<ChatlogModel>("chatlog", {
   id: {
-    // type: NUMBER,
-    // type: UUID,
-    type: INTEGER,
-
+    type: UUID,
+    defaultValue: UUIDV4,
     allowNull: false,
     primaryKey: true,
   },

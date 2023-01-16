@@ -18,7 +18,7 @@ interface RecipeModel
     InferAttributes<RecipeModel>,
     InferCreationAttributes<RecipeModel>
     >{
-        id: CreationOptional<number>;
+        id: CreationOptional<string>;
         name: string;
         url: string;
         personal_note: CreationOptional<string>;
@@ -28,6 +28,7 @@ interface RecipeModel
 const Recipe = db.define<RecipeModel>("recipe", {
     id: {
         type: UUID,
+        defaultValue: UUIDV4,
         primaryKey: true,
     },
     name: {
