@@ -14,7 +14,6 @@ const data = {
   Ingredient,
 };
 
-
 // User & Recipe
 User.hasMany(Recipe);
 Recipe.belongsTo(User);

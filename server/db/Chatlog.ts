@@ -1,5 +1,5 @@
 import db from "./db";
-import { NUMBER, Sequelize, STRING } from "sequelize";
+import { INTEGER, UUID, NUMBER, Sequelize, STRING } from "sequelize";
 import {
   CreationOptional,
   InferAttributes,
@@ -8,24 +8,27 @@ import {
 } from "sequelize";
 
 interface ChatlogModel
-    extends Model<
+  extends Model<
     InferAttributes<ChatlogModel>,
     InferCreationAttributes<ChatlogModel>
-    >{
-        id: CreationOptional<number>;
-        log: string;
-    }
+  > {
+  id: number;
+  log: string;
+}
 
 const Chatlog = db.define<ChatlogModel>("chatlog", {
-    id: {
-        type: NUMBER,
-        allowNull: false,
-        primaryKey: true
-    },
-    log: {
-        type: STRING,
-        allowNull: false,
-    }
-})
+  id: {
+    // type: NUMBER,
+    // type: UUID,
+    type: INTEGER,
+
+    allowNull: false,
+    primaryKey: true,
+  },
+  log: {
+    type: STRING,
+    allowNull: false,
+  },
+});
 
 export default Chatlog;
