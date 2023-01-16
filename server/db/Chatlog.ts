@@ -20,6 +20,7 @@ const Chatlog = db.define<ChatlogModel>("chatlog", {
     id: {
         type: NUMBER,
         allowNull: false,
+        primaryKey: true
     },
     log: {
         type: STRING,

@@ -25,6 +25,7 @@ const Ingredient = db.define<IngredientModel>("ingredient", {
     id: {
         type: NUMBER,
         allowNull: false,
+        primaryKey: true
     },
     ingredient: {
         type: STRING,
