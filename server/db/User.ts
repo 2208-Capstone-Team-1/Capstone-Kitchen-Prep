@@ -16,7 +16,7 @@ interface ResponseError extends Error {
 const { STRING, UUID, UUIDV4 } = Sequelize;
 const JWT = process.env.JWT;
 
-interface UserModel
+export interface UserModel
   extends Model<
     InferAttributes<UserModel>,
     InferCreationAttributes<UserModel>
@@ -40,7 +40,7 @@ const User = db.define<UserModel>("user", {
     type: STRING,
     allowNull: false,
   },
-  last_name:{
+  last_name: {
     type: STRING,
     allowNull: false,
   },
@@ -62,10 +62,10 @@ const User = db.define<UserModel>("user", {
   phoneNumber: {
     type: STRING,
     allowNull: false,
-    validate:{
+    validate: {
       isNumeric: true,
-      len: [10, 12]
-    }
+      len: [10, 12],
+    },
   },
   isAdmin: {
     type: BOOLEAN,
@@ -73,8 +73,8 @@ const User = db.define<UserModel>("user", {
     defaultValue: false,
     validate: {
       notEmpty: true,
-    }
-  }
+    },
+  },
 });
 
 User.addHook("beforeSave", async (user: UserModel) => {
