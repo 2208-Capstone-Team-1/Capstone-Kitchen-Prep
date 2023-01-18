@@ -1,5 +1,4 @@
 import Recipe from "../Recipe";
-import { UserModel } from "../User";
 
 const recipeSeed = async (users: any) => {
   console.log("SEEDING RECIPES");
