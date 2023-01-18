@@ -6,6 +6,7 @@ interface userType {
 }
 
 interface initialStateType {
+  [x: string]: any;
   user: userType;
 }
 
