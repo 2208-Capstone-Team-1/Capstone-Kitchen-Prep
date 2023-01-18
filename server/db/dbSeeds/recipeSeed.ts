@@ -70,4 +70,4 @@ const recipeSeed = async () => {
   await Promise.all(recipes.map((recipe) => Recipe.create(recipe)));
 };
 
-module.exports = recipeSeed;
+export default recipeSeed;
