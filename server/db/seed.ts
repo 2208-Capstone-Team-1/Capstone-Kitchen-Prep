@@ -7,7 +7,7 @@ const seed = async () => {
 
   await db.sync({ force: true });
 
-  const { recipes } = await recipeSeed();
+  // SEEDING USERS
 
   const [moe, lucy, larry, ethyl, admin] = await Promise.all([
     User.create({
@@ -51,6 +51,10 @@ const seed = async () => {
       isAdmin: true,
     }),
   ]);
+
+  const users = { moe, lucy, larry, ethyl, admin };
+
+  await recipeSeed(users);
 
   return {
     users: {

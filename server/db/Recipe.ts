@@ -13,7 +13,7 @@ interface ResponseError extends Error {
 }
 const { STRING, UUID, UUIDV4 } = Sequelize;
 
-interface RecipeModel
+export interface RecipeModel
   extends Model<
     InferAttributes<RecipeModel>,
     InferCreationAttributes<RecipeModel>
@@ -46,7 +46,7 @@ const Recipe = db.define<RecipeModel>("recipe", {
   },
   calories: {
     type: INTEGER,
-    defaultValue: "if it was tasty, it's 0 cal!",
+    defaultValue: 0,
     allowNull: false,
   },
 });
