@@ -6,6 +6,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { RootState } from "../store";
+import UserPage from "./User";
+import RecipePage from "./Recipe";
+import IngredientPage from "./Ingredient";
 
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
@@ -36,9 +39,15 @@ const App = () => {
       <div>
         <nav>
           <Link to="/">Home</Link>
+          <Link to="/User">Account</Link>
+          <Link to="/Recipe">Recipe of the Day </Link>
+          <Link to="/Ingredient">Fridge</Link>
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/User" element={<UserPage />} />
+          <Route path="/Recipe" element={<RecipePage />} />
+          <Route path="/Ingredient" element={<IngredientPage />} />
         </Routes>
       </div>
     </div>

@@ -17,6 +17,7 @@ const Home = () => {
       <div>
         <p>Welcome {user.username}!!</p>
         <button onClick={logout}>Logout</button>
+        
       </div>
     </div>
   );
