@@ -1,5 +1,5 @@
 import db from "./db";
-import { UUID, UUIDV4, STRING } from "sequelize";
+import { UUID, UUIDV4, STRING, ENUM, Sequelize } from "sequelize";
 import {
   CreationOptional,
   InferAttributes,
@@ -14,6 +14,7 @@ interface ChatlogModel
   > {
   id: CreationOptional<string>;
   log: string;
+  userOrAlexa: string;
 }
 
 const Chatlog = db.define<ChatlogModel>("chatlog", {
@@ -24,6 +25,10 @@ const Chatlog = db.define<ChatlogModel>("chatlog", {
     primaryKey: true,
   },
   log: {
+    type: STRING,
+    allowNull: false,
+  },
+  userOrAlexa: {
     type: STRING,
     allowNull: false,
   },

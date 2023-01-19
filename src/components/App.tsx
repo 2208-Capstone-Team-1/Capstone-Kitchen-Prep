@@ -35,7 +35,8 @@ const App = () => {
   // if (!user.id) return <Login />;
   return (
     <div>
-      <h1>Kicthen Helper</h1>
+      <h1>CHEF'S KISS</h1>
+      <img src="/static/Chef's kiss_logo.jpg" alt="chef's kiss logo" width="100" height="130"></img>
       <div>
         <nav>
           <Link to="/">Home</Link>
