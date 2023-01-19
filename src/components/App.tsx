@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Home from "./Home";
+import Home from "./Home/Home";
 import Login from "./Login";
 import { setUser } from "../store/userSlice";
 import { useSelector, useDispatch } from "react-redux";
