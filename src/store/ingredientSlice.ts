@@ -6,7 +6,7 @@ interface ingredientsType {
 }
 
 interface initialStateType {
-  //wildcard: allow us to use something that's not specified
+  // wildcard: allows us to use something that's not specified
   [x: string]: any;
   ingredients: ingredientsType;
 }
