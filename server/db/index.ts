@@ -23,13 +23,16 @@ User.hasMany(Chatlog);
 Chatlog.belongsTo(User);
 
 // Recipe & Chatlog
+// Ed - leaving these associations in for now but might not be needed
 Recipe.hasMany(Chatlog);
 Chatlog.belongsTo(Recipe);
 
-// Ingredients & Others
+// Ingredients & User
 User.hasMany(Ingredient);
 Ingredient.belongsTo(User);
-Recipe.hasMany(Ingredient);
-Ingredient.hasMany(Recipe);
+
+// Ed - removing these associations for now as might not be needed
+// Recipe.hasMany(Ingredient);
+// Ingredient.hasMany(Recipe);
 
 export default data;
