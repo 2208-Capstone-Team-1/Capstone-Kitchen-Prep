@@ -2,34 +2,40 @@ import { createSlice } from "@reduxjs/toolkit";
 import { stat } from "fs";
 
 interface ingredientsType {
-  id: string;
   ingredientsArray: Array<string>;
 }
 
 interface initialStateType {
+  //wildcard: allow us to use something that's not specified
   [x: string]: any;
   ingredients: ingredientsType;
 }
 
 const initialState: initialStateType = {
   ingredients: {
-    id: "",
     ingredientsArray: [],
   },
 };
 
 export const ingredientSlice = createSlice({
-  name: "ingredient",
+  name: "ingredientsArray",
   initialState,
   reducers: {
+    // specify what we expect to take in
     setIngredients: (state, action) => {
-      state.ingredients = action.payload;
+      state.ingredientsArray = action.payload;
     },
+    // specify what we expect to take in
     addIngredient: (state, action) => {
-      state.ingredients = [...state.ingredients, action.payload];
+      state.ingredientsArray = [...state.ingredientsArray, action.payload];
     },
+    // specify what we expect to take in
     clearIngredients: (state, action) => {
-      state.ingredients = [];
+      state.ingredientsArray = [];
     },
   },
 });
+
+export const { setIngredients, addIngredient, clearIngredients } =
+  ingredientSlice.actions;
+export default ingredientSlice.reducer;
