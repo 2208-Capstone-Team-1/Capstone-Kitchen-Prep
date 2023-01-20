@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Home from "./Home/Home";
 import Login from "./Login";
 import { setUser, resetUser } from "../store/userSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, Routes, Route, useNavigate } from "react-router-dom";
+import { Link, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { RootState } from "../store";
 import UserPage from "./User";
