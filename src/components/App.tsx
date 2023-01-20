@@ -9,6 +9,7 @@ import { RootState } from "../store";
 import UserPage from "./User";
 import RecipePage from "./Recipe";
 import IngredientPage from "./Ingredient";
+import "./main.css";
 
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
@@ -34,11 +35,16 @@ const App = () => {
   // remove login requirement for now, will implement later
   // if (!user.id) return <Login />;
   return (
-    <div>
-      <h1>CHEF'S KISS</h1>
-      <img src="/static/Chef's kiss_logo.jpg" alt="chef's kiss logo" width="100" height="130"></img>
+    <div className="body">
+      <div className="main_topbar">
+        <p className="main_ptag">place holder</p>
+        <p className="main_ptag">Login</p>
+        </div>
+      <div className="main_logoPlace">
+        <h1 className="mainLogoTxt">Chef's Kiss</h1>
+      </div>
       <div>
-        <nav>
+        <nav className="navbar">
           <Link to="/">Home</Link>
           <Link to="/User">Account</Link>
           <Link to="/Recipe">Recipe of the Day </Link>
