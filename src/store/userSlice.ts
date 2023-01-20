@@ -4,10 +4,14 @@ interface userType {
   id: string;
   username: string;
 }
+interface allUsersType {
+  [key:string]:any
+}
 
 interface initialStateType {
   [x: string]: any;
   user: userType;
+  allUsers: allUsersType;
 }
 
 const initialState: initialStateType = {
@@ -15,6 +19,7 @@ const initialState: initialStateType = {
     id: "",
     username: "",
   },
+  allUsers: [],
 };
 
 export const userSlice = createSlice({
@@ -22,6 +27,9 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
+      state.user = action.payload;
+    },
+    setAllUsers: (state, action) => {
       state.user = action.payload;
     },
     resetUser: (state) => {
@@ -33,5 +41,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setUser, resetUser } = userSlice.actions;
+export const { setUser, setAllUsers, resetUser } = userSlice.actions;
 export default userSlice.reducer;
