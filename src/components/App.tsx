@@ -12,10 +12,10 @@ import IngredientPage from "./Ingredient";
 import AboutPage from "./About";
 import SavedRecipePage from "./SavedRecipe";
 
-const App = () => {
+const App = () => {    
   const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
-
+  
   const loginWithToken = async () => {
     const token = window.localStorage.getItem("token");
     if (token) {
