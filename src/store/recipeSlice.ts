@@ -1,10 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+interface RecipesObject {
+  //   id: string;
+  name: string;
+  url: string;
+  personal_note: string;
+  calories: number;
+}
 export interface Recipe {
-  recipes: [];
+  recipes: RecipesObject[];
 }
 
-const initialState: Recipe = {
+export const initialState: Recipe = {
   recipes: [],
 };
 
