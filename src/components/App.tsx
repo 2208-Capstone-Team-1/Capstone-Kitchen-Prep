@@ -7,7 +7,7 @@ import { Link, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { RootState } from "../store";
 import UserPage from "./User";
-import RecipePage from "./Recipe";
+import RecipePage from "./Recipe/Recipe";
 import IngredientPage from "./Ingredient";
 import "./main.css";
 
