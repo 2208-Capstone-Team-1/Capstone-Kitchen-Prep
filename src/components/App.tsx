@@ -48,11 +48,10 @@ const App = () => {
       <div>
         <nav className="navbar">
           <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
           <Link to="/user">Account</Link>
           <Link to="/recipe">Recipe of the Day </Link>
           <Link to="/ingredient">Fridge</Link>
-          <Link to="/about">About</Link>
-          
           
         </nav>
         <Routes>
