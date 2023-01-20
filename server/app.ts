@@ -19,7 +19,7 @@ router.use("/api", apiRouter);
 // Pass back everything else / front-end
 router.use("/dist", express.static(path.join(__dirname, "../dist")));
 router.use("/static", express.static(path.join(__dirname, "../static")));
-router.get("/", (req: Request, res: Response) =>
+router.get("*", (req: Request, res: Response) =>
   res.sendFile(path.join(__dirname, "../static/index.html"))
 );
 
