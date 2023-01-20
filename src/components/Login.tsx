@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "../store/userSlice";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -29,6 +31,7 @@ const Login = () => {
 
       dispatch(setUser(response.data));
     }
+    navigate("/user");
   };
 
   const attemptLogin = async (event: React.MouseEvent<HTMLFormElement>) => {
