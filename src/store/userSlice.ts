@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface userType {
   id: string;
-  username: string;
+  email: string;
 }
 
 interface initialStateType {
@@ -13,7 +13,7 @@ interface initialStateType {
 const initialState: initialStateType = {
   user: {
     id: "",
-    username: "",
+    email: "",
   },
 };
 
@@ -27,7 +27,7 @@ export const userSlice = createSlice({
     resetUser: (state) => {
       state.user = {
         id: "",
-        username: "",
+        email: "",
       };
     },
   },
