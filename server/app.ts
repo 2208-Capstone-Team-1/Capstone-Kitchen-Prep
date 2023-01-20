@@ -5,6 +5,10 @@ import apiRouter from "./api";
 
 const router: Express = express();
 
+// Body parsing middleware
+router.use(express.json());
+router.use(express.urlencoded({ extended: true }));
+
 // Set up middleware
 router.use(morgan("tiny"));
 router.use(express.json());

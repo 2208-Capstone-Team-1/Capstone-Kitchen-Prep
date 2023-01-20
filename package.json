@@ -25,6 +25,7 @@
     "morgan": "^1.10.0",
     "pg": "^8.8.0",
     "sequelize": "^6.25.3",
+    "style-loader": "^3.3.1",
     "ts-node": "^10.9.1",
     "volleyball": "^1.5.1"
   },
@@ -41,6 +42,7 @@
     "axios": "^1.1.3",
     "babel-loader": "^9.0.0",
     "chai": "^4.3.6",
+    "css-loader": "^6.7.3",
     "eslint": "^8.31.0",
     "eslint-config-standard-with-typescript": "^27.0.1",
     "eslint-plugin-import": "^2.27.4",
