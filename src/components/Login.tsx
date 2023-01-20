@@ -6,7 +6,7 @@ import axios from "axios";
 const Login = () => {
   const dispatch = useDispatch();
   const [credentials, setCredentials] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -45,9 +45,9 @@ const Login = () => {
       <h2>Login</h2>
       <form onSubmit={attemptLogin}>
         <input
-          placeholder="username"
-          value={credentials.username}
-          name="username"
+          placeholder="email"
+          value={credentials.email}
+          name="email"
           onChange={onChange}
         />
         <input

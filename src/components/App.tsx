@@ -36,19 +36,26 @@ const App = () => {
   return (
     <div>
       <h1>CHEF'S KISS</h1>
-      <img src="/static/Chef's kiss_logo.jpg" alt="chef's kiss logo" width="100" height="130"></img>
+      <img
+        src="/static/Chef's kiss_logo.jpg"
+        alt="chef's kiss logo"
+        width="100"
+        height="130"
+      ></img>
       <div>
         <nav>
           <Link to="/">Home</Link>
           <Link to="/User">Account</Link>
           <Link to="/Recipe">Recipe of the Day </Link>
           <Link to="/Ingredient">Fridge</Link>
+          <Link to="/Login">Login</Link>
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/User" element={<UserPage />} />
           <Route path="/Recipe" element={<RecipePage />} />
           <Route path="/Ingredient" element={<IngredientPage />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </div>
