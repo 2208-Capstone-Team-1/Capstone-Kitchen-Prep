@@ -15,9 +15,16 @@ module.exports = {
         exclude: /node_modules/,
         loader: "ts-loader",
       },
+      {
+        test: /\.css$/i,
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader", options: { url: false } }
+        ],
+      },
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx", ".ts", ".tsx", ".html", ".scss"],
+    extensions: [".js", ".jsx", ".ts", ".tsx", ".html", ".scss", ".css"],
   },
 };
