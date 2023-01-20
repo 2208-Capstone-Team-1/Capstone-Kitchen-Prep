@@ -25,10 +25,10 @@ const SavedRecipes = () => {
   console.log("***", recipes);
   return (
     <>
-      <div>SavedRecipes</div>;
+      <div>SavedRecipes</div>
       {recipes?.length &&
         recipes.map((recipe) => {
-          return <h1>{recipe.name}</h1>;
+          return <p>{recipe.name}</p>;
         })}
     </>
   );
