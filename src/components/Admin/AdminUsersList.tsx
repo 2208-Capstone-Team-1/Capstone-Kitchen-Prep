@@ -2,8 +2,7 @@ import { useDispatch } from "react-redux";
 
 
 
-const AllUsers = ({user}) => {
+const AllUsers = () => {
 
-  const dispatch = useDispatch();
 
 }

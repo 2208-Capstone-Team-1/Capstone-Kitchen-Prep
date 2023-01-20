@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import SingleUserTable from "./AdminSingleUserTable";
 
 /** Admin page shows a list of users
-  *
-  */
+*
+*/
 
 //!use this to show the component or link to page
 /*{user.isAdmin && (
@@ -15,15 +15,16 @@ import SingleUserTable from "./AdminSingleUserTable";
 )} */
 
 
-const AllUsersTable = ({user}) => {
+const AllUsersTable = () => {
 
   //Custom Hooks
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   //Selectors
-  const {allUsers} = useSelector((state) => state.allUsers);
+  // const {allUsers} = useSelector((state) => state.allUsers);
 
   return(
-    <SingleUserTable/>
+    <p>ADMIN</p>
+    // <SingleUserTable/>
   )
 }
