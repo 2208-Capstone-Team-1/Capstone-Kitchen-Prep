@@ -16,8 +16,23 @@ const recipeHandler = async () => {
     setloading(true);
 }
 
+// WILD CARD!
 interface recipeObj {
 [key: string]: any;
+}
+
+// interface for instruction
+interface instructionObj {
+    number: number;
+    step: string;
+    ingredients: [];
+    equipment: [];
+}
+
+// interface for ingredients
+interface ingredientObj {
+    id: number;
+    original: string
 }
 
 useEffect(()=>{
@@ -29,8 +44,10 @@ if(!loading){
     return (<div>Oops! Something went wrong!</div>)
 }
 const imageURL = `${randomRecipe.image}`;
-// const descriptionUrl = `${randomRecipe.summary}`;
-// const description = descriptionUrl.slice(0, descriptionUrl.length -2);
+//since summary key of randonRecipe contangs html tag, we are using parser
+let summaryObj = { summary : `${randomRecipe.summary}`};
+let parser = new DOMParser();
+let parsedObj = parser.parseFromString(summaryObj.summary, "text/html");
 
 // if loading is true and proper data was fetched & set, display the page
     return (
@@ -38,15 +55,32 @@ const imageURL = `${randomRecipe.image}`;
             <h1>Today's recommendation</h1>
             <h2>{randomRecipe.title}</h2>
             <img className="recipe_img" src={imageURL} />
+            <h2>Ingredients</h2>
+            <div className="recipe_ingredients">
+                {randomRecipe.extendedIngredients.map((foodItem : ingredientObj, index: number )=>{
+                    return(
+                        <div>{index}: {foodItem.original}</div>
+                    )
+                })}
+            </div>
+            <h2>Recipe</h2>
+            <div className="recipe_instruction">
+                {randomRecipe.analyzedInstructions[0].steps.map((step: instructionObj)=>{
+                    return(
+                        <p key={step.number}>{step.number}: {step.step}</p>
+                    )
+                })}
+            </div>
             <div className="recipe_diet">
+                <p>Diet: </p>
             {randomRecipe.diets.map((diet : string, index : number)=> {
                 return(
                 <p className="recipe_ptag" key = {index}>{diet}</p>
                 )
             })}
             </div>
-            <div className="recipe_url">{randomRecipe.sourceUrl}</div>
-            {randomRecipe.summary}     
+            <div className="recipe_url">Source: {randomRecipe.sourceUrl}</div>
+            <p>{parsedObj.body.textContent}</p>
         </div>
     )
 }
