@@ -3,7 +3,7 @@ import Home from "./Home";
 import Login from "./Login";
 import { setUser } from "../store/userSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, Routes, Route } from "react-router-dom";
+import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { RootState } from "../store";
 import UserPage from "./User";
@@ -13,6 +13,7 @@ import IngredientPage from "./Ingredient";
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const loginWithToken = async () => {
     const token = window.localStorage.getItem("token");
@@ -24,7 +25,10 @@ const App = () => {
       });
 
       dispatch(setUser(response.data));
+      console.log("navigated!");
     }
+    navigate("/User");
+    console.log("Navigate to home");
   };
 
   useEffect(() => {
@@ -48,7 +52,7 @@ const App = () => {
           <Link to="/User">Account</Link>
           <Link to="/Recipe">Recipe of the Day </Link>
           <Link to="/Ingredient">Fridge</Link>
-          <Link to="/Login">Login</Link>
+          <Link to="/login">Login</Link>
         </nav>
         <Routes>
           <Route path="/" element={<Home />} />
