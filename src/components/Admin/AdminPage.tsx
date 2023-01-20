@@ -15,7 +15,7 @@ import SingleUserTable from "./AdminSingleUserTable";
 )} */
 
 
-const AllUsersTable = () => {
+const AdminPage = () => {
 
   //Custom Hooks
   // const dispatch = useDispatch();
@@ -28,3 +28,5 @@ const AllUsersTable = () => {
     // <SingleUserTable/>
   )
 }
+
+export default AdminPage;

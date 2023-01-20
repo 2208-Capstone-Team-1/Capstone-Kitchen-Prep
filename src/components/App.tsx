@@ -1,7 +1,4 @@
 import React, { useEffect } from "react";
-import Home from "./Home/Home";
-import Login from "./Login";
-import { setUser } from "../store/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -9,9 +6,13 @@ import { RootState } from "../store";
 import UserPage from "./User";
 import RecipePage from "./Recipe/Recipe";
 import IngredientPage from "./Ingredient";
-import "./main.css";
 import AboutPage from "./About";
 import SavedRecipePage from "./SavedRecipe";
+import Home from "./Home/Home";
+import Login from "./Login";
+import { setUser } from "../store/userSlice";
+import "./main.css";
+import AdminPage from "./Admin/AdminPage";
 
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
@@ -62,10 +63,13 @@ const App = () => {
             <Link to="/recipe">Recipe of the Day </Link>
             <Link to="/ingredient">Fridge</Link>
             <Link to="/about">About</Link>
+            {/* {user.isAdmin && <Link to="/admin">Admin</Link>} */}
           </nav>
           <Routes>
             <Route path="/" element={<Home />} />
             {user.id && <Route path="/user" element={<UserPage />} />}
+            {/* {user.isAdmin && <Route path="/admin" element={<AdminPage />} />} */}
+
             <Route path="/recipe" element={<RecipePage />} />
             <Route path="/ingredient" element={<IngredientPage />} />
             <Route path="/about" element={<AboutPage />} />
