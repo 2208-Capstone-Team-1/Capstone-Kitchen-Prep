@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Home from "./Home/Home";
 import Login from "./Login";
-import { setUser } from "../store/userSlice";
+import { setUser, resetUser } from "../store/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, Routes, Route, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -12,6 +12,7 @@ import IngredientPage from "./Ingredient";
 import "./main.css";
 import AboutPage from "./About";
 import SavedRecipePage from "./SavedRecipe";
+import { Button } from "@mui/material";
 
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
@@ -30,29 +31,40 @@ const App = () => {
     }
   };
 
+  const logout = () => {
+    window.localStorage.removeItem("token");
+    dispatch(resetUser());
+  };
+
   useEffect(() => {
     loginWithToken();
   }, []);
 
-  // remove login requirement for now, will implement later
-  // if (!user.id) return <Login />;
   return (
     <div>
-      <h1>CHEF'S KISS</h1>
-      <img
-        src="/static/Chef's kiss_logo.jpg"
-        alt="chef's kiss logo"
-        width="100"
-        height="130"
-      ></img>
       <div className="body">
         <div className="main_topbar">
           <p className="main_ptag">place holder</p>
           <p className="main_ptag">
-            <Link to="/login">Login</Link>
+            {!user.id && (
+              <Button component={Link} to="/login" variant="contained">
+                Login
+              </Button>
+            )}
+            {user.id && (
+              <Button variant="contained" onClick={logout}>
+                Logout
+              </Button>
+            )}
           </p>
         </div>
         <div className="main_logoPlace">
+          <img
+            src="/static/Chef's kiss_logo.jpg"
+            alt="chef's kiss logo"
+            width="100"
+            height="130"
+          ></img>
           <h1 className="mainLogoTxt">Chef's Kiss</h1>
         </div>
         <div>
