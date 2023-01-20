@@ -1,0 +1,47 @@
+.body {
+    background-color: rgb(249, 249, 249);
+    height: 100vh;
+}
+
+.main_topbar {
+    margin: 0;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.main_logoPlace {
+    margin: none;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: center;
+}
+
+.mainLogoTxt {
+    font-family: 'Oleo Script Swash Caps', cursive;
+    font-size: 80pt;
+    margin: 0;
+}
+
+.main_ptag {
+    color: black;
+    /* font-family: 'Lora', serif; */
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 3px;
+}
+
+.navbar {
+    background-color: black;
+    margin: 0;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav a{
+    text-decoration: none;
+    color: rgb(249, 249, 249);
+    font-family: 'Playfair Display', serif;
+    margin: 5px;
+}
