@@ -6,13 +6,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { RootState } from "../store";
-import UserPage from "./User";
+import UserPage from "./User/User";
 import RecipePage from "./Recipe/Recipe";
 import IngredientPage from "./Ingredient";
 import "./main.css";
 import AboutPage from "./About";
 import SavedRecipePage from "./SavedRecipe";
 import { Button } from "@mui/material";
+import UserEdit from "./User/UserEdit";
 
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
@@ -71,13 +72,22 @@ const App = () => {
           <nav className="navbar">
             <Link to="/">Home</Link>
             <Link to="/about">About</Link>
-            <Link to="/user">Account</Link>
+            {/*only logged-in user can view below tabs */}
+            {user.id && (
+              <>
+              <Link to="/user">Account</Link>
+              <Link to="/ingredient">Fridge</Link>
+              </>
+              )}
             <Link to="/recipe">Recipe of the Day </Link>
-            <Link to="/ingredient">Fridge</Link>
           </nav>
           <Routes>
             <Route path="/" element={<Home />} />
-            {user.id && <Route path="/user" element={<UserPage />} />}
+            {user.id && (
+              <>
+            <Route path="/user" element={<UserPage />} />
+            <Route path="/user/userEdit" element={<UserEdit />} />
+            </>)}
             <Route path="/recipe" element={<RecipePage />} />
             <Route path="/ingredient" element={<IngredientPage />} />
             <Route path="/about" element={<AboutPage />} />
