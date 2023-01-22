@@ -52,18 +52,22 @@ const UserEdit = () => {
 
     return (
         <div className='userEdit_body'>
+            <div className='userEdit_container'>
             <h1 className='userEdit_h1'>Account Profile</h1>
-            <p>Please edit your profile here</p>
+            <p className='userEdit-ptag'>Please edit your profile here</p>
             <div className='userEdit_formbody'>
                 <form className='userEdit_form' onSubmit={updateHandler}>
-                <label>First Name</label>
-                <input value={first_name} onChange={firstnameHandler} />
-                <label>Last Name</label>
-                <input value={last_name} onChange={lastnameHandler} />
-                <label>Phone Number</label>
-                <input value={phoneNumber} onChange={phoneNumberHandler} />
-                <button type='submit' className='submit_button'>Save</button>
+                    <label>First Name</label>
+                    <input value={first_name} onChange={firstnameHandler} />
+                    <label>Last Name</label>
+                    <input value={last_name} onChange={lastnameHandler} />
+                    <label>Phone Number</label>
+                    <input value={phoneNumber} onChange={phoneNumberHandler} />
+                    <div className='edit_button'>
+                        <button type='submit' className='submit_button'>Save</button>
+                    </div>
                 </form>
+            </div>
             </div>
         </div>
     );
