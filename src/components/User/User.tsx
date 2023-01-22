@@ -1,4 +1,5 @@
 import { profile } from "console";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { RootState } from "../../store";
@@ -9,7 +10,14 @@ const UserPage = () => {
   const { user } = useSelector((state: RootState) => state.user);
   const profileArray = ["../static/profilePhoto/profile1.jpg", "../static/profilePhoto/profile2.jpg", "../static/profilePhoto/profile3.jpg","../static/profilePhoto/profile4.jpg", "../static/profilePhoto/profile5.jpg"]
   const randomNum = Math.floor(Math.random() * (profileArray.length - 1) + 0)
+  const [loading, setLoading] = useState(false);
 
+  useEffect(()=>{
+    setLoading(true);
+  }, [])
+
+  if(!loading){ return(<div>Oops, something went wrong!</div>)}
+  
   return (
     <div className="user_body">
       <div className="user_secondBody">
