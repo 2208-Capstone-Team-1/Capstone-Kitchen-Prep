@@ -1,25 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-
-import { setUser } from "../store/userSlice";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { RootState } from "../store";
 
 const UserPage = () => {
   const { user } = useSelector((state: RootState) => state.user);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  //fetch userData
-  const fetchUser = async () => {
-    const user = await axios.get("http://localhost:3000/api/user");
-    dispatch(setUser(user.data));
-  };
-
-  useEffect(() => {
-    fetchUser();
-  }, []);
 
   return (
     <div>

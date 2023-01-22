@@ -1,18 +1,19 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, Routes, Route, useNavigate } from "react-router-dom";
+import { Link, Routes, Route } from "react-router-dom";
+import { Button } from "@mui/material";
 import axios from "axios";
 import { RootState } from "../store";
+import { setUser, resetUser } from "../store/userSlice";
 import UserPage from "./User";
 import RecipePage from "./Recipe/Recipe";
-import IngredientPage from "./Ingredient";
 import AboutPage from "./About";
+import IngredientPage from "./Ingredient";
 import SavedRecipePage from "./SavedRecipe";
 import Home from "./Home/Home";
 import Login from "./Login";
-import { setUser } from "../store/userSlice";
-import "./main.css";
 import AdminPage from "./Admin/AdminPage";
+import "./main.css";
 
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
@@ -31,34 +32,46 @@ const App = () => {
     }
   };
 
+  const logout = () => {
+    window.localStorage.removeItem("token");
+    dispatch(resetUser());
+  };
+
   useEffect(() => {
     loginWithToken();
   }, []);
 
-  // remove login requirement for now, will implement later
-  // if (!user.id) return <Login />;
   return (
     <div>
-      <h1>CHEF'S KISS</h1>
-      <img
-        src="/static/Chef's kiss_logo.jpg"
-        alt="chef's kiss logo"
-        width="100"
-        height="130"
-      ></img>
       <div className="body">
         <div className="main_topbar">
           <p className="main_ptag">place holder</p>
           <p className="main_ptag">
-            <Link to="/login">Login</Link>
+            {!user.id && (
+              <Button component={Link} to="/login" variant="contained">
+                Login
+              </Button>
+            )}
+            {user.id && (
+              <Button variant="contained" onClick={logout}>
+                Logout
+              </Button>
+            )}
           </p>
         </div>
         <div className="main_logoPlace">
+          <img
+            src="/static/Chef's kiss_logo.jpg"
+            alt="chef's kiss logo"
+            width="100"
+            height="130"
+          ></img>
           <h1 className="mainLogoTxt">Chef's Kiss</h1>
         </div>
         <div>
           <nav className="navbar">
             <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
             <Link to="/user">Account</Link>
             <Link to="/recipe">Recipe of the Day </Link>
             <Link to="/ingredient">Fridge</Link>
@@ -77,7 +90,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
           </Routes>
         </div>
-      </div>
+    </div>
     </div>
   );
 };
