@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 import { RootState } from "../../store";
 import { setUser } from '../../store/userSlice';
 import "./user.css";
@@ -10,6 +11,7 @@ const UserEdit = () => {
     const { user } = useSelector((state: RootState) => state.user);
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const id = user.id;
     const [first_name, setfirst_name] = useState(user.first_name);
     const [last_name, setLast_name] = useState(user.last_name);
@@ -31,8 +33,8 @@ const UserEdit = () => {
             const update = {first_name, last_name, phoneNumber};
             await axios.put(`/api/users/${id}`, update);
             const userData = await axios.get(`/api/user/${id}`);
-            console.log(userData.data)
             dispatch(setUser(userData.data));
+            navigate("/user");
         } catch (error) {
             console.log(error)
         }
@@ -53,7 +55,7 @@ const UserEdit = () => {
             <h1 className='userEdit_h1'>Account Profile</h1>
             <p>Please edit your profile here</p>
             <div className='userEdit_formbody'>
-                <form className='userEdit_form'>
+                <form className='userEdit_form' onSubmit={updateHandler}>
                 <label>First Name</label>
                 <input value={first_name} onChange={firstnameHandler} />
                 <label>Last Name</label>
