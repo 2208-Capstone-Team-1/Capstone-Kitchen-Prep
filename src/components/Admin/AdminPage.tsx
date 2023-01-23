@@ -1,18 +1,13 @@
 import React from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import SingleUserTable from "./AdminSingleUserTable";
+import AllUsers from "./AdminUsersList";
 
-/** Admin page shows a list of users
-*
+/** Admin page shows a list of users. An Admin can edit a user's profile information.
+*  🔗 http://localhost:3000/admin
 */
 
-//!use this to show the component or link to page
-/*{user.isAdmin && (
-    <Link className="link-item" to="/allUsers">
-  All Active Users
-  </Link>
-)} */
+//! Need to add axios posts to edit user information.
 
 
 const AdminPage = () => {
@@ -24,8 +19,10 @@ const AdminPage = () => {
   // const {allUsers} = useSelector((state) => state.allUsers);
 
   return(
-    <p>ADMIN</p>
-    // <SingleUserTable/>
+    <div>
+      <p>ADMIN</p>
+      <AllUsers/>
+    </div>
   )
 }
 

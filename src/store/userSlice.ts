@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 interface userType {
   id: string;
   email: string;
+  isAdmin: boolean;
 }
 
 interface initialStateType {
@@ -14,6 +15,7 @@ const initialState: initialStateType = {
   user: {
     id: "",
     email: "",
+    isAdmin:false,
   },
 
 };
@@ -29,6 +31,7 @@ export const userSlice = createSlice({
       state.user = {
         id: "",
         email: "",
+        isAdmin:false,
       };
     },
   },

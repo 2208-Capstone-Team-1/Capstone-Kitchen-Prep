@@ -1,10 +1,14 @@
-import React from "react";
+
 
 const SingleUserTable = () => {
 
+  //!Need to add user's information to a single table.
+
 
   return (
-    <h2>TABLE FOR ALL USERS</h2>
+    <div>
+      <h2>TABLE FOR SINGLE USER</h2>
+    </div>
   )
 
 }

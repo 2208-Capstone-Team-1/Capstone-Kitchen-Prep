@@ -71,17 +71,16 @@ const App = () => {
         <div>
           <nav className="navbar">
             <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
             <Link to="/user">Account</Link>
             <Link to="/recipe">Recipe of the Day </Link>
             <Link to="/ingredient">Fridge</Link>
             <Link to="/about">About</Link>
-            {/* {user.isAdmin && <Link to="/admin">Admin</Link>} */}
+            {user.isAdmin && <Link to="/admin">Admin</Link>}
           </nav>
           <Routes>
             <Route path="/" element={<Home />} />
             {user.id && <Route path="/user" element={<UserPage />} />}
-            {/* {user.isAdmin && <Route path="/admin" element={<AdminPage />} />} */}
+            {user.isAdmin && <Route path="/admin" element={<AdminPage />} />}
 
             <Route path="/recipe" element={<RecipePage />} />
             <Route path="/ingredient" element={<IngredientPage />} />
