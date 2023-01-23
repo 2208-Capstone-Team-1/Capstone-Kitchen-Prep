@@ -8,7 +8,7 @@ import axios from "axios";
 import { RootState } from "../store";
 import UserPage from "./User";
 import RecipePage from "./Recipe/Recipe";
-import IngredientPage from "./Ingredient";
+import Ingredient from "./Ingredients/Ingredient";
 import "./main.css";
 import AboutPage from "./About";
 import SavedRecipePage from "./SavedRecipe";
@@ -16,7 +16,6 @@ import { Button } from "@mui/material";
 
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
-  const { ingredients } = useSelector((state: RootState) => state.ingredients);
   const dispatch = useDispatch();
 
   const loginWithToken = async () => {
@@ -80,7 +79,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             {user.id && <Route path="/user" element={<UserPage />} />}
             <Route path="/recipe" element={<RecipePage />} />
-            <Route path="/ingredient" element={<IngredientPage />} />
+            <Route path="/ingredient" element={<Ingredient />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/savedRecipe" element={<SavedRecipePage />} />
             <Route path="/login" element={<Login />} />

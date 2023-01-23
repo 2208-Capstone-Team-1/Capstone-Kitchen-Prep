@@ -22,15 +22,15 @@ export const ingredientSlice = createSlice({
   reducers: {
     // specify what we expect to take in
     setIngredients: (state, action) => {
-      state.ingredientsObj = action.payload;
+      state.ingredients = action.payload;
     },
     // specify what we expect to take in
     addIngredient: (state, action) => {
-      state.ingredientsObj = [...state.ingredientsObj, action.payload];
+      state.ingredients = [...state.ingredients, action.payload];
     },
     // specify what we expect to take in
     clearIngredients: (state) => {
-      state.ingredientsObj = [];
+      state.ingredients = [];
     },
   },
 });
