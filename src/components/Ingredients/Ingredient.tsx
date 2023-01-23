@@ -9,17 +9,19 @@ import MuiLoader from "../MuiLoader";
 const Ingredient = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
-
+  const { user } = useSelector((state: RootState) => state.user);
   const { ingredients } = useSelector((state: RootState) => state.ingredients);
 
   //fetch ingredients by user
   const fetchIngredients = async () => {
+    console.log("USER", user);
     try {
       const ingredients = await axios.get("/api/ingredients");
       dispatch(setIngredients(ingredients.data));
     } catch (err) {
       console.error(err);
     }
+    // }
     setLoading(false);
   };
 
@@ -37,10 +39,9 @@ const Ingredient = () => {
   return (
     <>
       <h1>Ingredient Page</h1>
-      {console.log(ingredients[0])}
-      {ingredients.map((ingredient) => {
+      {ingredients.map((ingredient, index) => {
         return (
-          <p>
+          <p key={index}>
             Ingredient: {ingredient.ingredient} Quantity: {ingredient.quantity}
           </p>
         );
