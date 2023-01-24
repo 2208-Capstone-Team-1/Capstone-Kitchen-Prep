@@ -12,15 +12,18 @@
 }
 
 .main_logoPlace {
-	padding: 10px;
+	padding: 5px;
 	border-bottom: 1px solid black;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	gap: 20px;
+	gap: 10px;
 }
 .mainLogoTxt {
+	margin-top: 20px;
 	position: relative;
+	height: min-content;
+	width: auto;
 	text-decoration: none;
 	align-content: center;
 	color: black;
@@ -34,8 +37,8 @@ span::before,
 span::after {
 	content: "";
 	position: absolute;
-	width: 30px;
-	height: 30px;
+	width: 20px;
+	height: 20px;
 	background: transparent;
 	transition: 1s;
 	/* -webkit-mix-blend-mode: hue; */
