@@ -17,7 +17,6 @@ const Ingredient: React.FC<Props> = ({ user }) => {
   const [loading, setLoading] = useState(true);
   const { ingredients } = useSelector((state: RootState) => state.ingredients);
 
-  console.log("THIS IS THE USER OBJ:", user);
   //fetch ingredients by user
   const fetchIngredients = async () => {
     try {
@@ -26,7 +25,6 @@ const Ingredient: React.FC<Props> = ({ user }) => {
     } catch (err) {
       console.error(err);
     }
-    // }
     setLoading(false);
   };
 
