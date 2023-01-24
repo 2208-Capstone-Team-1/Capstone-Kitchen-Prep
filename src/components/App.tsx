@@ -10,9 +10,11 @@ import UserPage from "./User";
 import Ingredient from "./Ingredients/Ingredient";
 import Login from "./Login";
 import AboutPage from "./About";
-import SavedRecipePage from "./SavedRecipe";
 import Home from "./Home/Home";
 import "./main.css";
+import SavedRecipes from "./savedRecipes/SavedRecipes";
+import UserEdit from "./User/UserEdit";
+
 
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
@@ -71,13 +73,22 @@ const App = () => {
           <nav className="navbar">
             <Link to="/">Home</Link>
             <Link to="/about">About</Link>
-            <Link to="/user">Account</Link>
+            {/*only logged-in user can view below tabs */}
+            {user.id && (
+              <>
+              <Link to="/user">Account</Link>
+              <Link to="/ingredient">Fridge</Link>
+              </>
+              )}
             <Link to="/recipe">Recipe of the Day </Link>
-            <Link to="/ingredient">Fridge</Link>
           </nav>
           <Routes>
             <Route path="/" element={<Home />} />
-            {user.id && <Route path="/user" element={<UserPage />} />}
+            {user.id && (
+              <>
+            <Route path="/user" element={<UserPage />} />
+            <Route path="/user/userEdit" element={<UserEdit />} />
+            </>)}
             <Route path="/recipe" element={<RecipePage />} />
             <Route path="/ingredient" element={<Ingredient user={user} />} />
             <Route path="/about" element={<AboutPage />} />

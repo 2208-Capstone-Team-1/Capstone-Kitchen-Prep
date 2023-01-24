@@ -48,7 +48,7 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
 localhost:3000/api/ingredients/:id */
 router.put("/:id", async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const id = req.params.id;
+    const id: string = req.params.id;
     const { ingredient, quantity } = req.body;
     const updateIngredient = await Ingredient.findByPk(id);
     updateIngredient?.update({ ingredient, quantity });
