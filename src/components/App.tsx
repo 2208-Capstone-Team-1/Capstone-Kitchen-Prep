@@ -12,6 +12,7 @@ import IngredientPage from "./Ingredient";
 import "./main.css";
 import AboutPage from "./About";
 import SavedRecipePage from "./SavedRecipe";
+import SavedRecipes from "./savedRecipes/SavedRecipes";
 import { Button } from "@mui/material";
 
 const App = () => {
@@ -85,7 +86,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
           </Routes>
         </div>
-    </div>
+      </div>
     </div>
   );
 };
