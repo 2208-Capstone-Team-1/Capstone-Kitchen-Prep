@@ -30,9 +30,9 @@ const UserEdit = () => {
     const updateHandler = async (event: any) => {
         try {
             event.preventDefault();
-            const update = {first_name, last_name, phoneNumber};
+            const update = { first_name, last_name, phoneNumber };
             await axios.put(`/api/users/${id}`, update);
-            const userData = await axios.get(`/api/user/${id}`);
+            const userData = await axios.get(`/api/users/${id}`);
             dispatch(setUser(userData.data));
             navigate("/user");
         } catch (error) {
