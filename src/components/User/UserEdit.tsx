@@ -21,10 +21,10 @@ const UserEdit = () => {
         setfirst_name(event.target.value);
     }
     const lastnameHandler = (event: any) => {
-        setfirst_name(event.target.value);
+        setLast_name(event.target.value);
     }
     const phoneNumberHandler = (event: any) => {
-        setfirst_name(event.target.value);
+        setPhoneNumber(event.target.value);
     }
 
     const updateHandler = async (event: any) => {
