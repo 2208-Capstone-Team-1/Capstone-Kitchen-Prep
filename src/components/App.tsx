@@ -6,13 +6,13 @@ import { Button } from "@mui/material";
 import { setUser, resetUser } from "../store/userSlice";
 import { RootState } from "../store";
 import RecipePage from "./Recipe/Recipe";
-import UserPage from "./User";
+import UserPage from "./User/User";
 import Ingredient from "./Ingredients/Ingredient";
 import Login from "./Login";
 import AboutPage from "./About";
 import Home from "./Home/Home";
 import "./main.css";
-import SavedRecipes from "./savedRecipes/SavedRecipes";
+import SavedRecipePage from "./SavedRecipe";
 import UserEdit from "./User/UserEdit";
 
 
