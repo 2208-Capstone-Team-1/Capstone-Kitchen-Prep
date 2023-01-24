@@ -1,18 +1,23 @@
 import { useEffect } from "react";
-import Home from "./Home/Home";
-import Login from "./Login";
-import { setUser, resetUser } from "../store/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, Routes, Route } from "react-router-dom";
 import axios from "axios";
+import { Button } from "@mui/material";
+import { setUser, resetUser } from "../store/userSlice";
 import { RootState } from "../store";
-import UserPage from "./User";
 import RecipePage from "./Recipe/Recipe";
+import UserPage from "./User";
 import Ingredient from "./Ingredients/Ingredient";
-import "./main.css";
+import Login from "./Login";
 import AboutPage from "./About";
 import SavedRecipePage from "./SavedRecipe";
-import { Button } from "@mui/material";
+import Home from "./Home/Home";
+import "./main.css";
+
+type userType = {
+  id: string;
+  email: string;
+};
 
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
@@ -79,7 +84,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             {user.id && <Route path="/user" element={<UserPage />} />}
             <Route path="/recipe" element={<RecipePage />} />
-            <Route path="/ingredient" element={<Ingredient />} />
+            <Route path="/ingredient" element={<Ingredient user={user} />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/savedRecipe" element={<SavedRecipePage />} />
             <Route path="/login" element={<Login />} />
