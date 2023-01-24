@@ -1,0 +1,108 @@
+.user_body{
+    background-color: rgb(249, 249, 249);
+}
+
+.user_secondBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user_h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25pt;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.image_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image_box {
+    background-color: rgb(0, 0, 0);
+    box-shadow: inset 0 50px rgb(16, 16, 16),
+                inset 2px -15px 30px rgb(14, 14, 14);
+    padding: 20px;
+    border-radius: 50%;
+    text-align: center;
+    margin: 0px 20px;
+    transition: all .5x ease;
+}
+
+.user_image {
+    width: 120px;
+    border-radius: 50%;
+}
+
+.user_h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+.user_editButton {
+    margin-bottom: 50px;
+    padding: 15px;
+    border-radius: 20px;
+    border-style: none;
+    background-color: rgb(223, 223, 223);
+    font-family: 'Playfair Display', serif;
+}
+
+.savedRecipes {
+    margin: 50px;
+}
+
+.userEdit_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.userEdit_h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 25pt;
+    margin-top: 50px;
+}
+
+.userEdit-ptag {
+    font-family: 'Playfair Display', serif;
+    margin-top: 0;
+}
+
+.userEdit_formbody {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+label {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 2px;
+}
+
+input{
+    font-family: 'Playfair Display', serif;
+    padding: 8px;
+    border-style: solid;
+    border-color: rgb(203, 203, 203);
+    border-radius: 10px;
+}
+
+.edit_button {
+    display: flex;
+    justify-content: center;
+}
+
+.submit_button {
+    padding: 15px;
+    border-radius: 20px;
+    border-style: none;
+    background-color: rgb(223, 223, 223);
+    font-family: 'Playfair Display', serif;
+    width: 30%;
+}
+
