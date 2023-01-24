@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Home from "./Home/Home";
 import Login from "./Login";
-import { setUser } from "../store/userSlice";
+import { setUser, resetUser } from "../store/userSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, Routes, Route } from "react-router-dom";
 import axios from "axios";
@@ -13,6 +13,7 @@ import "./main.css";
 import AboutPage from "./About";
 import SavedRecipePage from "./SavedRecipe";
 import SavedRecipes from "./savedRecipes/SavedRecipes";
+import { Button } from "@mui/material";
 
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
@@ -31,46 +32,58 @@ const App = () => {
     }
   };
 
+  const logout = () => {
+    window.localStorage.removeItem("token");
+    dispatch(resetUser());
+  };
+
   useEffect(() => {
     loginWithToken();
   }, []);
 
-  // remove login requirement for now, will implement later
-  // if (!user.id) return <Login />;
   return (
     <div>
-      <h1>CHEF'S KISS</h1>
-      <img
-        src="/static/Chef's kiss_logo.jpg"
-        alt="chef's kiss logo"
-        width="100"
-        height="130"
-      ></img>
       <div className="body">
         <div className="main_topbar">
           <p className="main_ptag">place holder</p>
-          <p className="main_ptag">Login</p>
+          <p className="main_ptag">
+            {!user.id && (
+              <Button component={Link} to="/login" variant="contained">
+                Login
+              </Button>
+            )}
+            {user.id && (
+              <Button variant="contained" onClick={logout}>
+                Logout
+              </Button>
+            )}
+          </p>
         </div>
         <div className="main_logoPlace">
+          <img
+            src="/static/Chef's kiss_logo.jpg"
+            alt="chef's kiss logo"
+            width="100"
+            height="130"
+          ></img>
           <h1 className="mainLogoTxt">Chef's Kiss</h1>
         </div>
         <div>
           <nav className="navbar">
             <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
             <Link to="/user">Account</Link>
             <Link to="/recipe">Recipe of the Day </Link>
-            <Link to="/savedRecipes">Saved Recipes</Link>
             <Link to="/ingredient">Fridge</Link>
-            <Link to="/about">About</Link>
           </nav>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/user" element={<UserPage />} />
+            {user.id && <Route path="/user" element={<UserPage />} />}
             <Route path="/recipe" element={<RecipePage />} />
-            <Route path="/savedRecipes" element={<SavedRecipes />} />
             <Route path="/ingredient" element={<IngredientPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/savedRecipe" element={<SavedRecipePage />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </div>
