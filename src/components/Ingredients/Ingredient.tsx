@@ -17,11 +17,12 @@ const Ingredient: React.FC<Props> = ({ user }) => {
   const [loading, setLoading] = useState(true);
   const { ingredients } = useSelector((state: RootState) => state.ingredients);
 
+  console.log("THIS IS THE USER OBJ:", user);
   //fetch ingredients by user
   const fetchIngredients = async () => {
     try {
-      const ingredients = await axios.get(`/api/ingredients/${user.id}`);
-      dispatch(setIngredients(ingredients.data));
+      const userData = await axios.get(`/api/users/${user.id}`);
+      dispatch(setIngredients(userData.data.ingredients));
     } catch (err) {
       console.error(err);
     }
@@ -31,7 +32,7 @@ const Ingredient: React.FC<Props> = ({ user }) => {
 
   useEffect(() => {
     fetchIngredients();
-  }, []);
+  }, [user]);
 
   if (loading)
     return (
@@ -44,13 +45,15 @@ const Ingredient: React.FC<Props> = ({ user }) => {
     <>
       <h1>Ingredient Page</h1>
       {user.email}
-      {ingredients.map((ingredient, index) => {
-        return (
-          <p key={index}>
-            Ingredient: {ingredient.ingredient} Quantity: {ingredient.quantity}
-          </p>
-        );
-      })}
+      {ingredients &&
+        ingredients.map((ingredient, index) => {
+          return (
+            <p key={index}>
+              Ingredient: {ingredient.ingredient} Quantity:{" "}
+              {ingredient.quantity}
+            </p>
+          );
+        })}
     </>
   );
 };

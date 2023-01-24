@@ -14,11 +14,6 @@ import SavedRecipePage from "./SavedRecipe";
 import Home from "./Home/Home";
 import "./main.css";
 
-type userType = {
-  id: string;
-  email: string;
-};
-
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
