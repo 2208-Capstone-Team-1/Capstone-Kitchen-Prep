@@ -12,7 +12,7 @@ import Login from "./Login";
 import AboutPage from "./About";
 import Home from "./Home/Home";
 import "./main.css";
-import SavedRecipePage from "./SavedRecipe";
+import SavedRecipes from "./savedRecipes/SavedRecipes";
 import UserEdit from "./User/UserEdit";
 
 
@@ -77,10 +77,12 @@ const App = () => {
             {user.id && (
               <>
               <Link to="/user">Account</Link>
+              <Link to="/savedRecipe">Saved Recipes</Link>
               <Link to="/ingredient">Fridge</Link>
               </>
               )}
             <Link to="/recipe">Recipe of the Day </Link>
+
           </nav>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -92,7 +94,7 @@ const App = () => {
             <Route path="/recipe" element={<RecipePage />} />
             <Route path="/ingredient" element={<Ingredient user={user} />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/savedRecipe" element={<SavedRecipePage />} />
+            <Route path="/savedRecipe" element={<SavedRecipes />} />
             <Route path="/login" element={<Login />} />
           </Routes>
         </div>
