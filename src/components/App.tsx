@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 import { setUser, resetUser } from "../store/userSlice";
 import { RootState } from "../store";
 import RecipePage from "./Recipe/Recipe";
-import UserPage from "./User";
+import UserPage from "./User/User";
 import Ingredient from "./Ingredients/Ingredient";
 import Login from "./Login";
 import AboutPage from "./About";
@@ -77,10 +77,12 @@ const App = () => {
             {user.id && (
               <>
               <Link to="/user">Account</Link>
+              <Link to="/savedRecipe">Saved Recipes</Link>
               <Link to="/ingredient">Fridge</Link>
               </>
               )}
             <Link to="/recipe">Recipe of the Day </Link>
+
           </nav>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -92,7 +94,7 @@ const App = () => {
             <Route path="/recipe" element={<RecipePage />} />
             <Route path="/ingredient" element={<Ingredient user={user} />} />
             <Route path="/about" element={<AboutPage />} />
-            <Route path="/savedRecipe" element={<SavedRecipePage />} />
+            <Route path="/savedRecipe" element={<SavedRecipes />} />
             <Route path="/login" element={<Login />} />
           </Routes>
         </div>
