@@ -1,11 +1,13 @@
 import db from "../db";
-const User = db.User;
 import express, { NextFunction, Request, Response } from "express";
+
+const User = db.User;
+const Ingredient = db.Ingredient;
 const router = express.Router();
 
 /* get all users
-localhost:3000/api/users
- */
+ localhost:3000/api/users
+*/
 router.get("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
     const users = await User.findAll();
@@ -22,7 +24,9 @@ router.get("/:id", async (req: Request, res: Response, next: NextFunction) => {
   try {
     const id: string = req.params.id;
     if (id) {
-      const user = await User.findByPk(id);
+      const user = await User.findByPk(id, {
+        include: [Ingredient],
+      });
       res.send(user);
     }
   } catch (error) {

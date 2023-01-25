@@ -5,6 +5,7 @@ import axios from "axios";
 
 import { setRecipes } from "../../store/recipeSlice";
 import { RootState } from "../../store";
+
 const SavedRecipes = () => {
   //customs hooks
   const dispatch = useDispatch();
@@ -12,8 +13,11 @@ const SavedRecipes = () => {
   //selectors
   const { recipes } = useSelector((state: RootState) => state.recipe);
 
+
   //fetch all recipes data
   const fetchRecipes = async () => {
+    //!Change the Fetch recipe for a logged in user,
+    //! instead of all users
     const recipes = await axios.get("http://localhost:3000/api/recipes");
     dispatch(setRecipes(recipes.data));
   };
