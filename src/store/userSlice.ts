@@ -9,7 +9,9 @@ interface userType {
 interface initialStateType {
   [x: string]: any;
   user: userType;
+  users: []
 }
+
 
 const initialState: initialStateType = {
   user: {
@@ -17,7 +19,7 @@ const initialState: initialStateType = {
     email: "",
     isAdmin:false,
   },
-
+  users:[],
 };
 
 export const userSlice = createSlice({
@@ -34,8 +36,11 @@ export const userSlice = createSlice({
         isAdmin:false,
       };
     },
+    setUsers: (state, action) => {
+      state.users = action.payload;
+    },
   },
 });
 
-export const { setUser, resetUser } = userSlice.actions;
+export const { setUser, resetUser, setUsers } = userSlice.actions;
 export default userSlice.reducer;

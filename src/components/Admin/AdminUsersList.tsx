@@ -1,28 +1,49 @@
 import { useDispatch, useSelector } from "react-redux";
-import AdminSingleUserTable from "./AdminSingleUserTable";
+import axios from "axios";
+import React, {useEffect} from "react";
+import { TableBody, TableRow, TableCell } from "@mui/material";
+import { RootState } from "../../store";
+// import AdminSingleUserTable from "./AdminSingleUserTable";
+import { setUsers } from "../../store/userSlice";
 
 
 
-const AllUsers = () => {
+const AllUsers: React.FC = () => {
 
   const dispatch = useDispatch();
-  // const { users } = useSelector
-  const { users } = useSelector((state) => state.user);
+
+  const { users } = useSelector((state: RootState) => state.user);
 
   const fetchAllUsers = async () => {
     try{
       const fetchAllUsers = await axios.get("/api/users");
-      // dispatch(setUsers(fetchAllUsers.data));
-      // !need to add setUsers and allUsers initial state to the store in userSlice.ts
-
-
+      dispatch(setUsers(fetchAllUsers.data));
+    } catch (err) {
+      //
     }
-
   }
 
-  return(
+useEffect(() => {
+  fetchAllUsers;
+}, []);
 
-    <AdminSingleUserTable />
+  return(
+    <TableBody>
+      <TableRow key={user.id}>
+          {users.length
+            ? users.map((user) => (
+              <TableCell>{user.email}</TableCell>
+
+
+              // <UsersTable
+              //   StyledTableCell={StyledTableCell}
+              //   StyledTableRow={StyledTableRow}
+              //   key={user.id}
+              //   user={user}
+              // />
+          )): ""}
+        </TableRow>
+    </TableBody>
   )
 }
 
