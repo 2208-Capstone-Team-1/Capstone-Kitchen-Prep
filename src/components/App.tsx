@@ -61,13 +61,21 @@ const App = () => {
           </p>
         </div>
         <div className="main_logoPlace">
-          <img
-            src="/static/Chef's kiss_logo.jpg"
+          <img id="logo"
+            src="/static/Chef's kiss_logo.png"
             alt="chef's kiss logo"
-            width="100"
-            height="130"
+            width="120"
+            height="150"
           ></img>
-          <h1 className="mainLogoTxt">Chef's Kiss</h1>
+          <a className = "mainLogoTxt" href="#"><span></span>Chef's Kiss</a>
+          {/*<h1 className="mainLogoTxt">Chef's Kiss</h1>*/}
+          
+          <img id="logo"
+            src="/static/Chef's kiss_logo.png"
+            alt="chef's kiss logo"
+            width="120"
+            height="150"
+          ></img>
         </div>
         <div>
           <nav className="navbar">

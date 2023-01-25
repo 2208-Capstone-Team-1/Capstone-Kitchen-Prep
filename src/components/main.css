@@ -1,47 +1,107 @@
 .body {
-    background-color: rgb(249, 249, 249);
-    height: 100vh;
+	background-color: rgb(249, 249, 249);
+	height: 100vh;
 }
 
 .main_topbar {
-    margin: 0;
-    border-bottom: 1px solid black;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+	margin: 0;
+	border-bottom: 1px solid black;
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
 }
 
 .main_logoPlace {
-    margin: none;
-    border-bottom: 1px solid black;
-    display: flex;
-    justify-content: center;
+	padding: 5px;
+	border-bottom: 1px solid black;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 10px;
+}
+.mainLogoTxt {
+	margin-top: 20px;
+	position: relative;
+	height: min-content;
+	width: auto;
+	text-decoration: none;
+	align-content: center;
+	color: black;
+	font-family: "Oleo Script Swash Caps", cursive;
+	font-size: 80pt;
 }
 
-.mainLogoTxt {
-    font-family: 'Oleo Script Swash Caps', cursive;
-    font-size: 80pt;
-    margin: 0;
+.mainLogoTxt::before,
+.mainLogoTxt::after,
+span::before,
+span::after {
+	content: "";
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background: transparent;
+	transition: 1s;
+	/* -webkit-mix-blend-mode: hue; */
+}
+
+.mainLogoTxt::before {
+	top: -5px;
+	left: -5px;
+	border-top: 5px solid rgb(247, 204, 123);
+	border-left: 5px solid rgb(247, 204, 123);
+}
+/*.mainLogoTxt::after {
+	top: -2px;
+	right: -2px;
+	border-top: 5px solid rgb(247, 204, 123);
+	border-right: 5px solid rgb(247, 204, 123);
+}*/
+
+/*span::before {
+	bottom: -2px;
+	left: -2px;
+	border-bottom: 5px solid rgb(247, 204, 123);
+	border-left: 5px solid rgb(247, 204, 123);
+}*/
+span::after {
+	bottom: -5px;
+	right: -5px;
+	border-bottom: 5px solid rgb(247, 204, 123);
+	border-right: 5px solid rgb(247, 204, 123);
+}
+
+.mainLogoTxt:hover::before,
+.mainLogoTxt:hover::after,
+.mainLogoTxt:hover span::before,
+.mainLogoTxt:hover span::after {
+	width: calc(800px / 2);
+	height: calc(100px / 2);
+}
+
+#logo {
+	display: flex;
+	justify-self: center;
+	margin: 25px;
 }
 
 .main_ptag {
-    color: black;
-    /* font-family: 'Lora', serif; */
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 3px;
+	color: black;
+	/* font-family: 'Lora', serif; */
+	font-family: "Playfair Display", serif;
+	margin-bottom: 3px;
 }
 
 .navbar {
-    background-color: black;
-    margin: 0;
-    border-bottom: 1px solid black;
-    display: flex;
-    justify-content: space-between;
+	background-color: black;
+	margin: 0;
+	border-bottom: 1px solid black;
+	display: flex;
+	justify-content: space-between;
 }
 
-nav a{
-    text-decoration: none;
-    color: rgb(249, 249, 249);
-    font-family: 'Playfair Display', serif;
-    margin: 5px;
+nav a {
+	text-decoration: none;
+	color: rgb(249, 249, 249);
+	font-family: "Playfair Display", serif;
+	margin: 5px;
 }
