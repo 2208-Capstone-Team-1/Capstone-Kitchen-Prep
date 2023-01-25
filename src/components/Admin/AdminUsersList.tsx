@@ -1,50 +1,68 @@
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import React, {useEffect} from "react";
-import { TableBody, TableRow, TableCell } from "@mui/material";
+import React, {useEffect, useState} from "react";
+import { TableBody, Table, TableHead, TableRow, TableCell } from "@mui/material";
 import { RootState } from "../../store";
-// import AdminSingleUserTable from "./AdminSingleUserTable";
+import AdminSingleUserTable from "./AdminSingleUserTable";
 import { setUsers } from "../../store/userSlice";
 
+interface Props {
+  user: { id: string;}
+}
 
+const  AdminUsersList: React.FC<Props> = ({user}) => {
 
-const AllUsers: React.FC = () => {
+  interface userType {
+    id: string;
+    email: string;
+    isAdmin: boolean;
+  }
 
   const dispatch = useDispatch();
 
   const { users } = useSelector((state: RootState) => state.user);
+  const [loading, setloading] = useState(false);
+
 
   const fetchAllUsers = async () => {
     try{
-      const fetchAllUsers = await axios.get("/api/users");
+      const fetchAllUsers = await axios.get(`/api/users`);
       dispatch(setUsers(fetchAllUsers.data));
+      setloading(true)
+      console.log(fetchAllUsers.data);
     } catch (err) {
       //
     }
   }
 
 useEffect(() => {
-  fetchAllUsers;
+  fetchAllUsers();
 }, []);
 
-  return(
-    <TableBody>
-      <TableRow key={user.id}>
-          {users.length
-            ? users.map((user) => (
-              <TableCell>{user.email}</TableCell>
+if(!loading){ return( <div>ERROR!</div>)}
 
-
-              // <UsersTable
+// <UsersTable
               //   StyledTableCell={StyledTableCell}
               //   StyledTableRow={StyledTableRow}
               //   key={user.id}
               //   user={user}
               // />
-          )): ""}
+  return(
+    <Table>
+      <TableHead>
+
+        <TableRow>
         </TableRow>
-    </TableBody>
+      </TableHead>
+      <TableBody>
+        {users.map((user: userType) => (
+          <TableRow>{user.email}</TableRow>
+          // <AdminSingleUserTable/>
+        ))}
+      </TableBody>
+    </Table>
+
   )
 }
 
-export default AllUsers;
+export default AdminUsersList;

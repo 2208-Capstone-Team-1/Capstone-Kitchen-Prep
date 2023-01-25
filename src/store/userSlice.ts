@@ -5,13 +5,15 @@ interface userType {
   email: string;
   isAdmin: boolean;
 }
+interface usersType {
+  [key:string]: any;
+}
 
 interface initialStateType {
   [x: string]: any;
   user: userType;
-  users: []
+  users: usersType;
 }
-
 
 const initialState: initialStateType = {
   user: {

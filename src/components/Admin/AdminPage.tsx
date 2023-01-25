@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import AllUsers from "./AdminUsersList";
+import AdminUsersList from "./AdminUsersList";
+import { RootState } from "../../store";
 
 /** Admin page shows a list of users. An Admin can edit a user's profile information.
 *  🔗 http://localhost:3000/admin
@@ -12,6 +13,7 @@ import AllUsers from "./AdminUsersList";
 
 const AdminPage = () => {
 
+  const { user } = useSelector((state: RootState) => state.user);
   //Custom Hooks
   // const dispatch = useDispatch();
 
@@ -21,7 +23,7 @@ const AdminPage = () => {
   return(
     <div>
       <p>ADMIN</p>
-      <AllUsers/>
+      <AdminUsersList user={user}/>
     </div>
   )
 }
