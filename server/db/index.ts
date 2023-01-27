@@ -1,13 +1,11 @@
 import db from "./db";
 import User from "./User";
-import seed from "./seed";
 import Recipe from "./Recipe";
 import Chatlog from "./Chatlog";
 import Ingredient from "./Ingredient";
 
 const data = {
   User,
-  seed,
   db,
   Recipe,
   Chatlog,
