@@ -33,10 +33,11 @@ router.get("/:id", async (req: Request, res: Response, next: NextFunction) => {
 localhost:3000/api/ingredients */
 router.post("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { ingredient, quantity } = req.body;
+    const { ingredient, quantity, imageUrl } = req.body;
     const newIngredient = await Ingredient.create({
       ingredient,
       quantity,
+      imageUrl,
     });
     res.sendStatus(204);
   } catch (error) {
