@@ -86,7 +86,6 @@ const App = () => {
             )}
             <Link to="/recipe">Recipe of the Day </Link>
           </nav>
-
           <RoutesComponent />
         </div>
       </div>
