@@ -10,7 +10,6 @@ import AboutPage from "../About";
 import Home from "../Home/Home";
 import SavedRecipes from "../savedRecipes/SavedRecipes";
 import UserEdit from "../User/UserEdit";
-import Recipes from "../fridge/Recipes";
 import "../main.css";
 
 const RoutesComponent = () => {
@@ -27,7 +26,6 @@ const RoutesComponent = () => {
         )}
         <Route path="/randomRecipe" element={<RecipePage />} />
         <Route path="/ingredient" element={<Ingredient user={user} />} />
-        <Route path="/recipes" element={<Recipes />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/savedRecipe" element={<SavedRecipes />} />
         <Route path="/login" element={<Login />} />
