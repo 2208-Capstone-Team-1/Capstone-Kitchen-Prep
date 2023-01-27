@@ -10,6 +10,7 @@ import AboutPage from "../About";
 import Home from "../Home/Home";
 import SavedRecipes from "../savedRecipes/SavedRecipes";
 import UserEdit from "../User/UserEdit";
+import "../main.css";
 
 const RoutesComponent = () => {
   const { user } = useSelector((state: RootState) => state.user);

@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 import { setUser, resetUser } from "../store/userSlice";
 import { RootState } from "../store";
 import RoutesComponent from "./routes/RoutesComponent";
+import "./main.css";
 
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
