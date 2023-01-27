@@ -81,11 +81,12 @@ const App = () => {
             {user.id && (
               <>
                 <Link to="/user">Account</Link>
+                <Link to="/recipes">Recipes</Link>
                 <Link to="/savedRecipe">Saved Recipes</Link>
                 <Link to="/ingredient">Fridge</Link>
               </>
             )}
-            <Link to="/recipe">Recipe of the Day </Link>
+            <Link to="/randomRecipe">Recipe of the Day </Link>
           </nav>
           <RoutesComponent />
         </div>
