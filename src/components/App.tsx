@@ -1,20 +1,11 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { Button } from "@mui/material";
 import { setUser, resetUser } from "../store/userSlice";
 import { RootState } from "../store";
-import RecipePage from "./Recipe/Recipe";
-import UserPage from "./User/User";
-import Ingredient from "./Ingredients/Ingredient";
-import Login from "./Login";
-import AboutPage from "./About";
-import Home from "./Home/Home";
-import "./main.css";
-import SavedRecipes from "./savedRecipes/SavedRecipes";
-import UserEdit from "./User/UserEdit";
-
+import RoutesComponent from "./routes/RoutesComponent";
 
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
@@ -61,16 +52,20 @@ const App = () => {
           </p>
         </div>
         <div className="main_logoPlace">
-          <img id="logo"
+          <img
+            id="logo"
             src="/static/Chef's kiss_logo.png"
             alt="chef's kiss logo"
             width="120"
             height="150"
           ></img>
-          <a className = "mainLogoTxt" href="#"><span></span>Chef's Kiss</a>
+          <a className="mainLogoTxt" href="#">
+            <span></span>Chef's Kiss
+          </a>
           {/*<h1 className="mainLogoTxt">Chef's Kiss</h1>*/}
-          
-          <img id="logo"
+
+          <img
+            id="logo"
             src="/static/Chef's kiss_logo.png"
             alt="chef's kiss logo"
             width="120"
@@ -84,27 +79,15 @@ const App = () => {
             {/*only logged-in user can view below tabs */}
             {user.id && (
               <>
-              <Link to="/user">Account</Link>
-              <Link to="/savedRecipe">Saved Recipes</Link>
-              <Link to="/ingredient">Fridge</Link>
+                <Link to="/user">Account</Link>
+                <Link to="/savedRecipe">Saved Recipes</Link>
+                <Link to="/ingredient">Fridge</Link>
               </>
-              )}
+            )}
             <Link to="/recipe">Recipe of the Day </Link>
-
           </nav>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {user.id && (
-              <>
-            <Route path="/user" element={<UserPage />} />
-            <Route path="/user/userEdit" element={<UserEdit />} />
-            </>)}
-            <Route path="/recipe" element={<RecipePage />} />
-            <Route path="/ingredient" element={<Ingredient user={user} />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/savedRecipe" element={<SavedRecipes />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
+
+          <RoutesComponent />
         </div>
       </div>
     </div>
