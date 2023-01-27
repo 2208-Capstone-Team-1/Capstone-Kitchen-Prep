@@ -3,6 +3,8 @@ import User from "./User";
 import Recipe from "./Recipe";
 import Chatlog from "./Chatlog";
 import Ingredient from "./Ingredient";
+import dotenv from "dotenv";
+dotenv.config();
 
 const data = {
   User,

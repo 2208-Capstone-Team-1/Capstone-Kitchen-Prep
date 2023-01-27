@@ -5,9 +5,9 @@
   "scripts": {
     "build": "webpack",
     "build:dev": "npm run build -- --watch --mode=development",
-    "seed": "DATABASE_URL=*PasteDBURLHere* node --experimental-specifier-resolution=node --loader ts-node/esm server/db/seed.ts",
+    "seed": "node --experimental-specifier-resolution=node --loader ts-node/esm server/db/seed.ts",
     "seed:dev": "node --experimental-specifier-resolution=node --loader ts-node/esm server/db/seed.ts",
-    "test": "JWT=shhhhh mocha",
+    "test": "mocha",
     "test:dev": "DATABASE_URL=postgres://localhost/kitchen_helper npm run test -- --watch",
     "test:dev:quiet": "QUIET=true npm run test:dev",
     "start": "node --experimental-specifier-resolution=node --loader ts-node/esm  server/index.ts --ignore dist/ --ignore src/",
