@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { RootState } from "../../store";
 import { useSelector } from "react-redux";
 import RecipePage from "../Recipe/Recipe";
