@@ -48,6 +48,7 @@
 
 .recipeCard_number{
     position: absolute;
+    font-family: "Oleo Script Swash Caps", cursive;
 }
 
 .recipeCard_name {
@@ -68,8 +69,17 @@
 .recipeCard_note {
     display: flex;
     flex-wrap: wrap;
+    font-family: "Playfair Display", serif;
+    font-size: 12pt;
 }
 
 .recipeCard_url{
     z-index: 20;
+    text-decoration: none;
+}
+
+.recipeCard_atag{
+    text-decoration: none;
+    color: black;
+    font-family: "Playfair Display", serif;
 }
