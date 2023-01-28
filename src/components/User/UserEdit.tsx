@@ -36,7 +36,7 @@ const UserEdit = () => {
       dispatch(setUser(userData.data));
       navigate("/user");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 

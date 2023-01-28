@@ -68,7 +68,6 @@ const UserCreate = () => {
           last_name: values.last_name,
           phoneNumber: values.phoneNumber,
         };
-        console.log(bodyToSubmit);
         // createdUser from DB
         const createdUser = await axios.post("/api/users", bodyToSubmit);
         const userId = createdUser.data.id;
