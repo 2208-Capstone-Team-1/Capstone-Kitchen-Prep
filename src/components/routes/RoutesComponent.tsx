@@ -24,7 +24,7 @@ const RoutesComponent = () => {
             <Route path="/user/userEdit" element={<UserEdit />} />
           </>
         )}
-        <Route path="/recipe" element={<RecipePage />} />
+        <Route path="/randomRecipe" element={<RecipePage />} />
         <Route path="/ingredient" element={<Ingredient user={user} />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/savedRecipe" element={<SavedRecipes />} />
