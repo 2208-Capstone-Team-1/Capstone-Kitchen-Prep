@@ -5,6 +5,7 @@ import axios from "axios";
 
 import { setRecipes } from "../../store/recipeSlice";
 import { RootState } from "../../store";
+import RecipeCard from "./RecipeCard";
 
 const SavedRecipes = () => {
   //customs hooks
@@ -24,17 +25,19 @@ const SavedRecipes = () => {
 
   useEffect(() => {
     fetchRecipes();
-    console.log("***", recipes);
   }, []);
-  console.log("***", recipes);
+
   return (
-    <>
-      <div>SavedRecipes</div>
+    <div className="savedRecipe_container">
+      <h1 className="savedRecipe_h1">Saved Recipes</h1>
+    <div className="savedRecipeBody">
       {recipes?.length &&
-        recipes.map((recipe) => {
-          return <p>{recipe.name}</p>;
+        recipes.map((recipe, index: number) => {
+          return <div className="savedRecipe_item" key={index}>
+          <RecipeCard recipe = {recipe} index={index} /></div>;
         })}
-    </>
+    </div>
+    </div>
   );
 };
 

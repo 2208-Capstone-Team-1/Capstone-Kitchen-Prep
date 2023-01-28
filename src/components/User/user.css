@@ -1,5 +1,6 @@
 .user_body{
     background-color: rgb(249, 249, 249);
+    height: 100%;
 }
 
 .user_secondBody {
@@ -7,6 +8,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
 }
 
 .user_h1 {
