@@ -51,6 +51,7 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
     res.sendStatus(204);
     return;
   } catch (error) {
+    console.log(req.body);
     return res.status(501).send(error);
   }
 });
