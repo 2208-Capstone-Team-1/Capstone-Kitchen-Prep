@@ -31,8 +31,6 @@ const UserPage = () => {
         <Link to="/user/userEdit">
           <button className="user_editButton">Edit Profile</button>
         </Link>
-        <h2 className="user_h2">Saved Recipes</h2>
-        <div className="savedRecipes">place holder</div>
       </div>
     </div>
   );
