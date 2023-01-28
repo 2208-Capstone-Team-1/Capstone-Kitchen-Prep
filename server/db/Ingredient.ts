@@ -19,6 +19,7 @@ interface IngredientModel
   id: CreationOptional<string>;
   ingredient: string;
   quantity: number;
+  imageUrl: string;
 }
 
 const Ingredient = db.define<IngredientModel>("ingredient", {
@@ -36,6 +37,11 @@ const Ingredient = db.define<IngredientModel>("ingredient", {
   quantity: {
     type: INTEGER,
     defaultValue: 0,
+    allowNull: true,
+  },
+  imageUrl: {
+    type: STRING,
+    defaultValue: "./static/ingredients/defaultIngredientImage.jpg",
     allowNull: true,
   },
 });

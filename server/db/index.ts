@@ -1,13 +1,13 @@
 import db from "./db";
 import User from "./User";
-import seed from "./seed";
 import Recipe from "./Recipe";
 import Chatlog from "./Chatlog";
 import Ingredient from "./Ingredient";
+import dotenv from "dotenv";
+dotenv.config();
 
 const data = {
   User,
-  seed,
   db,
   Recipe,
   Chatlog,
