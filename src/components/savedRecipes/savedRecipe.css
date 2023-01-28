@@ -32,7 +32,6 @@
     flex-direction: column;
     height: 290px;
     width: 290px;
-    flex-wrap: wrap;
 }
 
 .circle {
@@ -49,6 +48,15 @@
 .recipeCard_number{
     position: absolute;
     font-family: "Oleo Script Swash Caps", cursive;
+}
+
+.recipeCard_innerbox{
+    z-index: 20;
+    height: 290px;
+    width: 290px;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
 }
 
 .recipeCard_name {
