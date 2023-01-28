@@ -40,15 +40,18 @@ const App = () => {
         <div className="main_topbar">
           <p className="main_ptag">place holder</p>
           <p className="main_ptag">
-            {!user.id && (
-              <Button component={Link} to="/login" variant="contained">
-                Login
-              </Button>
-            )}
-            {user.id && (
-              <Button variant="contained" onClick={logout}>
-                Logout
-              </Button>
+            {!user.id ? (
+              <Link to="/login">
+                <Button component={Link} to="/login" variant="contained">
+                  Login
+                </Button>
+              </Link>
+            ) : (
+              user.id && (
+                <Button variant="contained" onClick={logout}>
+                  Logout
+                </Button>
+              )
             )}
           </p>
         </div>
@@ -77,6 +80,7 @@ const App = () => {
           <nav className="navbar">
             <Link to="/">Home</Link>
             <Link to="/about">About</Link>
+            <Link to="/randomRecipe">Recipe of the Day </Link>
             {/*only logged-in user can view below tabs */}
             {user.id && (
               <>
@@ -86,7 +90,6 @@ const App = () => {
                 <Link to="/ingredient">Fridge</Link>
               </>
             )}
-            <Link to="/randomRecipe">Recipe of the Day </Link>
           </nav>
           <RoutesComponent />
         </div>

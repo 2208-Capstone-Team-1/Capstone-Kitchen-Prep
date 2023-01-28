@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "../store/userSlice";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -60,6 +60,10 @@ const Login = () => {
           onChange={onChange}
         />
         <button>Login</button>
+        <div>
+          Don't have an account yet? Create one{" "}
+          <Link to="/createaccount">here!</Link>
+        </div>
       </form>
     </div>
   );
