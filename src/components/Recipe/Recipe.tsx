@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./recipe.css";
+import MuiLoader from "../MuiLoader";
 
 const RecipePage = () => {
   //this page will show a random recipe of the day using API
@@ -43,7 +44,11 @@ const RecipePage = () => {
 
   // if loading is false, display an error message
   if (!loading) {
-    return <div>Oops! Something went wrong!</div>;
+    return (
+      <div className="loadingContainer">
+        <MuiLoader />
+      </div>
+    );
   }
   const imageURL = `${randomRecipe.image}`;
   //since summary key of randonRecipe contangs html tag, we are using parser

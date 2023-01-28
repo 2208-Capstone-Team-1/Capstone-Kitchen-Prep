@@ -95,7 +95,7 @@ const UserCreate = () => {
       } catch (err) {
         // For typescript, we need to define an unknown error
         let message = "Unknown error";
-        // if err is a known instance of Error, then set the message to that error
+        // if err is a known instance of Error, then set the message to that error (otherwise it stays as "Unknown error")
         if (err instanceof Error) message = err.message;
         // Change state - If account creation failed (eg, an acct with that username already exists)
         setCreationFailure(true);
