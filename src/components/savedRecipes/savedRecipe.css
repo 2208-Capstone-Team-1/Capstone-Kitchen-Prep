@@ -1,0 +1,75 @@
+.savedRecipe_h1{
+    font-family: 'Playfair Display', serif;
+    font-size: 25pt;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.savedRecipeBody{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.savedRecipe_item {
+    display: flex;
+    flex-direction: column;
+    /* background-color: rgb(215, 153, 138); */
+    background-color: rgb(150, 191, 119);
+    margin: 20px;
+    height: 300px;
+    width: 300px;
+    position: relative;
+}
+
+.recipeCard_body {
+    margin: 5px;
+}
+
+.recipeCard_container {
+    display: flex;
+    flex-direction: column;
+    height: 290px;
+    width: 290px;
+    flex-wrap: wrap;
+}
+
+.circle {
+    /* background-color: rgb(174, 75, 56); */
+    background-color: rgb(254, 213, 130);
+    height: 250px;
+    width: 250px;
+    border-radius: 100%;
+    margin: 20px;
+    position: absolute;
+    z-index: 10;
+}
+
+.recipeCard_number{
+    position: absolute;
+}
+
+.recipeCard_name {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.recipeCard_ptagOne {
+    font-family: "Oleo Script Swash Caps", cursive;
+    z-index: 20; 
+    font-size: 25pt;
+}
+
+.recipeCard_ptagTwo{
+    z-index: 20;
+}
+
+.recipeCard_note {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.recipeCard_url{
+    z-index: 20;
+}
