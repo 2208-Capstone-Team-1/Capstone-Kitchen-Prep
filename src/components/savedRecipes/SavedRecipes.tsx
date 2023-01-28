@@ -27,8 +27,6 @@ const SavedRecipes = () => {
     fetchRecipes();
   }, []);
 
-  console.log("the culprit", recipes);
-
   return (
     <div className="savedRecipe_container">
       <h1 className="savedRecipe_h1">Saved Recipes</h1>
@@ -36,7 +34,6 @@ const SavedRecipes = () => {
       {recipes?.length &&
         recipes.map((recipe, index: number) => {
           return <div className="savedRecipe_item" key={index}>
-          {/* <div className="circle"></div> */}
           <RecipeCard recipe = {recipe} index={index} /></div>;
         })}
     </div>
