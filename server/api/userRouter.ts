@@ -48,8 +48,7 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
       phoneNumber,
       isAdmin,
     });
-    res.sendStatus(204);
-    return;
+    res.send(newUser);
   } catch (error) {
     return res.status(501).send(error);
   }

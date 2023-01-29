@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import axios from "axios";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setUser } from "../../store/userSlice";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import axios from "axios";
-import { setUser } from "../../store/userSlice";
 import { Box } from "@mui/system";
 import { Alert, TextField } from "@mui/material";
 
@@ -68,9 +68,9 @@ const UserCreate = () => {
           last_name: values.last_name,
           phoneNumber: values.phoneNumber,
         };
+
         // createdUser from DB
         const createdUser = await axios.post("/api/users", bodyToSubmit);
-        const userId = createdUser.data.id;
 
         //************************* AUTO LOGIN with new account info ********************************* */
 
