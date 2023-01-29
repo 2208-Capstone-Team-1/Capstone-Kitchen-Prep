@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../store/userSlice";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { Box } from "@mui/system";
+import { TextField, Typography } from "@mui/material";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -45,26 +47,47 @@ const Login = () => {
 
   return (
     <div>
-      <h2>Login</h2>
-      <form onSubmit={attemptLogin}>
-        <input
-          placeholder="email"
-          value={credentials.email}
-          name="email"
-          onChange={onChange}
-        />
-        <input
-          placeholder="password"
-          name="password"
-          value={credentials.password}
-          onChange={onChange}
-        />
+      <Typography variant="h4" align="center" margin="20px">
+        Login
+      </Typography>
+      <Box
+        component="form"
+        onSubmit={attemptLogin}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <Box margin={1}>
+          <TextField
+            name="email"
+            type="email"
+            label="Email*"
+            variant="outlined"
+            sx={{ width: "350px" }}
+            value={credentials.email}
+            onChange={onChange}
+          />
+        </Box>
+        <Box margin={1}>
+          <TextField
+            name="password"
+            type="password"
+            label="Password*"
+            variant="outlined"
+            sx={{ width: "350px" }}
+            value={credentials.password}
+            onChange={onChange}
+          />
+        </Box>
         <button>Login</button>
         <div>
           Don't have an account yet? Create one{" "}
           <Link to="/createaccount">here!</Link>
         </div>
-      </form>
+      </Box>
     </div>
   );
 };

@@ -6,7 +6,7 @@ import { setUser } from "../../store/userSlice";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { Box } from "@mui/system";
-import { Alert, TextField } from "@mui/material";
+import { Alert, TextField, Typography } from "@mui/material";
 
 // Validation schema using yup, to check is text field entries are valid.
 const validationSchema = yup.object().shape({
@@ -104,6 +104,9 @@ const UserCreate = () => {
   });
   return (
     <div>
+      <Typography variant="h4" align="center" margin="20px">
+        Create Account
+      </Typography>
       <Box
         component="form"
         onSubmit={formik.handleSubmit}
