@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { Link, Routes, Route } from "react-router-dom";
 import { Button } from "@mui/material";
+import axios from "axios";
 import { setUser, resetUser } from "../store/userSlice";
 import { RootState } from "../store";
 import RoutesComponent from "./routes/RoutesComponent";
@@ -68,6 +68,7 @@ const App = () => {
           </a>
           {/*<h1 className="mainLogoTxt">Chef's Kiss</h1>*/}
 
+
           <img
             id="logo"
             src="/static/Chef's kiss_logo.png"
@@ -89,6 +90,7 @@ const App = () => {
                 <Link to="/ingredient">Fridge</Link>
               </>
             )}
+            {user.isAdmin && <Link to="/admin">Admin</Link>}
           </nav>
           <RoutesComponent />
         </div>
