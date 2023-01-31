@@ -8,8 +8,8 @@ const init = async () => {
     app.listen(port, () =>
       console.log(`🚀listening on port: ${port} 🔗http://localhost:${port}`)
     );
-  } catch (ex) {
-    console.log(ex);
+  } catch (error) {
+    console.error(error);
   }
 };
 

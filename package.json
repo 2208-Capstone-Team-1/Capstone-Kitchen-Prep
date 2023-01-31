@@ -29,13 +29,15 @@
     "bcrypt": "^5.1.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "formik": "^2.2.9",
     "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0",
     "pg": "^8.8.0",
     "sequelize": "^6.25.3",
     "style-loader": "^3.3.1",
     "ts-node": "^10.9.1",
-    "volleyball": "^1.5.1"
+    "volleyball": "^1.5.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "^7.19.6",
