@@ -10,6 +10,7 @@ import AboutPage from "../About";
 import Home from "../Home/Home";
 import SavedRecipes from "../savedRecipes/SavedRecipes";
 import UserEdit from "../User/UserEdit";
+import AdminPage from "../Admin/AdminPage";
 import "../main.css";
 
 const RoutesComponent = () => {
@@ -29,6 +30,7 @@ const RoutesComponent = () => {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/savedRecipe" element={<SavedRecipes />} />
         <Route path="/login" element={<Login />} />
+        {user.isAdmin && <Route path="/admin" element={<AdminPage />} />}
       </Routes>
     </>
   );

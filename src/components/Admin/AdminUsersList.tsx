@@ -14,7 +14,11 @@ const  AdminUsersList: React.FC<Props> = ({user}) => {
 
   interface userType {
     id: string;
+    first_name: string;
+    last_name: string;
+    password: string;
     email: string;
+    phoneNumber: string;
     isAdmin: boolean;
   }
 
@@ -49,16 +53,19 @@ if(!loading){ return( <div>ERROR!</div>)}
               // />
   return(
     <Table>
-      <TableHead>
-
-        <TableRow>
-        </TableRow>
-      </TableHead>
       <TableBody>
+        <TableRow>
+          <TableCell>Edit</TableCell>
+          <TableCell>First Name</TableCell>
+          <TableCell>Last Name</TableCell>
+          <TableCell>Email</TableCell>
+          <TableCell>Phone Number</TableCell>
+          <TableCell>Admin Status</TableCell>
+        </TableRow>
+
         {users.map((user: userType) => (
-          <TableRow>{user.email}</TableRow>
-          // <AdminSingleUserTable/>
-        ))}
+          <AdminSingleUserTable user={user} key={user.id}/>
+          ))}
       </TableBody>
     </Table>
 

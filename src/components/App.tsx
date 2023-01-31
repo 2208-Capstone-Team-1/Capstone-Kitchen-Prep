@@ -88,7 +88,6 @@ const App = () => {
               </>
             )}
             <Link to="/randomRecipe">Recipe of the Day </Link>
-            <Link to="/about">About</Link>
             {user.isAdmin && <Link to="/admin">Admin</Link>}
           </nav>
           <RoutesComponent />
