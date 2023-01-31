@@ -1,0 +1,16 @@
+.item-content {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.itemImage {
+  border-radius: 30%;
+  overflow: hidden;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.box {
+  margin: 100px;
+}
