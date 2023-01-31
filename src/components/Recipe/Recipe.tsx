@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./recipe.css";
+import MuiLoader from "../MuiLoader";
 
 const RecipePage = () => {
   //this page will show a random recipe of the day using API
@@ -12,7 +13,6 @@ const RecipePage = () => {
     const { data } = await axios.get(
       "https://api.spoonacular.com/recipes/random?apiKey=9a0bda7b9e944e938fa0a538fd4a5a77"
     );
-    console.log(data.recipes[0]);
     const recipe = data.recipes[0];
     setRandomRecipe(recipe as recipeObj);
     setloading(true);
@@ -43,7 +43,11 @@ const RecipePage = () => {
 
   // if loading is false, display an error message
   if (!loading) {
-    return <div>Oops! Something went wrong!</div>;
+    return (
+      <div className="loadingContainer">
+        <MuiLoader />
+      </div>
+    );
   }
   const imageURL = `${randomRecipe.image}`;
   //since summary key of randonRecipe contangs html tag, we are using parser

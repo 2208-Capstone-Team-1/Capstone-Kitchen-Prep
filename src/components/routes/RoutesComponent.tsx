@@ -12,6 +12,7 @@ import SavedRecipes from "../savedRecipes/SavedRecipes";
 import UserEdit from "../User/UserEdit";
 import AdminPage from "../Admin/AdminPage";
 import "../main.css";
+import UserCreate from "../User/UserCreate";
 
 const RoutesComponent = () => {
   const { user } = useSelector((state: RootState) => state.user);
@@ -19,17 +20,18 @@ const RoutesComponent = () => {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/randomRecipe" element={<RecipePage />} />
+        <Route path="/ingredient" element={<Ingredient user={user} />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/savedRecipe" element={<SavedRecipes />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/createaccount" element={<UserCreate />} />
         {user.id && (
           <>
             <Route path="/user" element={<UserPage />} />
             <Route path="/user/userEdit" element={<UserEdit />} />
           </>
         )}
-        <Route path="/randomRecipe" element={<RecipePage />} />
-        <Route path="/ingredient" element={<Ingredient user={user} />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/savedRecipe" element={<SavedRecipes />} />
-        <Route path="/login" element={<Login />} />
         {user.isAdmin && <Route path="/admin" element={<AdminPage />} />}
       </Routes>
     </>
