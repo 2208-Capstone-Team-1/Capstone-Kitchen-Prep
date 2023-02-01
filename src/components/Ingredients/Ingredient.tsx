@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import * as Yup from "yup";
+import { useFormik } from "formik";
 import {
   setIngredients,
   setDeleteIngredient,
@@ -16,6 +18,7 @@ import {
   CardContent,
   CardMedia,
   Grid,
+  TextField,
   Typography,
 } from "@mui/material";
 
@@ -29,19 +32,81 @@ interface Props {
 const Ingredient: React.FC<Props> = ({ user }) => {
   /** customs hooks */
   const dispatch = useDispatch();
+  /** local states */
   const [loading, setLoading] = useState(true);
+
+  interface IngredientInterface {
+    ingredient: "";
+  }
+  //temporary place holder for ingredient to display
+  // const [ingredient, setIngredient] = useState(<IngredientInterface>);
+  /** redux states */
+
   const { ingredients } = useSelector((state: RootState) => state.ingredients);
 
-  //fetch ingredients by user
+  /** validation schema using yup.
+   * 1. Take an ingredient from the user through form.
+   * 2. Look for the ingredient in the spoonacular API.
+   * 3.  Save/send  thethe ingredient to the backend.
+   * 4. Save it inside the ingredient redux state.
+   * 5. Display the ingredient in the UI.
+   */
+  const formValidation = Yup.object().shape({
+    ingredient: Yup.string().required("Ingredient Name is required"),
+  });
+  const myForm = useFormik({
+    initialValues: {
+      ingredient: "",
+    },
+    validationSchema: formValidation,
+    onSubmit: async (value) => {
+      // console.log(value);
+      try {
+        const getIngredient = await axios.get(
+          `https://api.spoonacular.com/food/ingredients/search?query=${value}&number=2&sort=calories&sortDirection=desc&apiKey=9a0bda7b9e944e938fa0a538fd4a5a77`
+        );
+        console.log(getIngredient.data);
+      } catch (err) {
+        // console.log(err);
+      }
+    },
+  });
+
+  /** form to take the ingredient input value from the user */
+  // const addIngredientToForm;
+  /** fetch ingredients by user */
   const fetchIngredients = async () => {
     try {
       const userData = await axios.get(`/api/users/${user.id}`);
       dispatch(setIngredients(userData.data.ingredients));
     } catch (err) {
-      console.error(err);
+      // console.error(err);
     }
     setLoading(false);
   };
+
+  /** deleteIngredientHandler will delete an ingredient from the fridge */
+  const deleteIngredientHandler = async (id: number) => {
+    try {
+      dispatch(setDeleteIngredient(id));
+      const { data } = await axios.delete(`/api/ingredients/${id}`, {});
+    } catch (error) {}
+  };
+
+  const getIngredientHandler = async () => {
+    try {
+      const getIngredient = await axios.get(
+        `https://api.spoonacular.com/food/ingredients/search?query=potato&number=2&sort=calories&sortDirection=desc&apiKey=9a0bda7b9e944e938fa0a538fd4a5a77`
+      );
+      // console.log(getIngredient.data);
+    } catch (err) {
+      // console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getIngredientHandler();
+  }, []);
 
   useEffect(() => {
     fetchIngredients();
@@ -54,15 +119,26 @@ const Ingredient: React.FC<Props> = ({ user }) => {
       </div>
     );
 
-  /** deleteIngredientHandler will delete an ingredient from the fridge */
-  const deleteIngredientHandler = async (id: number) => {
-    try {
-      dispatch(setDeleteIngredient(id));
-      const { data } = await axios.delete(`/api/ingredients/${id}`, {});
-    } catch (error) {}
-  };
   return (
     <>
+      {/* Adding Form for adding an ingredient */}
+      <Box className="form-content" margin={1}>
+        <TextField
+          className="ingredientForm"
+          name="ingredient"
+          label="Ingredient Name"
+          variant="outlined"
+          value={myForm.values.ingredient || ""}
+          onChange={myForm.handleChange}
+          onBlur={myForm.handleBlur}
+          error={myForm.touched.ingredient && Boolean(myForm.errors.ingredient)}
+          helperText={myForm.touched.ingredient && myForm.errors.ingredient}
+        />
+        <Button onClick={myForm.submitForm} variant="contained">
+          Submit
+        </Button>
+      </Box>
+
       <Box className="box" sx={{ flexGrow: 1 }}>
         <Grid
           container
