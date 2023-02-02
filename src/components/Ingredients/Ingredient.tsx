@@ -4,6 +4,7 @@ import axios from "axios";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import {
+  addIngredient,
   setIngredients,
   setDeleteIngredient,
 } from "../../store/ingredientSlice";
@@ -43,11 +44,11 @@ const Ingredient: React.FC<Props> = ({ user }) => {
   /** redux states */
 
   const { ingredients } = useSelector((state: RootState) => state.ingredients);
-
+  console.log("ingredients", ingredients);
   /** validation schema using yup.
    * 1. Take an ingredient from the user through form.
    * 2. Look for the ingredient in the spoonacular API.
-   * 3.  Save/send  thethe ingredient to the backend.
+   * 3.  Save/send  the ingredient to the backend.
    * 4. Save it inside the ingredient redux state.
    * 5. Display the ingredient in the UI.
    */
@@ -59,13 +60,24 @@ const Ingredient: React.FC<Props> = ({ user }) => {
       ingredient: "",
     },
     validationSchema: formValidation,
+    //  1.Take an ingredient from the user through form.
     onSubmit: async (value) => {
-      // console.log(value);
+      console.log("line63", value.ingredient);
       try {
+        //  2. Look for the ingredient in the spoonacular API.
         const getIngredient = await axios.get(
-          `https://api.spoonacular.com/food/ingredients/search?query=${value}&number=2&sort=calories&sortDirection=desc&apiKey=9a0bda7b9e944e938fa0a538fd4a5a77`
+          `https://api.spoonacular.com/food/ingredients/search?query=${value.ingredient}&number=2&sort=calories&sortDirection=desc&apiKey=9a0bda7b9e944e938fa0a538fd4a5a77`
         );
-        console.log(getIngredient.data);
+        // console.log("line 71", getIngredient.data);
+        const newIngredient = await getIngredient.data.results[1];
+        console.log("line 73", newIngredient);
+        // localStorage.setItem("ingredient", newIngredient);
+
+        // 3.  Save/send  the ingredient to the backend.
+
+        //  4. Save it inside the ingredient redux state.
+        const saveProductToReduxState = dispatch(addIngredient(newIngredient));
+        console.log(saveProductToReduxState);
       } catch (err) {
         // console.log(err);
       }
@@ -104,9 +116,9 @@ const Ingredient: React.FC<Props> = ({ user }) => {
     }
   };
 
-  useEffect(() => {
-    getIngredientHandler();
-  }, []);
+  // useEffect(() => {
+  //   getIngredientHandler();
+  // }, []);
 
   useEffect(() => {
     fetchIngredients();
@@ -149,8 +161,8 @@ const Ingredient: React.FC<Props> = ({ user }) => {
             ingredients.map((ingredient, index) => (
               <Grid className="grid" item xs={2} sm={4} md={4} key={index}>
                 <div className="item-content">
-                  <img className="itemImage" src={ingredient.imageUrl} alt="" />
-                  <h4>{ingredient.ingredient}</h4>
+                  <img className="itemImage" src={ingredient.image} alt="" />
+                  <h4>{ingredient.name}</h4>
                   <Button
                     variant="contained"
                     color="error"
