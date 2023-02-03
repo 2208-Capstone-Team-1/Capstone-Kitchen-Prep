@@ -42,7 +42,7 @@ const App = () => {
           <p className="main_ptag">
             {!user.id ? (
               <Link to="/login">
-                <Button component={Link} to="/login" variant="contained">
+                <Button variant="contained">
                   Login
                 </Button>
               </Link>
@@ -63,9 +63,9 @@ const App = () => {
             width="120"
             height="150"
           ></img>
-          <a className="mainLogoTxt" href="#">
+          <Link to="#" className="mainLogoTxt">
             <span></span>Chef's Kiss
-          </a>
+          </Link>
           {/*<h1 className="mainLogoTxt">Chef's Kiss</h1>*/}
 
 

@@ -21,7 +21,6 @@ const SavedRecipes = () => {
   const { recipes } = useSelector((state: RootState) => state.recipe);
   const { user } = useSelector((state: RootState) => state.user);
 
-  console.log("THE ID: " + user.id);
   //fetch all recipes data
   const fetchRecipes = async () => {
     const recipes = await axios.get(`/api/users/${user.id}`);
@@ -41,7 +40,7 @@ const SavedRecipes = () => {
             return (
               <div className="savedRecipe_item" key={index}>
                 <a href={recipe.url}>
-                <RecipeCard recipe={recipe} index={index}/>
+                  <RecipeCard recipe={recipe} index={index}/>
                 </a>
               </div>
             );
