@@ -40,7 +40,9 @@ const SavedRecipes = () => {
           recipes.map((recipe, index: number) => {
             return (
               <div className="savedRecipe_item" key={index}>
-                <RecipeCard recipe={recipe} index={index} />
+                <a href={recipe.url}>
+                <RecipeCard recipe={recipe} index={index}/>
+                </a>
               </div>
             );
           })}
