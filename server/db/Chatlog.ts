@@ -1,5 +1,5 @@
 import db from "./db";
-import { UUID, UUIDV4, STRING, ENUM, Sequelize } from "sequelize";
+import { UUID, UUIDV4, STRING } from "sequelize";
 import {
   CreationOptional,
   InferAttributes,

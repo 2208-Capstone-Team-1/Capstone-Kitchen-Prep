@@ -1,12 +1,7 @@
 import db from "../db";
 const Recipe = db.Recipe;
 
-import express, {
-  NextFunction,
-  Request,
-  Response,
-  ErrorRequestHandler,
-} from "express";
+import express, { NextFunction, Request, Response } from "express";
 const router = express.Router();
 
 /* get all recipes

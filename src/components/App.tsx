@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import axios from "axios";
 import { setUser, resetUser } from "../store/userSlice";
@@ -67,7 +67,6 @@ const App = () => {
             <span></span>Chef's Kiss
           </a>
           {/*<h1 className="mainLogoTxt">Chef's Kiss</h1>*/}
-
 
           <img
             id="logo"
