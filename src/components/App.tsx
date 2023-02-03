@@ -63,9 +63,9 @@ const App = () => {
             width="120"
             height="150"
           ></img>
-          <Link to="#" className="mainLogoTxt">
+          <a className="mainLogoTxt" href="/">
             <span></span>Chef's Kiss
-          </Link>
+          </a>
           {/*<h1 className="mainLogoTxt">Chef's Kiss</h1>*/}
 
 
