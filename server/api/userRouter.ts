@@ -34,6 +34,19 @@ router.get("/:id", async (req: Request, res: Response, next: NextFunction) => {
     return res.sendStatus(501).send(error);
   }
 });
+// router.get("/:id/recipe", async (req: Request, res: Response, next: NextFunction) => {
+//   try {
+//     const id: string = req.params.id;
+//     if (id) {
+//       const recipes = await User.findByPk(id, {
+//         include: [Recipe],
+//       });
+//       res.send(recipes);
+//     }
+//   } catch (error) {
+//     return res.sendStatus(501).send(error);
+//   }
+// });
 
 /* create a new user
 localhost:3000/api/users */
