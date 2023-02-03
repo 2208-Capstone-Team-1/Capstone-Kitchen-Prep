@@ -27,7 +27,6 @@ const Home = () => {
           <p>PLACE HOLDER FOR MIC</p>
         </div>
       </div>
-      <div>{/* <button onClick={logout}>Logout</button> */}</div>
     </div>
   );
 };
