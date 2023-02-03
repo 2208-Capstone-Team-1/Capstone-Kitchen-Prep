@@ -41,3 +41,10 @@
   font-weight: bold;
   font-size: 25px;
 }
+
+#addIngredient {
+  background-color: rgb(85, 132, 79);
+  color: black;
+  size: 23px;
+  font-weight: bold;
+}

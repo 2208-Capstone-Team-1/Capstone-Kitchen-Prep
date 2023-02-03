@@ -96,4 +96,28 @@ router.delete(
   }
 );
 
+/**
+ * find all the ingredient for single user.
+
+ * localhost:3000/api/user/:id/ingredients
+ *  */
+
+router.get(
+  "/:id/ingredients",
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const id = req.params.id;
+      if (id) {
+        const user = await User.findByPk(id, {
+          include: [Ingredient],
+        });
+        console.log("user", user);
+        res.send(user);
+      }
+    } catch (error) {
+      return res.sendStatus(501).send(error);
+    }
+  }
+);
+
 export default router;

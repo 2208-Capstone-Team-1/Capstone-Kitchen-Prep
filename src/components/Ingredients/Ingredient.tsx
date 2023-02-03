@@ -37,13 +37,15 @@ const Ingredient: React.FC<Props> = ({ user }) => {
   const [loading, setLoading] = useState(true);
 
   interface IngredientInterface {
-    ingredient: "";
+    name: "";
+    quantity: 0;
   }
   //temporary place holder for ingredient to display
   // const [ingredient, setIngredient] = useState(<IngredientInterface>);
   /** redux states */
 
   const { ingredients } = useSelector((state: RootState) => state.ingredients);
+  console.log("user", user);
   console.log("ingredients", ingredients);
   /** validation schema using yup.
    * 1. Take an ingredient from the user through form.
@@ -53,33 +55,37 @@ const Ingredient: React.FC<Props> = ({ user }) => {
    * 5. Display the ingredient in the UI.
    */
   const formValidation = Yup.object().shape({
-    ingredient: Yup.string().required("Ingredient Name is required"),
+    name: Yup.string().required("Ingredient Name is required"),
+    quantity: Yup.number().required("Quantity is required"),
   });
   const myForm = useFormik({
     initialValues: {
-      ingredient: "",
+      name: "",
+      quantity: 0,
     },
     validationSchema: formValidation,
     //  1.Take an ingredient from the user through form.
-    onSubmit: async (value) => {
-      console.log("line63", value.ingredient);
+    onSubmit: async (values) => {
+      console.log("line63", values.name);
+      console.log("line63", values.quantity);
       try {
-        //  2. Look for the ingredient in the spoonacular API.
-        const getIngredient = await axios.get(
-          `https://api.spoonacular.com/food/ingredients/search?query=${value.ingredient}&number=2&sort=calories&sortDirection=desc&apiKey=9a0bda7b9e944e938fa0a538fd4a5a77`
+        //send the data to the backend
+        const bodyToSubmit = {
+          name: values.name,
+          quantity: values.quantity,
+        };
+        // creating an ingredient in the DB
+        const createIngredient = await axios.post(
+          "/api/ingredients",
+          bodyToSubmit
         );
-        // console.log("line 71", getIngredient.data);
-        const newIngredient = await getIngredient.data.results[1];
-        console.log("line 73", newIngredient);
-        // localStorage.setItem("ingredient", newIngredient);
-
-        // 3.  Save/send  the ingredient to the backend.
-
-        //  4. Save it inside the ingredient redux state.
-        const saveProductToReduxState = dispatch(addIngredient(newIngredient));
-        console.log(saveProductToReduxState);
+        dispatch(addIngredient(bodyToSubmit));
+        // const userData = await axios.get(`/api/users/${user.id}`);
+        // dispatch(setIngredients(userData.data.ingredients));
+        // console.log("userData.data", userData.data);
+        // console.log("ingre", ingredients);
       } catch (err) {
-        // console.log(err);
+        console.log(err);
       }
     },
   });
@@ -105,21 +111,6 @@ const Ingredient: React.FC<Props> = ({ user }) => {
     } catch (error) {}
   };
 
-  const getIngredientHandler = async () => {
-    try {
-      const getIngredient = await axios.get(
-        `https://api.spoonacular.com/food/ingredients/search?query=potato&number=2&sort=calories&sortDirection=desc&apiKey=9a0bda7b9e944e938fa0a538fd4a5a77`
-      );
-      // console.log(getIngredient.data);
-    } catch (err) {
-      // console.log(err);
-    }
-  };
-
-  // useEffect(() => {
-  //   getIngredientHandler();
-  // }, []);
-
   useEffect(() => {
     fetchIngredients();
   }, [user]);
@@ -137,17 +128,34 @@ const Ingredient: React.FC<Props> = ({ user }) => {
       <Box className="form-content" margin={1}>
         <TextField
           className="ingredientForm"
-          name="ingredient"
+          name="name"
           label="Ingredient Name"
           variant="outlined"
-          value={myForm.values.ingredient || ""}
+          value={myForm.values.name || ""}
           onChange={myForm.handleChange}
           onBlur={myForm.handleBlur}
-          error={myForm.touched.ingredient && Boolean(myForm.errors.ingredient)}
-          helperText={myForm.touched.ingredient && myForm.errors.ingredient}
+          error={myForm.touched.name && Boolean(myForm.errors.name)}
+          helperText={myForm.touched.name && myForm.errors.name}
         />
-        <Button onClick={myForm.submitForm} variant="contained">
-          Submit
+        <TextField
+          sx={{ m: 5 }}
+          className="ingredientForm"
+          name="quantity"
+          label="Quantity"
+          variant="outlined"
+          value={myForm.values.quantity || ""}
+          onChange={myForm.handleChange}
+          onBlur={myForm.handleBlur}
+          error={myForm.touched.quantity && Boolean(myForm.errors.quantity)}
+          helperText={myForm.touched.quantity && myForm.errors.quantity}
+        />
+        <Button
+          id="addIngredient"
+          sx={{ m: 5 }}
+          onClick={myForm.submitForm}
+          variant="contained"
+        >
+          Add Ingredient
         </Button>
       </Box>
 
