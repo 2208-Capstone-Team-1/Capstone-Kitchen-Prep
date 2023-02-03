@@ -1,17 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import React, {useEffect, useState} from "react";
-import { TableBody, Table, TableHead, TableRow, TableCell } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { TableBody, Table, TableRow, TableCell } from "@mui/material";
 import { RootState } from "../../store";
 import AdminSingleUserTable from "./AdminSingleUserTable";
 import { setUsers } from "../../store/userSlice";
 
 interface Props {
-  user: { id: string;}
+  user: { id: string };
 }
 
-const  AdminUsersList: React.FC<Props> = ({user}) => {
-
+const AdminUsersList: React.FC<Props> = ({ user }) => {
   interface userType {
     id: string;
     first_name: string;
@@ -27,31 +26,32 @@ const  AdminUsersList: React.FC<Props> = ({user}) => {
   const { users } = useSelector((state: RootState) => state.user);
   const [loading, setloading] = useState(false);
 
-
   const fetchAllUsers = async () => {
-    try{
+    try {
       const fetchAllUsers = await axios.get(`/api/users`);
       dispatch(setUsers(fetchAllUsers.data));
-      setloading(true)
+      setloading(true);
       console.log(fetchAllUsers.data);
     } catch (err) {
       //
     }
+  };
+
+  useEffect(() => {
+    fetchAllUsers();
+  }, []);
+
+  if (!loading) {
+    return <div>ERROR!</div>;
   }
 
-useEffect(() => {
-  fetchAllUsers();
-}, []);
-
-if(!loading){ return( <div>ERROR!</div>)}
-
-// <UsersTable
-              //   StyledTableCell={StyledTableCell}
-              //   StyledTableRow={StyledTableRow}
-              //   key={user.id}
-              //   user={user}
-              // />
-  return(
+  // <UsersTable
+  //   StyledTableCell={StyledTableCell}
+  //   StyledTableRow={StyledTableRow}
+  //   key={user.id}
+  //   user={user}
+  // />
+  return (
     <Table>
       <TableBody>
         <TableRow>
@@ -64,12 +64,11 @@ if(!loading){ return( <div>ERROR!</div>)}
         </TableRow>
 
         {users.map((user: userType) => (
-          <AdminSingleUserTable user={user} key={user.id}/>
-          ))}
+          <AdminSingleUserTable user={user} key={user.id} />
+        ))}
       </TableBody>
     </Table>
-
-  )
-}
+  );
+};
 
 export default AdminUsersList;

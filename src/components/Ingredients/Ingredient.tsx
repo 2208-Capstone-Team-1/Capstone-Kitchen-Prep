@@ -8,16 +8,7 @@ import {
 import { RootState } from "../../store";
 import MuiLoader from "../MuiLoader";
 import "./ingredients.css";
-import {
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Grid } from "@mui/material";
 
 interface Props {
   user: {
