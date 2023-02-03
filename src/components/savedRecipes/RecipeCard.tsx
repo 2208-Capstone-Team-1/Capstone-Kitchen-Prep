@@ -17,7 +17,7 @@ interface Props{
 const RecipeCard: React.FC<Props> = ({recipe, index}) => {
 
 
-  
+
 //*** slicer function reduces the sentence & puts "..." if the length goes over 85. this is to prevent wrapping error */
 let newSentence = "";
 
@@ -29,7 +29,7 @@ const slicer = (sentence : string) => {
 		newSentence = el.join('');
 	}
 	return newSentence;
-} 
+}
 
 slicer(recipe.personal_note);
 
@@ -41,7 +41,7 @@ slicer(recipe.personal_note);
               <div className="recipeCard_name"><p className="recipeCard_ptagOne">{recipe.name}</p></div>
               <div className="recipeCard_note"><p className="recipeCard_ptagTwo">"{newSentence}"</p></div>
               <div className="recipeCard_url">
-                <a className="recipeCard_atag" href={recipe.url}>Click for full recipe</a>
+                {/* <a className="recipeCard_atag" href={recipe.url}>Click for full recipe</a> */}
               </div>
           </div>
       </div>
