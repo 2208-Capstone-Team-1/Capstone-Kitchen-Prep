@@ -1,8 +1,9 @@
-import db from "../db";
 import express, { NextFunction, Request, Response } from "express";
+import db from "../db";
 
 const User = db.User;
 const Ingredient = db.Ingredient;
+const Recipe = db.Recipe;
 const router = express.Router();
 
 /* get all users
@@ -18,14 +19,14 @@ router.get("/", async (req: Request, res: Response, next: NextFunction) => {
 });
 
 /* get  a user by id
-localhost:3000/api/users
+localhost:3000/api/users/:id
  */
 router.get("/:id", async (req: Request, res: Response, next: NextFunction) => {
   try {
     const id: string = req.params.id;
     if (id) {
       const user = await User.findByPk(id, {
-        include: [Ingredient],
+        include: [Ingredient, Recipe],
       });
       res.send(user);
     }
@@ -33,6 +34,19 @@ router.get("/:id", async (req: Request, res: Response, next: NextFunction) => {
     return res.sendStatus(501).send(error);
   }
 });
+// router.get("/:id/recipe", async (req: Request, res: Response, next: NextFunction) => {
+//   try {
+//     const id: string = req.params.id;
+//     if (id) {
+//       const recipes = await User.findByPk(id, {
+//         include: [Recipe],
+//       });
+//       res.send(recipes);
+//     }
+//   } catch (error) {
+//     return res.sendStatus(501).send(error);
+//   }
+// });
 
 /* create a new user
 localhost:3000/api/users */

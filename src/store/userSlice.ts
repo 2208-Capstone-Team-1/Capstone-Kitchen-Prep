@@ -6,12 +6,17 @@ export interface userType {
   last_name: string;
   password: string;
   email: string;
+  isAdmin: boolean;
   phoneNumber: string;
+}
+interface usersType {
+  [key:string]: any;
 }
 
 interface initialStateType {
   [x: string]: any;
   user: userType;
+  users: usersType;
 }
 
 const initialState: initialStateType = {
@@ -21,8 +26,10 @@ const initialState: initialStateType = {
     last_name: "",
     password: "",
     email: "",
+    isAdmin:false,
     phoneNumber: "",
   },
+  users:[],
 };
 
 export const userSlice = createSlice({
@@ -39,11 +46,15 @@ export const userSlice = createSlice({
         last_name: "",
         password: "",
         email: "",
+        isAdmin:false,
         phoneNumber: "",
       };
+    },
+    setUsers: (state, action) => {
+      state.users = action.payload;
     },
   },
 });
 
-export const { setUser, resetUser } = userSlice.actions;
+export const { setUser, resetUser, setUsers } = userSlice.actions;
 export default userSlice.reducer;

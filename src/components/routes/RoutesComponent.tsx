@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { RootState } from "../../store";
 import { useSelector } from "react-redux";
@@ -10,6 +9,7 @@ import AboutPage from "../About";
 import Home from "../Home/Home";
 import SavedRecipes from "../savedRecipes/SavedRecipes";
 import UserEdit from "../User/UserEdit";
+import AdminPage from "../Admin/AdminPage";
 import "../main.css";
 import UserCreate from "../User/UserCreate";
 
@@ -31,6 +31,7 @@ const RoutesComponent = () => {
             <Route path="/user/userEdit" element={<UserEdit />} />
           </>
         )}
+        {user.isAdmin && <Route path="/admin" element={<AdminPage />} />}
       </Routes>
     </>
   );

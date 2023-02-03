@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { Button } from "@mui/material";
+import axios from "axios";
 import { setUser, resetUser } from "../store/userSlice";
 import { RootState } from "../store";
 import RoutesComponent from "./routes/RoutesComponent";
@@ -42,7 +42,7 @@ const App = () => {
           <p className="main_ptag">
             {!user.id ? (
               <Link to="/login">
-                <Button component={Link} to="/login" variant="contained">
+                <Button variant="contained">
                   Login
                 </Button>
               </Link>
@@ -63,7 +63,7 @@ const App = () => {
             width="120"
             height="150"
           ></img>
-          <a className="mainLogoTxt" href="#">
+          <a className="mainLogoTxt" href="/">
             <span></span>Chef's Kiss
           </a>
           {/*<h1 className="mainLogoTxt">Chef's Kiss</h1>*/}
@@ -89,6 +89,7 @@ const App = () => {
                 <Link to="/ingredient">Fridge</Link>
               </>
             )}
+            {user.isAdmin && <Link to="/admin">Admin</Link>}
           </nav>
           <RoutesComponent />
         </div>

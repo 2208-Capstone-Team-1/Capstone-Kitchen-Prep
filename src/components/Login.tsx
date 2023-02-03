@@ -33,7 +33,7 @@ const Login = () => {
 
       dispatch(setUser(response.data));
     }
-    navigate("/user");
+    navigate("/");
   };
 
   const attemptLogin = async (event: React.MouseEvent<HTMLFormElement>) => {
