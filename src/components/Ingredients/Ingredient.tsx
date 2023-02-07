@@ -64,24 +64,20 @@ const Ingredient: React.FC<Props> = ({ user }) => {
           name: values.name,
           quantity: values.quantity,
         };
-        // creating an ingredient in the DB
-        const createIngredient = await axios.post(
-          "/api/ingredients",
+
+        const createIngredient2 = await axios.post(
+          `/api/users/${user.id}/ingredients`,
           bodyToSubmit
         );
-        dispatch(addIngredient(bodyToSubmit));
-        // const userData = await axios.get(`/api/users/${user.id}`);
-        // dispatch(setIngredients(userData.data.ingredients));
-        // console.log("userData.data", userData.data);
-        // console.log("ingre", ingredients);
+
+        console.log(createIngredient2.data);
+        dispatch(addIngredient(createIngredient2.data));
       } catch (err) {
         console.log(err);
       }
     },
   });
 
-  /** form to take the ingredient input value from the user */
-  // const addIngredientToForm;
   /** fetch ingredients by user */
   const fetchIngredients = async () => {
     try {
@@ -114,65 +110,73 @@ const Ingredient: React.FC<Props> = ({ user }) => {
 
   return (
     <>
-      {/* Adding Form for adding an ingredient */}
-      <Box className="form-content" margin={1}>
-        <TextField
-          className="ingredientForm"
-          name="name"
-          label="Ingredient Name"
-          variant="outlined"
-          value={myForm.values.name || ""}
-          onChange={myForm.handleChange}
-          onBlur={myForm.handleBlur}
-          error={myForm.touched.name && Boolean(myForm.errors.name)}
-          helperText={myForm.touched.name && myForm.errors.name}
-        />
-        <TextField
-          sx={{ m: 5 }}
-          className="ingredientForm"
-          name="quantity"
-          label="Quantity"
-          variant="outlined"
-          value={myForm.values.quantity || ""}
-          onChange={myForm.handleChange}
-          onBlur={myForm.handleBlur}
-          error={myForm.touched.quantity && Boolean(myForm.errors.quantity)}
-          helperText={myForm.touched.quantity && myForm.errors.quantity}
-        />
-        <Button
-          id="addIngredient"
-          sx={{ m: 5 }}
-          onClick={myForm.submitForm}
-          variant="contained"
-        >
-          Add Ingredient
-        </Button>
-      </Box>
+      {user.id && (
+        <>
+          {/* Adding Form for adding an ingredient */}
+          <Box className="form-content" margin={1}>
+            <TextField
+              className="ingredientForm"
+              name="name"
+              label="Ingredient Name"
+              variant="outlined"
+              value={myForm.values.name || ""}
+              onChange={myForm.handleChange}
+              onBlur={myForm.handleBlur}
+              error={myForm.touched.name && Boolean(myForm.errors.name)}
+              helperText={myForm.touched.name && myForm.errors.name}
+            />
+            <TextField
+              sx={{ m: 5 }}
+              className="ingredientForm"
+              name="quantity"
+              label="Quantity"
+              variant="outlined"
+              value={myForm.values.quantity || ""}
+              onChange={myForm.handleChange}
+              onBlur={myForm.handleBlur}
+              error={myForm.touched.quantity && Boolean(myForm.errors.quantity)}
+              helperText={myForm.touched.quantity && myForm.errors.quantity}
+            />
+            <Button
+              id="addIngredient"
+              sx={{ m: 5 }}
+              onClick={myForm.submitForm}
+              variant="contained"
+            >
+              Add Ingredient
+            </Button>
+          </Box>
 
-      <Box className="box" sx={{ flexGrow: 1 }}>
-        <Grid
-          container
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 4, sm: 8, md: 12 }}
-        >
-          {ingredients &&
-            ingredients.map((ingredient, index) => (
-              <Grid className="grid" item xs={2} sm={4} md={4} key={index}>
-                <div className="item-content">
-                  <img className="itemImage" src={ingredient.image} alt="" />
-                  <h4>{ingredient.name}</h4>
-                  <Button
-                    variant="contained"
-                    color="error"
-                    onClick={() => deleteIngredientHandler(ingredient.id)}
-                  >
-                    Remove Item
-                  </Button>
-                </div>
-              </Grid>
-            ))}
-        </Grid>
-      </Box>
+          <Box className="box" sx={{ flexGrow: 1 }}>
+            <Grid
+              container
+              spacing={{ xs: 2, md: 3 }}
+              columns={{ xs: 4, sm: 8, md: 12 }}
+            >
+              {ingredients &&
+                ingredients.map((ingredient, index) => (
+                  <Grid className="grid" item xs={2} sm={4} md={4} key={index}>
+                    <div className="item-content">
+                      <img
+                        className="itemImage"
+                        src={ingredient.image}
+                        alt=""
+                      />
+                      <h4>{ingredient.name}</h4>
+                      <Button
+                        variant="contained"
+                        color="error"
+                        onClick={() => deleteIngredientHandler(ingredient.id)}
+                      >
+                        Remove Item
+                      </Button>
+                    </div>
+                  </Grid>
+                ))}
+            </Grid>
+          </Box>
+        </>
+      )}
     </>
   );
 };

@@ -34,19 +34,52 @@ router.get("/:id", async (req: Request, res: Response, next: NextFunction) => {
     return res.sendStatus(501).send(error);
   }
 });
-// router.get("/:id/recipe", async (req: Request, res: Response, next: NextFunction) => {
-//   try {
-//     const id: string = req.params.id;
-//     if (id) {
-//       const recipes = await User.findByPk(id, {
-//         include: [Recipe],
-//       });
-//       res.send(recipes);
-//     }
-//   } catch (error) {
-//     return res.sendStatus(501).send(error);
-//   }
-// });
+
+/* add an ingredient for a specific user
+localhost:3000/api/users/:id/ingredients
+ */
+router.post(
+  "/:id/ingredients",
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      // find the id of the user from the URL.
+      const id: string = req.params.id;
+      // find the user with this id.
+      const user = await User.findByPk(id, {
+        include: [Ingredient, Recipe],
+      });
+      // if user exists, then create the ingredient.
+      if (user) {
+        const { name, quantity, image } = req.body;
+        const newIngredient = await Ingredient.create({
+          name,
+          quantity,
+          image,
+        });
+
+        // Use magic method to add the ingredient to the specific user.
+        (user as any).addIngredient(newIngredient);
+        res.send(newIngredient);
+      }
+    } catch (error) {
+      return res.sendStatus(501).send(error);
+    }
+  }
+);
+
+/* get all ingredients
+localhost:3000/api/ingredients */
+router.get(
+  "/:id/ingredients",
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const ingredients = await Ingredient.findAll();
+      return res.send(ingredients);
+    } catch (error) {
+      next(error);
+    }
+  }
+);
 
 /* create a new user
 localhost:3000/api/users */
@@ -106,30 +139,6 @@ router.delete(
       res.send(202);
     } catch (error) {
       return res.sendStatus(404).send(error);
-    }
-  }
-);
-
-/**
- * find all the ingredient for single user.
-
- * localhost:3000/api/user/:id/ingredients
- *  */
-
-router.get(
-  "/:id/ingredients",
-  async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const id = req.params.id;
-      if (id) {
-        const user = await User.findByPk(id, {
-          include: [Ingredient],
-        });
-        console.log("user", user);
-        res.send(user);
-      }
-    } catch (error) {
-      return res.sendStatus(501).send(error);
     }
   }
 );
