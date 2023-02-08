@@ -1,5 +1,6 @@
 import db from "../db";
 const Ingredient = db.Ingredient;
+const User = db.User;
 
 import express, { NextFunction, Request, Response } from "express";
 const router = express.Router();
@@ -33,11 +34,11 @@ router.get("/:id", async (req: Request, res: Response, next: NextFunction) => {
 localhost:3000/api/ingredients */
 router.post("/", async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { ingredient, quantity, imageUrl } = req.body;
+    const { name, quantity, image } = req.body;
     const newIngredient = await Ingredient.create({
-      ingredient,
+      name,
       quantity,
-      imageUrl,
+      image,
     });
     res.sendStatus(204);
   } catch (error) {
@@ -50,9 +51,9 @@ localhost:3000/api/ingredients/:id */
 router.put("/:id", async (req: Request, res: Response, next: NextFunction) => {
   try {
     const id: string = req.params.id;
-    const { ingredient, quantity } = req.body;
+    const { name, quantity } = req.body;
     const updateIngredient = await Ingredient.findByPk(id);
-    updateIngredient?.update({ ingredient, quantity });
+    updateIngredient?.update({ name, quantity });
     res.sendStatus(200);
   } catch (error) {
     return res.sendStatus(501).send(error);

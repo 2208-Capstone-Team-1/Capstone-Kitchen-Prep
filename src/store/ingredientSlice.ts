@@ -3,9 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 // define a type for the slice state
 interface singleIngredient {
   id: number;
-  ingredient: string;
-  quantity: number;
-  imageUrl: string;
+  name: string;
+  // quantity: number;
+  image: string;
 }
 
 interface initialStateType {

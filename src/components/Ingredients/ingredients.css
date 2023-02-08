@@ -14,3 +14,37 @@
 .box {
   margin: 100px;
 }
+
+.form-content {
+  margin: 30px;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ingredientForm {
+  /* margin: auto; */
+  width: 20%;
+  background-color: rgb(226, 219, 190);
+  padding: 100px;
+}
+
+.MuiTextField-root > label {
+  /* background-color: beige; */
+  color: rgb(13, 2, 2);
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.MuiTextField-root > .MuiFormLabel-root.Mui-focused {
+  color: rgb(13, 2, 2);
+  font-weight: bold;
+  font-size: 25px;
+}
+
+#addIngredient {
+  background-color: rgb(85, 132, 79);
+  color: black;
+  size: 23px;
+  font-weight: bold;
+}
