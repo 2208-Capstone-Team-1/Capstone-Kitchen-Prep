@@ -23,14 +23,19 @@ const Home = () => {
             Join Chef's Kiss and enjoy curated cuisines at home!
           </p>
         </div>
+        <div className="home_copyline">
+          <p className="home_alexa">
+            Click the microphone below to get started with Alexa!
+          </p>
+        </div>
         <div className="home_mic">
-          <button style={{ borderRadius: "50%", backgroundColor: "black" }}>
+          <button style={{ borderRadius: "50%", padding: "10px" }}>
             <img
               id="microphone"
-              src="/static/microphone2.jpg"
+              src="/static/microphone.png"
               alt="microphone"
-              width="120"
-              height="auto"
+              width="100"
+              height="100"
             ></img>
           </button>
         </div>
