@@ -24,7 +24,15 @@ const Home = () => {
           </p>
         </div>
         <div className="home_mic">
-          <p>PLACE HOLDER FOR MIC</p>
+          <button style={{ borderRadius: "50%", backgroundColor: "black" }}>
+            <img
+              id="microphone"
+              src="/static/microphone2.jpg"
+              alt="microphone"
+              width="120"
+              height="auto"
+            ></img>
+          </button>
         </div>
       </div>
     </div>
