@@ -42,9 +42,7 @@ const App = () => {
           <p className="main_ptag">
             {!user.id ? (
               <Link to="/login">
-                <Button variant="contained">
-                  Login
-                </Button>
+                <Button variant="contained">Login</Button>
               </Link>
             ) : (
               user.id && (
@@ -58,7 +56,7 @@ const App = () => {
         <div className="main_logoPlace">
           <img
             id="logo"
-            src="/static/Chef's kiss_logo.png"
+            src="/static/ChefsKissLogo.png"
             alt="chef's kiss logo"
             width="120"
             height="150"
@@ -70,7 +68,7 @@ const App = () => {
 
           <img
             id="logo"
-            src="/static/Chef's kiss_logo.png"
+            src="/static/ChefsKissLogo.png"
             alt="chef's kiss logo"
             width="120"
             height="150"
