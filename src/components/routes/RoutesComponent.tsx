@@ -20,7 +20,7 @@ const RoutesComponent = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/randomRecipe" element={<RecipePage />} />
-        <Route path="/ingredient" element={<Ingredient user={user} />} />
+        <Route path="/userFridge" element={<Ingredient user={user} />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/savedRecipe" element={<SavedRecipes />} />
         <Route path="/login" element={<Login />} />

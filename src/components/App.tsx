@@ -42,9 +42,7 @@ const App = () => {
           <p className="main_ptag">
             {!user.id ? (
               <Link to="/login">
-                <Button variant="contained">
-                  Login
-                </Button>
+                <Button variant="contained">Login</Button>
               </Link>
             ) : (
               user.id && (
@@ -86,7 +84,7 @@ const App = () => {
               <>
                 <Link to="/user">Account</Link>
                 <Link to="/savedRecipe">Saved Recipes</Link>
-                <Link to="/ingredient">Fridge</Link>
+                <Link to="/userFridge">Fridge</Link>
               </>
             )}
             {user.isAdmin && <Link to="/admin">Admin</Link>}
