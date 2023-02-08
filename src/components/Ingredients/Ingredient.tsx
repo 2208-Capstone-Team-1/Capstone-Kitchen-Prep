@@ -35,8 +35,7 @@ const Ingredient: React.FC<Props> = ({ user }) => {
   /** redux states */
 
   const { ingredients } = useSelector((state: RootState) => state.ingredients);
-  console.log("user", user);
-  console.log("ingredients", ingredients);
+
   /** validation schema using yup.
    * 1. Take an ingredient from the user through form.
    * 2. Look for the ingredient in the spoonacular API.
@@ -56,8 +55,6 @@ const Ingredient: React.FC<Props> = ({ user }) => {
     validationSchema: formValidation,
     //  1.Take an ingredient from the user through form.
     onSubmit: async (values) => {
-      console.log("line63", values.name);
-      console.log("line63", values.quantity);
       try {
         //send the data to the backend
         const bodyToSubmit = {
@@ -70,7 +67,6 @@ const Ingredient: React.FC<Props> = ({ user }) => {
           bodyToSubmit
         );
 
-        console.log(createIngredient2.data);
         dispatch(addIngredient(createIngredient2.data));
       } catch (err) {
         console.log(err);
@@ -84,7 +80,7 @@ const Ingredient: React.FC<Props> = ({ user }) => {
       const userData = await axios.get(`/api/users/${user.id}`);
       dispatch(setIngredients(userData.data.ingredients));
     } catch (err) {
-      // console.error(err);
+      console.error(err);
     }
     setLoading(false);
   };

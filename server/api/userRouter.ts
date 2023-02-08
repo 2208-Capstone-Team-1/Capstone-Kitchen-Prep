@@ -67,20 +67,6 @@ router.post(
   }
 );
 
-/* get all ingredients
-localhost:3000/api/ingredients */
-router.get(
-  "/:id/ingredients",
-  async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const ingredients = await Ingredient.findAll();
-      return res.send(ingredients);
-    } catch (error) {
-      next(error);
-    }
-  }
-);
-
 /* create a new user
 localhost:3000/api/users */
 router.post("/", async (req: Request, res: Response, next: NextFunction) => {
