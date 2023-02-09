@@ -34,19 +34,38 @@ router.get("/:id", async (req: Request, res: Response, next: NextFunction) => {
     return res.sendStatus(501).send(error);
   }
 });
-// router.get("/:id/recipe", async (req: Request, res: Response, next: NextFunction) => {
-//   try {
-//     const id: string = req.params.id;
-//     if (id) {
-//       const recipes = await User.findByPk(id, {
-//         include: [Recipe],
-//       });
-//       res.send(recipes);
-//     }
-//   } catch (error) {
-//     return res.sendStatus(501).send(error);
-//   }
-// });
+
+/* add an ingredient for a specific user
+localhost:3000/api/users/:id/ingredients
+ */
+router.post(
+  "/:id/ingredients",
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      // find the id of the user from the URL.
+      const id: string = req.params.id;
+      // find the user with this id.
+      const user = await User.findByPk(id, {
+        include: [Ingredient, Recipe],
+      });
+      // if user exists, then create the ingredient.
+      if (user) {
+        const { name, quantity, image } = req.body;
+        const newIngredient = await Ingredient.create({
+          name,
+          quantity,
+          image,
+        });
+
+        // Use magic method to add the ingredient to the specific user.
+        (user as any).addIngredient(newIngredient);
+        res.send(newIngredient);
+      }
+    } catch (error) {
+      return res.sendStatus(501).send(error);
+    }
+  }
+);
 
 /* create a new user
 localhost:3000/api/users */

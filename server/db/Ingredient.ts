@@ -17,9 +17,9 @@ interface IngredientModel
     InferCreationAttributes<IngredientModel>
   > {
   id: CreationOptional<string>;
-  ingredient: string;
+  name: string;
   quantity: number;
-  imageUrl: string;
+  image: string;
 }
 
 const Ingredient = db.define<IngredientModel>("ingredient", {
@@ -29,7 +29,7 @@ const Ingredient = db.define<IngredientModel>("ingredient", {
     allowNull: false,
     primaryKey: true,
   },
-  ingredient: {
+  name: {
     type: STRING,
     defaultValue: "Food Item",
     allowNull: true,
@@ -39,7 +39,7 @@ const Ingredient = db.define<IngredientModel>("ingredient", {
     defaultValue: 0,
     allowNull: true,
   },
-  imageUrl: {
+  image: {
     type: STRING,
     defaultValue: "./static/ingredients/defaultIngredientImage.jpg",
     allowNull: true,
