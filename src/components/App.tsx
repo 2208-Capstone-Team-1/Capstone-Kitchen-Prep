@@ -85,6 +85,9 @@ const App = () => {
                 <Link to="/user">Account</Link>
                 <Link to="/savedRecipe">Saved Recipes</Link>
                 <Link to="/userFridge">Fridge</Link>
+                <Link to="/recipesFromIngredients">
+                  Recipes From Ingredients
+                </Link>
               </>
             )}
             {user.isAdmin && <Link to="/admin">Admin</Link>}

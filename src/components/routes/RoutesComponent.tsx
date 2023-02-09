@@ -12,6 +12,7 @@ import UserEdit from "../User/UserEdit";
 import AdminPage from "../Admin/AdminPage";
 import "../main.css";
 import UserCreate from "../User/UserCreate";
+import RecipesFromIngredients from "../RecipesFromIngredients/RecipesFromIngredients";
 
 const RoutesComponent = () => {
   const { user } = useSelector((state: RootState) => state.user);
@@ -23,6 +24,10 @@ const RoutesComponent = () => {
         <Route path="/userFridge" element={<Ingredient user={user} />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/savedRecipe" element={<SavedRecipes />} />
+        <Route
+          path="/recipesFromIngredients"
+          element={<RecipesFromIngredients />}
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/createaccount" element={<UserCreate />} />
         {user.id && (
