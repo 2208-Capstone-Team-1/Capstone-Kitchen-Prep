@@ -1,6 +1,12 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
+import "firebase/compat/auth";
+import "firebase/compat/analytics";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Button } from "@mui/material";
 import axios from "axios";
 import { setUser, resetUser } from "../store/userSlice";
@@ -8,9 +14,28 @@ import { RootState } from "../store";
 import RoutesComponent from "./routes/RoutesComponent";
 import "./main.css";
 
+firebase.initializeApp({
+  apiKey: process.env.FIREBASE_KEY,
+  authDomain: "chefs-kiss-d30f4.firebaseapp.com",
+  projectId: "chefs-kiss-d30f4",
+  storageBucket: "chefs-kiss-d30f4.appspot.com",
+  messagingSenderId: "376445935624",
+  appId: "1:376445935624:web:1cd185df98d8d51beaf1bd",
+  measurementId: "G-3T0TQJQNJH",
+});
+
+const auth = firebase.auth();
+const firestore = firebase.firestore();
+const analytics = firebase.analytics();
+
+function ChatRoom() {
+  const messagesRef = firestore.collection("messages");
+}
+
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
+  const [userFire] = useAuthState(auth);
 
   const loginWithToken = async () => {
     const token = window.localStorage.getItem("token");
@@ -92,6 +117,7 @@ const App = () => {
           <RoutesComponent />
         </div>
       </div>
+      <section>{userFire ? <Chatroom /> : <loginWithToken />}</section>
     </div>
   );
 };
