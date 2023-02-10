@@ -1,68 +1,81 @@
-import http from "http";
-import express from "express";
-import { ServerSocket } from "./socket";
+export {};
+// import express from "express";
+// import { ServerSocket } from "./socket";
 
-const application = express();
+// const application = express();
+// const http = require("http").createServer();
 
-/** Server Handling */
-const httpServer = http.createServer(application);
+// /** Server Handling */
+// const httpServer = http.createServer(application);
 
-/** Start Socket */
-new ServerSocket(httpServer);
+// /** Start Socket */
 
-/** Log the request */
-application.use((req, res, next) => {
-  console.info(
-    `METHOD: [${req.method}] - URL: [${req.url}] - IP: [${req.socket.remoteAddress}]`
-  );
+// const io = require("socket.io")(http, {
+//   cors: { origin: "*" },
+// });
 
-  res.on("finish", () => {
-    console.info(
-      `METHOD: [${req.method}] - URL: [${req.url}] - STATUS: [${res.statusCode}] - IP: [${req.socket.remoteAddress}]`
-    );
-  });
+// io.on("connection", (socket: any) => {
+//   console.log("a user connected");
 
-  next();
-});
+//   socket.on("message", (message: any) => {
+//     console.log(message);
+//     io.emit("message", `${socket.id.substr(0, 2)} said ${message}`);
+//   });
+// });
 
-/** Parse the body of the request */
-application.use(express.urlencoded({ extended: true }));
-application.use(express.json());
+// /** Log the request */
+// application.use((req, res, next) => {
+//   console.info(
+//     `METHOD: [${req.method}] - URL: [${req.url}] - IP: [${req.socket.remoteAddress}]`
+//   );
 
-/** Rules of our API */
-application.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
+//   res.on("finish", () => {
+//     console.info(
+//       `METHOD: [${req.method}] - URL: [${req.url}] - STATUS: [${res.statusCode}] - IP: [${req.socket.remoteAddress}]`
+//     );
+//   });
 
-  if (req.method == "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
-    return res.status(200).json({});
-  }
+//   next();
+// });
 
-  next();
-});
+// /** Parse the body of the request */
+// application.use(express.urlencoded({ extended: true }));
+// application.use(express.json());
 
-/** Healthcheck */
-application.get("/ping", (req, res, next) => {
-  return res.status(200).json({ hello: "world!" });
-});
+// /** Rules of our API */
+// application.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+//   );
 
-/** Socket Information */
-application.get("/status", (req, res, next) => {
-  return res.status(200).json({ users: ServerSocket.instance.users });
-});
+//   if (req.method == "OPTIONS") {
+//     res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+//     return res.status(200).json({});
+//   }
 
-/** Error handling */
-application.use((req, res, next) => {
-  const error = new Error("Not found");
+//   next();
+// });
 
-  res.status(404).json({
-    message: error.message,
-  });
-});
+// /** Healthcheck */
+// application.get("/ping", (req, res, next) => {
+//   return res.status(200).json({ hello: "world!" });
+// });
 
-/** Listen */
-httpServer.listen(1337, () => console.info(`Server is running`));
+// /** Socket Information */
+// application.get("/status", (req, res, next) => {
+//   return res.status(200).json({ users: ServerSocket.instance.users });
+// });
+
+// /** Error handling */
+// application.use((req, res, next) => {
+//   const error = new Error("Not found");
+
+//   res.status(404).json({
+//     message: error.message,
+//   });
+// });
+
+// /** Listen */
+// httpServer.listen(1337, () => console.info(`Server is running`));

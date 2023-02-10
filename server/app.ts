@@ -4,6 +4,24 @@ import morgan from "morgan";
 import apiRouter from "./api";
 
 const router: Express = express();
+const http = require("http").createServer(router);
+const { Server } = require("socket.io");
+const io = new Server(http);
+/** Start Socket */
+// const io = require("socket.io")(http, {
+//   cors: { origin: "*" },
+// });
+
+console.log("🍊orange");
+
+io.on("connection", (socket: any) => {
+  console.log("********  a user connected  *********");
+
+  socket.on("message", (message: any) => {
+    console.log(message);
+    io.emit("message", `${socket.id.substr(0, 2)} said ${message}`);
+  });
+});
 
 // Body parsing middleware
 router.use(express.json());

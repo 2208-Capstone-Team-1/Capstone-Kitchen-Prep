@@ -6,15 +6,19 @@ import axios from "axios";
 import { setUser, resetUser } from "../store/userSlice";
 import { RootState } from "../store";
 import RoutesComponent from "./routes/RoutesComponent";
-import SocketContext from "./contexts/SocketContext";
+// import SocketContext from "./contexts/SocketContext";
 import "./main.css";
+import { useSocket } from "./hooks/useSocket";
 
 export interface IApplicationProps {}
 
 const App: React.FunctionComponent<IApplicationProps> = (props) => {
   const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
-  const { socket, uid, users } = useContext(SocketContext).SocketState;
+  // const { socket, uid, users } = useContext(SocketContext).SocketState;
+  // const { uid, users } = useContext(SocketContext).SocketState;
+
+  const socket = useSocket();
 
   const loginWithToken = async () => {
     const token = window.localStorage.getItem("token");
@@ -40,6 +44,14 @@ const App: React.FunctionComponent<IApplicationProps> = (props) => {
 
   return (
     <div>
+      <button
+        onClick={() => {
+          console.log("clicked");
+          if (socket) socket.emit("message", "hello banana");
+        }}
+      >
+        SOCKETBUTTON
+      </button>
       <div className="body">
         <div className="main_topbar">
           <p className="main_ptag">place holder</p>
@@ -97,14 +109,14 @@ const App: React.FunctionComponent<IApplicationProps> = (props) => {
       </div>
       <div>
         <h2>Socket IO Information:</h2>
-        <p>
+        {/* <p>
           Your user ID: <strong>{uid}</strong>
           <br />
           Users online: <strong>{users.length}</strong>
           <br />
           Socket ID: <strong>{socket?.id}</strong>
           <br />
-        </p>
+        </p> */}
       </div>
     </div>
   );

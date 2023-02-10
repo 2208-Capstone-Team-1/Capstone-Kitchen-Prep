@@ -18,7 +18,7 @@ const SocketContextComponent: React.FunctionComponent<
 > = (props) => {
   const { children } = props;
 
-  const socket = useSocket("ws://localhost:1337", {
+  const socket = useSocket("ws://localhost:3000", {
     reconnectionAttempts: 5,
     reconnectionDelay: 1000,
     autoConnect: false,
@@ -79,7 +79,6 @@ const SocketContextComponent: React.FunctionComponent<
 
   const SendHandshake = async () => {
     console.info("Sending handshake to server ...");
-
     socket.emit("handshake", async (uid: string, users: string[]) => {
       console.info("User handshake callback message received");
       SocketDispatch({ type: "update_users", payload: users });
