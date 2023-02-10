@@ -22,7 +22,6 @@ const RecipesFromIngredients = () => {
   const { ingredients } = useSelector((state: RootState) => state.ingredients);
   const { user } = useSelector((state: RootState) => state.user);
 
-  console.log("ingredients ", ingredients);
   /**
    * This function will combine all the ingredients names in a single string and pass it to the API endpoint
    */
@@ -36,8 +35,6 @@ const RecipesFromIngredients = () => {
     }
   }
 
-  //   console.log("ingredientsNames", ingredientsNames);
-
   // get the id for the recipe.
   const id: any =
     recievedRecipes &&
@@ -45,9 +42,6 @@ const RecipesFromIngredients = () => {
       // console.log("🪪id", recipe.id);
       return recipe.id;
     });
-
-  // console.log(id);
-  console.log("🪪id", id);
 
   const recipesHandler = async () => {
     try {
@@ -88,7 +82,6 @@ const RecipesFromIngredients = () => {
   }
 
   const imageURL = recievedRecipesInfo && `${recievedRecipesInfo.image}`;
-  console.log("imageURL", imageURL);
 
   return (
     <>
