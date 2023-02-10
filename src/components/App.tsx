@@ -5,14 +5,13 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
 import "firebase/compat/analytics";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useCollectionData } from "react-firebase-hooks/firestore";
 import { Button } from "@mui/material";
 import axios from "axios";
 import { setUser, resetUser } from "../store/userSlice";
 import { RootState } from "../store";
 import RoutesComponent from "./routes/RoutesComponent";
 import "./main.css";
+import ChatRoom from "./Firebase/ChatRoom";
 
 firebase.initializeApp({
   apiKey: process.env.FIREBASE_KEY,
@@ -24,18 +23,9 @@ firebase.initializeApp({
   measurementId: "G-3T0TQJQNJH",
 });
 
-const auth = firebase.auth();
-const firestore = firebase.firestore();
-const analytics = firebase.analytics();
-
-function ChatRoom() {
-  const messagesRef = firestore.collection("messages");
-}
-
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
-  const [userFire] = useAuthState(auth);
 
   const loginWithToken = async () => {
     const token = window.localStorage.getItem("token");
@@ -116,8 +106,8 @@ const App = () => {
           </nav>
           <RoutesComponent />
         </div>
+        <ChatRoom />
       </div>
-      <section>{userFire ? <Chatroom /> : <loginWithToken />}</section>
     </div>
   );
 };
