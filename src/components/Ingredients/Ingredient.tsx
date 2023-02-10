@@ -30,9 +30,6 @@ const Ingredient: React.FC<Props> = ({ user }) => {
     name: "";
     quantity: 0;
   }
-  //temporary place holder for ingredient to display
-  // const [ingredient, setIngredient] = useState(<IngredientInterface>);
-  /** redux states */
 
   const { ingredients } = useSelector((state: RootState) => state.ingredients);
 
