@@ -52,22 +52,22 @@ const RecipesFromIngredients = () => {
   const recipesHandler = async () => {
     try {
       const { data } = await axios.get(
-        `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients[0].name}${ingredientsNames}&number=1&apiKey=9a0bda7b9e944e938fa0a538fd4a5a77`
+        `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients[0].name}${ingredientsNames}&number=1&apiKey=9b79c69e5e8943b88f963408824ce4a4`
       );
       // this data will include title and id and other data about the recipe and ingredients.
       // take the id and search another endpoint to extract more instructions about the recipes.
       setRecievedRecipes(data);
       console.log(
-        `******* This is the path: https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=9a0bda7b9e944e938fa0a538fd4a5a77`
+        `******* This is the path: https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=9b79c69e5e8943b88f963408824ce4a4`
       );
-      //   if (id) {
-      // pass the id of the recipe to another endpoint to get the recipe data.
-      const recipeInfo = await axios.get(
-        `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=9a0bda7b9e944e938fa0a538fd4a5a77`
-      );
-      setRecievedRecipesInfo(recipeInfo.data as any);
-      setloading(true);
-      //   }
+      if (id) {
+        // pass the id of the recipe to another endpoint to get the recipe data.
+        const recipeInfo = await axios.get(
+          `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=9b79c69e5e8943b88f963408824ce4a4`
+        );
+        setRecievedRecipesInfo(recipeInfo.data as any);
+        setloading(true);
+      }
     } catch (err) {
       console.log(err);
     }
