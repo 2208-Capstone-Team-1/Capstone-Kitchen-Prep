@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
@@ -6,11 +6,15 @@ import axios from "axios";
 import { setUser, resetUser } from "../store/userSlice";
 import { RootState } from "../store";
 import RoutesComponent from "./routes/RoutesComponent";
+import SocketContext from "./contexts/SocketContext";
 import "./main.css";
 
-const App = () => {
+export interface IApplicationProps {}
+
+const App: React.FunctionComponent<IApplicationProps> = (props) => {
   const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
+  const { socket, uid, users } = useContext(SocketContext).SocketState;
 
   const loginWithToken = async () => {
     const token = window.localStorage.getItem("token");
@@ -64,7 +68,6 @@ const App = () => {
           <a className="mainLogoTxt" href="/">
             <span></span>Chef's Kiss
           </a>
-          {/*<h1 className="mainLogoTxt">Chef's Kiss</h1>*/}
 
           <img
             id="logo"
@@ -91,6 +94,17 @@ const App = () => {
           </nav>
           <RoutesComponent />
         </div>
+      </div>
+      <div>
+        <h2>Socket IO Information:</h2>
+        <p>
+          Your user ID: <strong>{uid}</strong>
+          <br />
+          Users online: <strong>{users.length}</strong>
+          <br />
+          Socket ID: <strong>{socket?.id}</strong>
+          <br />
+        </p>
       </div>
     </div>
   );
