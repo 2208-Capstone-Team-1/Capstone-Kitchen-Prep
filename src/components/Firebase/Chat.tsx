@@ -5,9 +5,14 @@ import "firebase/compat/auth";
 import "firebase/compat/analytics";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
+
+const apiKey = process.env.FIREBASE_KEY;
+console.log(apiKey);
 
 const firebaseApp = firebase.initializeApp({
-  apiKey: process.env.FIREBASE_KEY,
+  apiKey: "AIzaSyACYBhS0y2OHMoflq0g0TRdQiiArnfrrY",
   authDomain: "chefs-kiss-d30f4.firebaseapp.com",
   projectId: "chefs-kiss-d30f4",
   storageBucket: "chefs-kiss-d30f4.appspot.com",
@@ -21,7 +26,8 @@ const firestore = firebase.firestore();
 const analytics = firebase.analytics();
 
 const Chat = () => {
-  const [user] = useAuthState(auth);
+  const { user } = useSelector((state: RootState) => state.user);
+
   return (
     <div className="App">
       <header>
@@ -29,7 +35,9 @@ const Chat = () => {
         <SignOut />
       </header>
 
-      <section>{user ? <ChatRoom /> : <SignIn />}</section>
+      <section>
+        {user ? <ChatRoom /> : <p>Log in to start using Alexa!</p>}
+      </section>
     </div>
   );
 };

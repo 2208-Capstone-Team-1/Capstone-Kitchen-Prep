@@ -33,6 +33,7 @@
     "formik": "^2.2.9",
     "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0",
+    "node-polyfill-webpack-plugin": "^2.0.1",
     "pg": "^8.8.0",
     "react-firebase-hooks": "^5.1.1",
     "sequelize": "^6.25.3",
