@@ -2,13 +2,12 @@ import React, { useRef, useState } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
-// import "firebase/compat/analytics";
+import "firebase/compat/analytics";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
-import ChatMessage from "./ChatMessage";
 
 const firebaseApp = firebase.initializeApp({
-  apiKey: process.env.FIREBASE_KEY,
+  apiKey: "AIzaSyACYBhS0y2OHMoflq0g0TRdQiiArnfrrYE",
   authDomain: "chefs-kiss-d30f4.firebaseapp.com",
   projectId: "chefs-kiss-d30f4",
   storageBucket: "chefs-kiss-d30f4.appspot.com",
@@ -20,9 +19,51 @@ const firebaseApp = firebase.initializeApp({
 const auth = firebase.auth() as any;
 const firestore = firebase.firestore();
 const analytics = firebase.analytics();
-const ChatRoom = () => {
+
+const Chat = () => {
+  const [user] = useAuthState(auth);
+  return (
+    <div className="App">
+      <header>
+        <h1>Chat With Alexa</h1>
+        <SignOut />
+      </header>
+
+      <section>{user ? <ChatRoom /> : <SignIn />}</section>
+    </div>
+  );
+};
+
+function SignIn() {
+  const signInWithGoogle = () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    auth.signInWithPopup(provider);
+  };
+
+  return (
+    <>
+      <button className="sign-in" onClick={signInWithGoogle}>
+        Sign in with Google
+      </button>
+      <p>
+        Do not violate the community guidelines or you will be banned for life!
+      </p>
+    </>
+  );
+}
+
+function SignOut() {
+  return (
+    auth.currentUser && (
+      <button className="sign-out" onClick={() => auth.signOut()}>
+        Sign Out
+      </button>
+    )
+  );
+}
+
+function ChatRoom() {
   const ref = useRef<HTMLDivElement>(null);
-  const [userFirebase] = useAuthState(auth);
   const messagesRef = firestore.collection("messages");
   const query = messagesRef.orderBy("createdAt").limit(25);
 
@@ -45,7 +86,6 @@ const ChatRoom = () => {
       text: formValue,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid,
-      photoURL,
     });
     setFormValue("");
     (ref as any).current.scrollIntoView({ behavior: "smooth" });
@@ -70,11 +110,30 @@ const ChatRoom = () => {
         />
 
         <button type="submit" disabled={!formValue}>
-          🕊️
+          Send
         </button>
       </form>
     </>
   );
+}
+
+interface chatProps {
+  key: string;
+  message: { text: string; uid: string };
+}
+
+const ChatMessage: React.FC<chatProps> = (chatProps) => {
+  const { text, uid } = chatProps.message;
+
+  const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
+
+  return (
+    <>
+      <div className={`message ${messageClass}`}>
+        <p>{text}</p>
+      </div>
+    </>
+  );
 };
 
-export default ChatRoom;
+export default Chat;
