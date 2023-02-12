@@ -8,10 +8,13 @@ import { RootState } from "../store";
 import RoutesComponent from "./routes/RoutesComponent";
 import Chat from "./Firebase/Chat";
 import "./main.css";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
+  //authorization for firebase
+  const auth = getAuth();
 
   const loginWithToken = async () => {
     const token = window.localStorage.getItem("token");
@@ -21,14 +24,24 @@ const App = () => {
           authorization: token,
         },
       });
-
       dispatch(setUser(response.data));
+
+      //sign in to firebase
+      // signInWithEmailAndPassword(
+      //   auth,
+      //   response.data.email,
+      //   response.data.password
+      // ).catch((error) => {
+      //   console.error(error);
+      // });
     }
   };
 
   const logout = () => {
     window.localStorage.removeItem("token");
     dispatch(resetUser());
+    //sign out of firebase
+    auth.signOut();
   };
 
   useEffect(() => {

@@ -17,7 +17,7 @@ const validationSchema = yup.object().shape({
     .required("Email is required"),
   password: yup
     .string()
-    .min(3, "Password should be a minimum 3 characters")
+    .min(6, "Password should be a minimum 6 characters")
     .required("Password is required"),
   confirmPassword: yup
     .string()
@@ -82,10 +82,12 @@ const UserCreate = () => {
         };
         const response = await axios.post("/api/auth", credentials);
         const token = response.data;
+        console.log("THIS IS THE AUTH RESPONSE: ", response.data);
         window.localStorage.setItem("token", token);
 
         const auth = getAuth();
         //create authorization with firebase
+        console.log("PASSWORD BEING SENT TO FIREBASE: ", values.password);
         createUserWithEmailAndPassword(auth, values.email, values.password)
           .then((userCredential) => {
             // Signed in

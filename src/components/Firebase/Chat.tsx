@@ -7,7 +7,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const firebaseApp = firebase.initializeApp({
-  apiKey: "AIzaSyACYBhS0y2OHMoflq0g0TRdQiiArnfrrY",
+  apiKey: "AIzaSyACYBhS0y2OHMoflq0g0TRdQiiArnfrrYE",
   authDomain: "chefs-kiss-d30f4.firebaseapp.com",
   projectId: "chefs-kiss-d30f4",
   storageBucket: "chefs-kiss-d30f4.appspot.com",
@@ -26,41 +26,32 @@ const Chat = () => {
     <div className="App">
       <header>
         <h1>Chat With Alexa</h1>
-        <SignOut />
+        {/* <SignOut /> */}
       </header>
 
-      <section>{user ? <ChatRoom /> : <SignIn />}</section>
+      <section>{user ? <ChatRoom /> : <ChatBox />}</section>
     </div>
   );
 };
 
-function SignIn() {
-  const signInWithGoogle = () => {
-    const provider = new firebase.auth.EmailAuthProvider();
-    auth.signInWithPopup(provider);
-  };
+function ChatBox() {
+  // const signInWithGoogle = () => {
+  //   const provider = new firebase.auth.EmailAuthProvider();
+  //   auth.signInWithPopup(provider);
+  // };
 
-  return (
-    <>
-      <button className="sign-in" onClick={signInWithGoogle}>
-        Sign in with your email
-      </button>
-      <p>
-        Do not violate the community guidelines or you will be banned for life!
-      </p>
-    </>
-  );
+  return <>Chat Box Here</>;
 }
 
-function SignOut() {
-  return (
-    auth.currentUser && (
-      <button className="sign-out" onClick={() => auth.signOut()}>
-        Sign Out
-      </button>
-    )
-  );
-}
+// function SignOut() {
+//   return (
+//     auth.currentUser && (
+//       <button className="sign-out" onClick={() => auth.signOut()}>
+//         Sign Out
+//       </button>
+//     )
+//   );
+// }
 
 function ChatRoom() {
   const ref = useRef<HTMLDivElement>(null);
