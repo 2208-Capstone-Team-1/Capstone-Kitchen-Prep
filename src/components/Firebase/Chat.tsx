@@ -36,14 +36,14 @@ const Chat = () => {
 
 function SignIn() {
   const signInWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
+    const provider = new firebase.auth.EmailAuthProvider();
     auth.signInWithPopup(provider);
   };
 
   return (
     <>
       <button className="sign-in" onClick={signInWithGoogle}>
-        Sign in with Google
+        Sign in with your email
       </button>
       <p>
         Do not violate the community guidelines or you will be banned for life!

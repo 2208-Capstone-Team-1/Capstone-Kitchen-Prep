@@ -7,6 +7,7 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import { Box } from "@mui/system";
 import { Alert, TextField, Typography } from "@mui/material";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 // Validation schema using yup, to check is text field entries are valid.
 const validationSchema = yup.object().shape({
@@ -83,6 +84,16 @@ const UserCreate = () => {
         const token = response.data;
         window.localStorage.setItem("token", token);
 
+        const auth = getAuth();
+        //create authorization with firebase
+        createUserWithEmailAndPassword(auth, values.email, values.password)
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+          })
+          .catch((error) => {
+            console.error(error);
+          });
         setCreationSuccess(true);
 
         setTimeout(() => {
