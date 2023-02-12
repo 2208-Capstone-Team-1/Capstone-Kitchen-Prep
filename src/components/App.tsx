@@ -25,15 +25,6 @@ const App = () => {
         },
       });
       dispatch(setUser(response.data));
-
-      //sign in to firebase
-      // signInWithEmailAndPassword(
-      //   auth,
-      //   response.data.email,
-      //   response.data.password
-      // ).catch((error) => {
-      //   console.error(error);
-      // });
     }
   };
 
