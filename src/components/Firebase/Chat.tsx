@@ -7,7 +7,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const firebaseApp = firebase.initializeApp({
-  apiKey: "AIzaSyACYBhS0y2OHMoflq0g0TRdQiiArnfrrYE",
+  apiKey: "AIzaSyACYBhS0y2OHMoflq0g0TRdQiiArnfrrY",
   authDomain: "chefs-kiss-d30f4.firebaseapp.com",
   projectId: "chefs-kiss-d30f4",
   storageBucket: "chefs-kiss-d30f4.appspot.com",
