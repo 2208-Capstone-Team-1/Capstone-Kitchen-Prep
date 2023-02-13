@@ -7,7 +7,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./chat.css";
 
-const firebaseApp = firebase.initializeApp({
+firebase.initializeApp({
   apiKey: "AIzaSyACYBhS0y2OHMoflq0g0TRdQiiArnfrrY",
   authDomain: "chefs-kiss-d30f4.firebaseapp.com",
   projectId: "chefs-kiss-d30f4",
@@ -70,7 +70,7 @@ function ChatRoom() {
       <main>
         {messages &&
           messages.map((msg, index) => (
-            <ChatMessage key={index} message={(msg.text, msg.uid)} />
+            <ChatMessage key={index} text={msg.text} uid={msg.uid} />
           ))}
 
         <span ref={ref}></span>
@@ -93,13 +93,15 @@ function ChatRoom() {
 
 interface chatProps {
   key: number;
-  message: { text: string; uid: string };
+  text: string;
+  uid: string;
 }
 
 //why can I not pull the message out of the chatProps??
 const ChatMessage: React.FC<chatProps> = (chatProps) => {
-  console.log("MESSAGE: ", chatProps.message);
-  const { text, uid } = chatProps.message;
+  console.log("MESSAGE: ", chatProps.text);
+  const uid = chatProps.uid;
+  const text = chatProps.text;
   console.log("CURRENT USER: ", auth.currentUser.uid);
   const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
 
