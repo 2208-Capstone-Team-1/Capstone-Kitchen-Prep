@@ -7,6 +7,7 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./chat.css";
 
+//intialize firebase app
 firebase.initializeApp({
   apiKey: "AIzaSyACYBhS0y2OHMoflq0g0TRdQiiArnfrrY",
   authDomain: "chefs-kiss-d30f4.firebaseapp.com",
@@ -17,13 +18,15 @@ firebase.initializeApp({
   measurementId: "G-3T0TQJQNJH",
 });
 
+//define authorization for firebase
 const auth = firebase.auth() as any;
 const firestore = firebase.firestore();
 
 const Chat = () => {
+  //take user as an object out of the authorized user
   const [user] = useAuthState(auth);
   return (
-    <div className="App">
+    <div className="FirebaseApp">
       <header>
         <h1>Chat With Alexa</h1>
       </header>
@@ -34,7 +37,7 @@ const Chat = () => {
 };
 
 function ChatBox() {
-  return <>Chat Box Here</>;
+  return <div style={{ color: "white" }}>Login to get chatting!</div>;
 }
 
 function ChatRoom() {
@@ -45,8 +48,6 @@ function ChatRoom() {
     // @ts-ignore
     idField: "id",
   });
-
-  console.log("MESSAGES: ", messages);
 
   const [formValue, setFormValue] = useState("");
 
@@ -61,7 +62,7 @@ function ChatRoom() {
       uid,
     });
     setFormValue("");
-    //below code will make chat box scroll to bottom
+    //below code will make chat box scroll to bottom whenever there's a new msg
     (ref as any).current.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -91,6 +92,7 @@ function ChatRoom() {
   );
 }
 
+//define props being passed to ChatMessage
 interface chatProps {
   key: number;
   text: string;
@@ -99,10 +101,10 @@ interface chatProps {
 
 //why can I not pull the message out of the chatProps??
 const ChatMessage: React.FC<chatProps> = (chatProps) => {
-  console.log("MESSAGE: ", chatProps.text);
   const uid = chatProps.uid;
   const text = chatProps.text;
-  console.log("CURRENT USER: ", auth.currentUser.uid);
+  //if the uid equals the current authorized user, show this as sent - otherwise it
+  //was sent by another user
   const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
 
   return (
