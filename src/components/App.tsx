@@ -6,7 +6,6 @@ import axios from "axios";
 import { setUser, resetUser } from "../store/userSlice";
 import { RootState } from "../store";
 import RoutesComponent from "./routes/RoutesComponent";
-import Chat from "./Firebase/Chat";
 import "./main.css";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
@@ -90,13 +89,13 @@ const App = () => {
                 <Link to="/user">Account</Link>
                 <Link to="/savedRecipe">Saved Recipes</Link>
                 <Link to="/userFridge">Fridge</Link>
+                <Link to="/chat">Chat</Link>
               </>
             )}
             {user.isAdmin && <Link to="/admin">Admin</Link>}
           </nav>
           <RoutesComponent />
         </div>
-        <Chat />
       </div>
     </div>
   );

@@ -40,7 +40,7 @@ const Login = () => {
 
   const attemptLogin = async (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(credentials);
+    // console.log(credentials);
     const response = await axios.post("/api/auth", credentials);
     const token = response.data;
     window.localStorage.setItem("token", token);
@@ -68,6 +68,7 @@ const Login = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "space-between",
+          background: "transparent",
         }}
       >
         <Box margin={1}>

@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { resetUser } from "../../store/userSlice";
 import { RootState } from "../../store";
 import "./home.css";
+import Chat from "../Firebase/Chat";
 
 const Home = () => {
   const { user } = useSelector((state: RootState) => state.user);
@@ -39,6 +40,9 @@ const Home = () => {
             ></img>
           </button>
         </div>
+      </div>
+      <div>
+        {/* <Chat/> */}
       </div>
     </div>
   );

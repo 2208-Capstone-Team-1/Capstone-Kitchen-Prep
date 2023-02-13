@@ -7,9 +7,11 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./chat.css";
 
+
+
 //intialize firebase app
 firebase.initializeApp({
-  apiKey: "AIzaSyACYBhS0y2OHMoflq0g0TRdQiiArnfrrY",
+  apiKey: "AIzaSyACYBhS0y2OHMoflq0g0TRdQiiArnfrrYE",
   authDomain: "chefs-kiss-d30f4.firebaseapp.com",
   projectId: "chefs-kiss-d30f4",
   storageBucket: "chefs-kiss-d30f4.appspot.com",
