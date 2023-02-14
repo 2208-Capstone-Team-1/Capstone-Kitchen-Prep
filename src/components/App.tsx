@@ -97,9 +97,6 @@ const App = () => {
           </nav>
           <RoutesComponent />
         </div>
-      </div>
-      <div>
-        {/* Insert Footer here */}
         <Footer />
       </div>
     </div>
