@@ -7,8 +7,6 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./chat.css";
 
-
-
 //intialize firebase app
 firebase.initializeApp({
   apiKey: "AIzaSyACYBhS0y2OHMoflq0g0TRdQiiArnfrrYE",
@@ -108,6 +106,8 @@ const ChatMessage: React.FC<chatProps> = (chatProps) => {
   //if the uid equals the current authorized user, show this as sent - otherwise it
   //was sent by another user
   const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
+  //!make a request from alexa
+  //! if text has "alexa"
 
   return (
     <>
