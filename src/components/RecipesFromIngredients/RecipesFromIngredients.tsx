@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import MuiLoader from "../MuiLoader";
@@ -18,6 +18,7 @@ const RecipesFromIngredients = () => {
   const [recievedRecipes, setRecievedRecipes] = useState<recipesObj>();
   const [recievedRecipesInfo, setRecievedRecipesInfo] = useState({} as any);
   const [loading, setloading] = useState(false);
+  const [ingredientsNames, setIngredientsNames] = useState("");
   /** selectors */
   const { ingredients } = useSelector((state: RootState) => state.ingredients);
   const { user } = useSelector((state: RootState) => state.user);
@@ -25,21 +26,21 @@ const RecipesFromIngredients = () => {
   /**
    * This function will combine all the ingredients names in a single string and pass it to the API endpoint
    */
-  let ingredientsNames: any = [];
+
   function allIngredientsNames(ingredientArray: any) {
+    let ingredientNamesForRecipes: string[] = [];
     if (user.id) {
       for (let i = 1; i < ingredientArray.length; i++) {
-        ingredientsNames.push(ingredientArray[i].name);
+        ingredientNamesForRecipes.push(ingredientArray[i].name);
       }
-      return ingredientsNames.join(",+");
+      setIngredientsNames(ingredientNamesForRecipes.join(",+"));
     }
   }
 
   // get the id for the recipe.
-  const id: any =
+  const id: number[] =
     recievedRecipes &&
     recievedRecipes.map((recipe: receivedRecipesObj) => {
-      // console.log("🪪id", recipe.id);
       return recipe.id;
     });
 
@@ -70,7 +71,7 @@ const RecipesFromIngredients = () => {
   useEffect(() => {
     recipesHandler();
     allIngredientsNames(ingredients);
-  }, [id]);
+  }, [id, ingredients]);
 
   // if loading is false, display an error message
   if (!loading) {
@@ -96,7 +97,7 @@ const RecipesFromIngredients = () => {
               {recievedRecipesInfo.extendedIngredients.map(
                 (foodItem: any, index: number) => {
                   return (
-                    <div>
+                    <div key={index}>
                       <p className="recipe_ptag">
                         {index}: {foodItem.original}
                       </p>
