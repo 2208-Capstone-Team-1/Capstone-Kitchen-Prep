@@ -41,9 +41,6 @@ const Home = () => {
           </button>
         </div>
       </div>
-      <div>
-        {/* <Chat/> */}
-      </div>
     </div>
   );
 };
