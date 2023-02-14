@@ -2,6 +2,9 @@ import express, { Express, Request, Response } from "express";
 import path from "path";
 import morgan from "morgan";
 import apiRouter from "./api";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const router: Express = express();
 
