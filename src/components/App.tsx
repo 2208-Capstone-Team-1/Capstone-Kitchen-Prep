@@ -8,6 +8,7 @@ import { RootState } from "../store";
 import RoutesComponent from "./routes/RoutesComponent";
 import "./main.css";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import Footer from "./Footer/Footer";
 
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
@@ -96,6 +97,10 @@ const App = () => {
           </nav>
           <RoutesComponent />
         </div>
+      </div>
+      <div>
+        {/* Insert Footer here */}
+        <Footer />
       </div>
     </div>
   );
