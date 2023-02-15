@@ -56,7 +56,7 @@ const UserEdit = () => {
     );
 
   return (
-    <div className="userEdit_body">
+    <>
       <div className="userEdit_container">
         <h1 className="userEdit_h1">Account Profile</h1>
         <p className="userEdit-ptag">Please edit your profile here</p>
@@ -76,7 +76,7 @@ const UserEdit = () => {
           </form>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

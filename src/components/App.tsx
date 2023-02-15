@@ -98,10 +98,12 @@ const App = () => {
             )}
             {user.isAdmin && <Link to="/admin">Admin</Link>}
           </nav>
-          <RoutesComponent />
         </div>
+        <RoutesComponent />
       </div>
+      <div>
       <Footer />
+      </div>
     </div>
   );
 };

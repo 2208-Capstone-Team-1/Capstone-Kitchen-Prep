@@ -31,7 +31,8 @@ const Footer = () => {
               </Link>
             </div>
             <div className="technologies">
-              <h3>Alexa Developer Console</h3>
+              <h3>Technologies</h3>
+              <li>Alexa Developer Console</li>
               <li>Javascript</li>
               <li>React</li>
               <li>Firebase</li>

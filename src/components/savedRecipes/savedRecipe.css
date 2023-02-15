@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     background-color: rgb(249, 249, 249);
-    height: 100vh;
+    height: 60%;
 }
 
 .savedRecipe_h1{
@@ -74,7 +74,7 @@
 
 .recipeCard_ptagOne {
     font-family: "Oleo Script Swash Caps", cursive;
-    z-index: 20; 
+    z-index: 20;
     font-size: 25pt;
 }
 

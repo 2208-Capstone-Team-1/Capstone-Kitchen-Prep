@@ -1,31 +1,10 @@
 
 .footer {
   padding-top: 30px;
-  /* border-top: 1px solid black; */
-  /* flex-direction: row; */
 }
 
 .footer_groups {
   display:flex;
   flex-direction: row;
   justify-content: space-around;
-  /* align-content: space-between; */
 }
-
-/* .technologies {
-  flex-direction: row;
-} */
-
-
-/* ul {
-      font-size: 11px;
-      line-height: 16px;
-      margin: 3px 0;
-
-}
-
-li {
-  padding: 0 24px 4px 0;
-  display: inline-block;
-
-} */

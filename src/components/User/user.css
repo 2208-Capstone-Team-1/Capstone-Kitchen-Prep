@@ -1,6 +1,7 @@
 .user_body{
     background-color: rgb(249, 249, 249);
-    height: 100%;
+    margin: 1px;
+    height: 60%;
 }
 
 .user_secondBody {
@@ -8,7 +9,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .user_h1 {
@@ -60,8 +60,10 @@
 .userEdit_container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start, center;
     align-items: center;
+    height:100%;
+    padding-bottom: 30px;
 }
 
 .userEdit_h1 {
@@ -80,7 +82,9 @@
     flex-direction: column;
     width: 40%;
 }
-
+.userEdit_form {
+    background: transparent;
+}
 label {
     font-family: 'Playfair Display', serif;
     margin-bottom: 2px;
