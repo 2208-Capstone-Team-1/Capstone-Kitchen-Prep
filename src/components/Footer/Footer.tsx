@@ -18,7 +18,7 @@ const Footer = () => {
                 <li>Ed</li>
               </Link>
               <Link href="https://github.com/marchingkoala" target="_blank">
-                <li>Carmin</li>
+                <li>Carmine</li>
               </Link>
               <Link href="https://github.com/lena-A-Al" target="_blank">
                 <li>Lena</li>
