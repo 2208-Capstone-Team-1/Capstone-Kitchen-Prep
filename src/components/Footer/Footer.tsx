@@ -34,6 +34,7 @@ const Footer = () => {
               <h3>Alexa Developer Console</h3>
               <li>Javascript</li>
               <li>React</li>
+              <li>Firebase</li>
               <li>Typescript</li>
               <li>Webpack</li>
               <li>Sequelize</li>
