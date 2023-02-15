@@ -59,6 +59,7 @@ const App = () => {
             )}
           </p>
         </div>
+
         <div className="main_logoPlace">
           <img
             id="logo"
@@ -80,6 +81,7 @@ const App = () => {
             height="150"
           ></img>
         </div>
+
         <div>
           <nav className="navbar">
             <Link to="/">Home</Link>

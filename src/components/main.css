@@ -31,6 +31,9 @@
 	color: black;
 	font-family: "Oleo Script Swash Caps", cursive;
 	font-size: 80pt;
+	/* replace & refine when can figure out how to shrink image with it */
+	/* font-size:10vmin; */
+	white-space: nowrap;
 }
 
 .mainLogoTxt::before,
