@@ -99,9 +99,7 @@ const App = () => {
           <RoutesComponent />
         </div>
       </div>
-      <div className="footer">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };

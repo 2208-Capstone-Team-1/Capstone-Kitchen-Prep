@@ -1,6 +1,8 @@
 .body {
 	background-color: rgb(249, 249, 249);
-	height: 100vh;
+	/* height: 100vh; */
+	padding-bottom: 30px;
+	border-bottom: 1px solid black;
 }
 
 .main_topbar {
