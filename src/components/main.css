@@ -1,6 +1,7 @@
 .body {
 	background-color: rgb(249, 249, 249);
-	height: 100vh;
+	padding-bottom: 30px;
+	border-bottom: 1px solid black;
 }
 
 .main_topbar {
@@ -29,6 +30,9 @@
 	color: black;
 	font-family: "Oleo Script Swash Caps", cursive;
 	font-size: 80pt;
+	/* replace & refine when can figure out how to shrink image with it */
+	/* font-size:10vmin; */
+	white-space: nowrap;
 }
 
 .mainLogoTxt::before,
