@@ -112,7 +112,7 @@ const ChatMessage: React.FC<chatProps> = (chatProps) => {
   return (
     <>
       <div className={`message ${messageClass}`}>
-        <p>{text}</p>
+        <p className="message_p">{text}</p>
       </div>
     </>
   );
