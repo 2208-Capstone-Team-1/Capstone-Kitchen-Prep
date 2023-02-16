@@ -20,22 +20,6 @@ interface Props {
   };
 }
 
-const auth = "ohtraPTVrBv6hIUHdeXcqStidhsskjLLBfygxKECfmkM1PqLikUwEDHC";
-async function curatedPhotos(rice: any) {
-  const data = await fetch(
-    `https://api.pexels.com/v1/curated?per_page=${rice}`,
-    {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        Authorization: auth,
-      },
-    }
-  );
-  const result = await data.json();
-  console.log("pexel", result);
-}
-
 const Ingredient: React.FC<Props> = ({ user }) => {
   /** customs hooks */
   const dispatch = useDispatch();
@@ -76,6 +60,7 @@ const Ingredient: React.FC<Props> = ({ user }) => {
         const bodyToSubmit = {
           name: values.name,
           quantity: values.quantity,
+          image: `https://spoonacular.com/cdn/ingredients_100x100/${values.name}.jpg`,
         };
 
         const createIngredient2 = await axios.post(
@@ -84,6 +69,8 @@ const Ingredient: React.FC<Props> = ({ user }) => {
         );
 
         dispatch(addIngredient(createIngredient2.data));
+        values.name = "";
+        values.quantity = 0;
       } catch (err) {
         console.log(err);
       }
@@ -109,10 +96,8 @@ const Ingredient: React.FC<Props> = ({ user }) => {
     } catch (error) {}
   };
 
-  const product = "rice";
   useEffect(() => {
     fetchIngredients();
-    curatedPhotos(product);
   }, [user]);
 
   if (loading)
