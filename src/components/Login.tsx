@@ -5,11 +5,8 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { Box } from "@mui/system";
 import { TextField, Typography } from "@mui/material";
-<<<<<<< HEAD
-=======
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import "./login.css"
->>>>>>> main
+import "./login.css";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -18,6 +15,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const auth = getAuth();
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!event.target) return;
@@ -43,11 +41,18 @@ const Login = () => {
 
   const attemptLogin = async (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
+    // console.log(credentials);
     const response = await axios.post("/api/auth", credentials);
     const token = response.data;
     window.localStorage.setItem("token", token);
-    console.log("token", token);
-
+    //sign in to firebase upon login
+    signInWithEmailAndPassword(
+      auth,
+      credentials.email,
+      credentials.password
+    ).catch((error) => {
+      console.error(error);
+    });
     loginWithToken();
   };
 
@@ -56,15 +61,16 @@ const Login = () => {
       <Typography variant="h4" align="center" margin="20px">
         Login
       </Typography>
-<<<<<<< HEAD
       <Box
         component="form"
         onSubmit={attemptLogin}
         sx={{
           display: "flex",
           flexDirection: "column",
+          alignContent: "center",
           alignItems: "center",
-          justifyContent: "space-between",
+          // justifyContent: "center",
+          background: "transparent",
         }}
       >
         <Box margin={1}>
@@ -77,48 +83,24 @@ const Login = () => {
             value={credentials.email}
             onChange={onChange}
           />
-=======
-        <Box
-          component="form"
-          onSubmit={attemptLogin}
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignContent: "center",
-            alignItems: "center",
-            // justifyContent: "center",
-            background: "transparent",
-          }}
-          >
-          <Box margin={1}>
-            <TextField
-              name="email"
-              type="email"
-              label="Email*"
-              variant="outlined"
-              sx={{ width: "350px" }}
-              value={credentials.email}
-              onChange={onChange}
-            />
-          </Box>
-          <Box margin={1}>
-            <TextField
-              name="password"
-              type="password"
-              label="Password*"
-              variant="outlined"
-              sx={{ width: "350px" }}
-              value={credentials.password}
-              onChange={onChange}
-              />
-          </Box>
-          <button>Login</button>
-          <div>
-            Don't have an account yet? Create one{" "}
-            <Link to="/createaccount">here!</Link>
-          </div>
->>>>>>> main
         </Box>
+        <Box margin={1}>
+          <TextField
+            name="password"
+            type="password"
+            label="Password*"
+            variant="outlined"
+            sx={{ width: "350px" }}
+            value={credentials.password}
+            onChange={onChange}
+          />
+        </Box>
+        <button>Login</button>
+        <div>
+          Don't have an account yet? Create one{" "}
+          <Link to="/createaccount">here!</Link>
+        </div>
+      </Box>
     </div>
   );
 };
