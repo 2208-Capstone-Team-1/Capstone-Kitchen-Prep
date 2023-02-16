@@ -1,0 +1,10 @@
+
+.footer {
+  padding-top: 30px;
+}
+
+.footer_groups {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+}

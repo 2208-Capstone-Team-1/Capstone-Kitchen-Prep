@@ -5,7 +5,7 @@ import RecipePage from "../Recipe/Recipe";
 import UserPage from "../User/User";
 import Ingredient from "../Ingredients/Ingredient";
 import Login from "../Login";
-import AboutPage from "../About";
+import AboutPage from "../About/AboutPage";
 import Home from "../Home/Home";
 import SavedRecipes from "../savedRecipes/SavedRecipes";
 import UserEdit from "../User/UserEdit";

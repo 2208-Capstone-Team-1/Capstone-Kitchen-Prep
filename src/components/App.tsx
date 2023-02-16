@@ -7,6 +7,11 @@ import { setUser, resetUser } from "../store/userSlice";
 import { RootState } from "../store";
 import RoutesComponent from "./routes/RoutesComponent";
 import "./main.css";
+<<<<<<< HEAD
+=======
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import Footer from "./Footer/Footer";
+>>>>>>> main
 
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
@@ -37,7 +42,8 @@ const App = () => {
     <div>
       <div className="body">
         <div className="main_topbar">
-          <p className="main_ptag">place holder</p>
+          {/* This ptag should be removed, then use to keep login button right-side */}
+          <p className="main_ptag"></p>
           <p className="main_ptag">
             {!user.id ? (
               <Link to="/login">
@@ -52,6 +58,7 @@ const App = () => {
             )}
           </p>
         </div>
+
         <div className="main_logoPlace">
           <img
             id="logo"
@@ -73,6 +80,7 @@ const App = () => {
             height="150"
           ></img>
         </div>
+
         <div>
           <nav className="navbar">
             <Link to="/">Home</Link>
@@ -91,8 +99,11 @@ const App = () => {
             )}
             {user.isAdmin && <Link to="/admin">Admin</Link>}
           </nav>
-          <RoutesComponent />
         </div>
+        <RoutesComponent />
+      </div>
+      <div>
+      <Footer />
       </div>
     </div>
   );
