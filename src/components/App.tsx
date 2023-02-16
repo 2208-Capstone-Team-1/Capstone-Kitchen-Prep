@@ -7,11 +7,8 @@ import { setUser, resetUser } from "../store/userSlice";
 import { RootState } from "../store";
 import RoutesComponent from "./routes/RoutesComponent";
 import "./main.css";
-<<<<<<< HEAD
-=======
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Footer from "./Footer/Footer";
->>>>>>> main
 
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
