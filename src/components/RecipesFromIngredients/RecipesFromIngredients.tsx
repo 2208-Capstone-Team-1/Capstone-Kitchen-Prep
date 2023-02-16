@@ -44,7 +44,7 @@ const RecipesFromIngredients = () => {
   const recipesHandler = async () => {
     try {
       const { data } = await axios.get(
-        `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients[0].name}${ingredientsNames}&number=02e3c87c14f54629885c45eaa15f0617`
+        `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients[0].name}${ingredientsNames}&number=1&apiKey=9b79c69e5e8943b88f963408824ce4a4`
       );
       const recipeId = data[0]?.id;
       setRecipeId(recipeId);
@@ -60,7 +60,7 @@ const RecipesFromIngredients = () => {
     if (recipeId) {
       // pass the id of the recipe to another endpoint to get the recipe data.
       const recipeInfo = await axios.get(
-        `https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=false&apiKey=02e3c87c14f54629885c45eaa15f0617`
+        `https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=false&apiKey=9b79c69e5e8943b88f963408824ce4a4`
       );
       setRecievedRecipesInfo(recipeInfo.data as any);
       setloading(true);

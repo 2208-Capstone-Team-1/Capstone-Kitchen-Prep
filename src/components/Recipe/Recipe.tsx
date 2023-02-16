@@ -11,7 +11,7 @@ const RecipePage = () => {
 
   const recipeHandler = async () => {
     const { data } = await axios.get(
-      "https://api.spoonacular.com/recipes/random?apiKey=bef8dfabd3624801a7d556e57e26db15"
+      "https://api.spoonacular.com/recipes/random?apiKey=bd758414abcc4276ab40dd407756e3d9"
     );
     const recipe = data.recipes[0];
     setRandomRecipe(recipe as recipeObj);
