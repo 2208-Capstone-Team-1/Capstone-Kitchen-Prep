@@ -7,7 +7,6 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import { Box } from "@mui/system";
 import { Alert, TextField, Typography } from "@mui/material";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 // Validation schema using yup, to check is text field entries are valid.
 const validationSchema = yup.object().shape({
@@ -17,7 +16,7 @@ const validationSchema = yup.object().shape({
     .required("Email is required"),
   password: yup
     .string()
-    .min(6, "Password should be a minimum 6 characters")
+    .min(3, "Password should be a minimum 3 characters")
     .required("Password is required"),
   confirmPassword: yup
     .string()
@@ -82,20 +81,8 @@ const UserCreate = () => {
         };
         const response = await axios.post("/api/auth", credentials);
         const token = response.data;
-        console.log("THIS IS THE AUTH RESPONSE: ", response.data);
         window.localStorage.setItem("token", token);
 
-        const auth = getAuth();
-        //create authorization with firebase
-        console.log("PASSWORD BEING SENT TO FIREBASE: ", values.password);
-        createUserWithEmailAndPassword(auth, values.email, values.password)
-          .then((userCredential) => {
-            // Signed in
-            const user = userCredential.user;
-          })
-          .catch((error) => {
-            console.error(error);
-          });
         setCreationSuccess(true);
 
         setTimeout(() => {

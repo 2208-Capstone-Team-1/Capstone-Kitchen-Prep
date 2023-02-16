@@ -13,8 +13,6 @@ import AdminPage from "../Admin/AdminPage";
 import "../main.css";
 import UserCreate from "../User/UserCreate";
 import RecipesFromIngredients from "../RecipesFromIngredients/RecipesFromIngredients";
-import Chat from "../Firebase/Chat";
-
 
 const RoutesComponent = () => {
   const { user } = useSelector((state: RootState) => state.user);
@@ -36,7 +34,6 @@ const RoutesComponent = () => {
           <>
             <Route path="/user" element={<UserPage />} />
             <Route path="/user/userEdit" element={<UserEdit />} />
-            <Route path="/chat" element={<Chat />} />
           </>
         )}
         {user.isAdmin && <Route path="/admin" element={<AdminPage />} />}
