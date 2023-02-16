@@ -7,10 +7,13 @@ import { setUser, resetUser } from "../store/userSlice";
 import { RootState } from "../store";
 import RoutesComponent from "./routes/RoutesComponent";
 import "./main.css";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
+  //authorization for firebase
+  const auth = getAuth();
 
   const loginWithToken = async () => {
     const token = window.localStorage.getItem("token");
@@ -20,7 +23,6 @@ const App = () => {
           authorization: token,
         },
       });
-
       dispatch(setUser(response.data));
     }
   };
@@ -28,6 +30,8 @@ const App = () => {
   const logout = () => {
     window.localStorage.removeItem("token");
     dispatch(resetUser());
+    //sign out of firebase
+    auth.signOut();
   };
 
   useEffect(() => {
@@ -88,6 +92,7 @@ const App = () => {
                 <Link to="/recipesFromIngredients">
                   Recipes From Ingredients
                 </Link>
+                <Link to="/chat">Chat</Link>
               </>
             )}
             {user.isAdmin && <Link to="/admin">Admin</Link>}
