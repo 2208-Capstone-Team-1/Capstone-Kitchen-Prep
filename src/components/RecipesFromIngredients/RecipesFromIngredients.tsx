@@ -19,6 +19,7 @@ const RecipesFromIngredients = () => {
   const [recievedRecipesInfo, setRecievedRecipesInfo] = useState({} as any);
   const [loading, setloading] = useState(false);
   const [ingredientsNames, setIngredientsNames] = useState("");
+  const [recipeId, setRecipeId] = useState(0);
   /** selectors */
   const { ingredients } = useSelector((state: RootState) => state.ingredients);
   const { user } = useSelector((state: RootState) => state.user);
@@ -41,7 +42,7 @@ const RecipesFromIngredients = () => {
   const id: number[] =
     recievedRecipes &&
     recievedRecipes.map((recipe: receivedRecipesObj) => {
-      return recipe.id;
+      return setRecipeId(recipe.id);
     });
   console.log("id", id);
 
@@ -54,7 +55,7 @@ const RecipesFromIngredients = () => {
       // take the id and search another endpoint to extract more instructions about the recipes.
       setRecievedRecipes(data);
       console.log(
-        `******* This is the path: https://api.spoonacular.com/recipes/${id}/information?includeNutrition=false&apiKey=1ffd1160eeea4483b4a8c3c5dc94a9ed`
+        `******* This is the path: https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=false&apiKey=1ffd1160eeea4483b4a8c3c5dc94a9ed`
       );
       // if (id) {
       //   // pass the id of the recipe to another endpoint to get the recipe data.
@@ -86,10 +87,10 @@ const RecipesFromIngredients = () => {
   }, []);
 
   useEffect(() => {
-    if (id) {
+    if (recipeId) {
       recipeInfoHandler();
     }
-  }, [id]);
+  }, [recipeId]);
 
   // if loading is false, display an error message
   if (!loading) {
