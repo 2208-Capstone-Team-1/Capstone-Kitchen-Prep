@@ -8,9 +8,9 @@ const container = document.querySelector("#root")!;
 //exclamation point at the end guarantees that the above line will always be defined
 const root = createRoot(container);
 root.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
 );

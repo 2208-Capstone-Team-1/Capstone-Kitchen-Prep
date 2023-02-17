@@ -14,8 +14,6 @@ const App = () => {
   const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
   //authorization for firebase
-  const auth = getAuth();
-
   const loginWithToken = async () => {
     const token = window.localStorage.getItem("token");
     if (token) {
@@ -31,8 +29,6 @@ const App = () => {
   const logout = () => {
     window.localStorage.removeItem("token");
     dispatch(resetUser());
-    //sign out of firebase
-    auth.signOut();
   };
 
   useEffect(() => {
@@ -93,7 +89,9 @@ const App = () => {
                 <Link to="/user">Account</Link>
                 <Link to="/savedRecipe">Saved Recipes</Link>
                 <Link to="/userFridge">Fridge</Link>
-                <Link to="/chat">Chat</Link>
+                <Link to="/recipesFromIngredients">
+                  Recipes From Ingredients
+                </Link>
               </>
             )}
             {user.isAdmin && <Link to="/admin">Admin</Link>}

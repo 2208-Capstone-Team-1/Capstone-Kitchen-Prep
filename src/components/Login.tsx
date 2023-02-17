@@ -15,7 +15,6 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const auth = getAuth();
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!event.target) return;
@@ -41,18 +40,9 @@ const Login = () => {
 
   const attemptLogin = async (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // console.log(credentials);
     const response = await axios.post("/api/auth", credentials);
     const token = response.data;
     window.localStorage.setItem("token", token);
-    //sign in to firebase upon login
-    signInWithEmailAndPassword(
-      auth,
-      credentials.email,
-      credentials.password
-    ).catch((error) => {
-      console.error(error);
-    });
     loginWithToken();
   };
 

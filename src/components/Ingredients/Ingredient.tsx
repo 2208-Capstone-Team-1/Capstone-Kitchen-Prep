@@ -60,6 +60,7 @@ const Ingredient: React.FC<Props> = ({ user }) => {
         const bodyToSubmit = {
           name: values.name,
           quantity: values.quantity,
+          image: `https://spoonacular.com/cdn/ingredients_100x100/${values.name}.jpg`,
         };
 
         const createIngredient2 = await axios.post(
@@ -68,6 +69,8 @@ const Ingredient: React.FC<Props> = ({ user }) => {
         );
 
         dispatch(addIngredient(createIngredient2.data));
+        values.name = "";
+        values.quantity = 0;
       } catch (err) {
         console.log(err);
       }
