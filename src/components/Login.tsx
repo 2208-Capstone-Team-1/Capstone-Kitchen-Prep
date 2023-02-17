@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Box } from "@mui/system";
 import { TextField, Typography } from "@mui/material";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import "./login.css"
+// import "./login.css"
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -15,6 +15,7 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const auth = getAuth();
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!event.target) return;
@@ -43,6 +44,14 @@ const Login = () => {
     const response = await axios.post("/api/auth", credentials);
     const token = response.data;
     window.localStorage.setItem("token", token);
+    //sign in to firebase upon login
+    signInWithEmailAndPassword(
+      auth,
+      credentials.email,
+      credentials.password
+    ).catch((error) => {
+      console.error(error);
+    });
     loginWithToken();
   };
 
