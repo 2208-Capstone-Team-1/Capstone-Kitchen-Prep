@@ -1,3 +1,4 @@
+```js
 const axios = require("axios");
 
 // getting user id from /api/users db 
@@ -20,4 +21,4 @@ module.exports.fetchID = async function fetchID(){
         console.log('ERROR', error)
         return null;
     }
-}
+}```

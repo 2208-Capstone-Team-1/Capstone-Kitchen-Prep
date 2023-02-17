@@ -1,4 +1,4 @@
-
+``` js
 let fridgeStorage = [];
 
 // below function takes the ingredient from the user & store it in fridgeStorage.
@@ -12,4 +12,4 @@ const fridgeFiller = function(ingredient){
 
 module.exports = {
     fridgeFiller,
-}
+}```
