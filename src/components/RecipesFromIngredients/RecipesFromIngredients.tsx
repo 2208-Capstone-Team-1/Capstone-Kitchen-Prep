@@ -63,7 +63,7 @@ const RecipesFromIngredients = () => {
   // load
   useEffect(() => {
     if (user.id) {
-      fetchIngredients(); 
+      fetchIngredients();
     }
   }, [user]);
 
