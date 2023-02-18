@@ -3,14 +3,13 @@ import "./about.css";
 const AboutPage = () => {
   return (
     <div className="about">
-      <p className="about_p">Chef's Kiss is a kitchen helper application that can help you decide
-        meal of the day based on ingredients in your fridge!</p>
+      <p className="about_p">Chef's Kiss is a kitchen helper application that can help you decide what to make based on the ingredients in your fridge!</p>
       <div className="withAlexa">
         <h2 className="aboutAlexaH2">How to use with Alexa</h2>
         <div className="AboutalexaContainer">
           <div className="AboutAlexbox">
             <img src="../static/instructionIcon-01.jpg" width="220px" />
-            <p className="instruction_p">Activate by saying "Alexa, open Chef's Kiss</p>
+            <p className="instruction_p">Activate by saying "Alexa, open Chef's Kiss"</p>
           </div>
           <div className="AboutAlexbox">
             <img src="../static/instructionIcon-02.jpg" width="220px"  />
