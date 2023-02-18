@@ -69,7 +69,7 @@ const RecipePage = () => {
               (foodItem: ingredientObj, index: number) => {
                 return (
                   <div>
-                    <p className="recipe_ptag">
+                    <p className="recipe_ptag" key={index}>
                       {index}: {foodItem.original}
                     </p>
                   </div>
@@ -80,9 +80,9 @@ const RecipePage = () => {
           <h2 className="recipe_h2">Recipe</h2>
           <div className="recipe_instruction">
             {randomRecipe.analyzedInstructions[0].steps.map(
-              (step: instructionObj) => {
+              (step: instructionObj, index: number) => {
                 return (
-                  <p className="recipe_ptag" key={step.number}>
+                  <p className="recipe_ptag" key={index}>
                     {step.number}: {step.step}
                   </p>
                 );

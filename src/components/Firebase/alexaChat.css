@@ -1,0 +1,61 @@
+.FirebaseApp {
+  text-align: center;
+  max-width: 728px;
+  margin: 0 auto;
+  border: black 2px solid;
+}
+
+.FirebaseApp header {
+  background-color: #464646;
+  height: 10vh;
+  min-height: 50px;
+  color: white;
+  width: 100%;
+  max-width: 728px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 99;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.FirebaseApp section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: rgb(40, 37, 53);
+}
+
+main {
+  padding: 10px;
+  height: 80vh;
+  /* margin: 10vh 0 10vh; */
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+.message_p {
+  max-width: 500px;
+  margin-bottom: 12px;
+  line-height: 24px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  position: relative;
+  color: white;
+  text-align: center;
+}
+
+.sent p {
+  color: white;
+  background: #0b93f6;
+  align-self: flex-end;
+}
+
+.received p {
+  background: #e5e5ea;
+  color: black;
+}

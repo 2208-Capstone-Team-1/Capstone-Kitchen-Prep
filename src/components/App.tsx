@@ -7,7 +7,6 @@ import { setUser, resetUser } from "../store/userSlice";
 import { RootState } from "../store";
 import RoutesComponent from "./routes/RoutesComponent";
 import "./main.css";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Footer from "./Footer/Footer";
 
 const App = () => {
@@ -89,10 +88,11 @@ const App = () => {
                 <Link to="/user">Account</Link>
                 <Link to="/savedRecipe">Saved Recipes</Link>
                 <Link to="/userFridge">Fridge</Link>
-                <Link to="/chat">Chat</Link>
                 <Link to="/recipesFromIngredients">
                   Recipes From Ingredients
                 </Link>
+                <Link to="/groupChat">Group Chat</Link>
+                <Link to="/alexaChat">Alexa Chat</Link>
               </>
             )}
             {user.isAdmin && <Link to="/admin">Admin</Link>}
@@ -101,7 +101,7 @@ const App = () => {
         <RoutesComponent />
       </div>
       <div>
-      <Footer />
+        <Footer />
       </div>
     </div>
   );

@@ -13,8 +13,8 @@ import AdminPage from "../Admin/AdminPage";
 import "../main.css";
 import UserCreate from "../User/UserCreate";
 import RecipesFromIngredients from "../RecipesFromIngredients/RecipesFromIngredients";
-import Chat from "../Firebase/Chat";
-
+import GroupChat from "../Firebase/GroupChat";
+import AlexaChat from "../Firebase/AlexaChat";
 
 const RoutesComponent = () => {
   const { user } = useSelector((state: RootState) => state.user);
@@ -36,7 +36,8 @@ const RoutesComponent = () => {
           <>
             <Route path="/user" element={<UserPage />} />
             <Route path="/user/userEdit" element={<UserEdit />} />
-            <Route path="/chat" element={<Chat />} />
+            <Route path="/groupChat" element={<GroupChat />} />
+            <Route path="/alexaChat" element={<AlexaChat />} />
           </>
         )}
         {user.isAdmin && <Route path="/admin" element={<AdminPage />} />}

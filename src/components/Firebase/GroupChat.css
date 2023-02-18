@@ -46,7 +46,7 @@ main::-webkit-scrollbar-track {
 }
 
 main::-webkit-scrollbar-thumb {
-  background: #6649b8;
+  background: white;
 }
 
 form {
@@ -67,7 +67,6 @@ form button {
 
 input {
   line-height: 1.5;
-  width: 100%;
   font-size: 1.5rem;
   background: rgb(58, 58, 58);
   color: white;
@@ -80,7 +79,7 @@ button {
   background-color: #1157e2; /* Green */
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 5px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
