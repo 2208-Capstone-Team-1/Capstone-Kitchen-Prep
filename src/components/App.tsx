@@ -37,23 +37,7 @@ const App = () => {
   return (
     <div>
       <div className="body">
-        <div className="main_topbar">
-          {/* This ptag should be removed, then use to keep login button right-side */}
-          <p className="main_ptag"></p>
-          <p className="main_ptag">
-            {!user.id ? (
-              <Link to="/login">
-                <Button variant="contained">Login</Button>
-              </Link>
-            ) : (
-              user.id && (
-                <Button variant="contained" onClick={logout}>
-                  Logout
-                </Button>
-              )
-            )}
-          </p>
-        </div>
+        
 
         <div className="main_logoPlace">
           <img
@@ -77,6 +61,24 @@ const App = () => {
           ></img>
         </div>
 
+        <div className="main_topbar">
+          {/* This ptag should be removed, then use to keep login button right-side */}
+          <p className="main_ptag"></p>
+          <p className="main_ptag">
+            {!user.id ? (
+              <Link to="/login">
+                <Button variant="contained">Login</Button>
+              </Link>
+            ) : (
+              user.id && (
+                <Button variant="contained" onClick={logout}>
+                  Logout
+                </Button>
+              )
+            )}
+          </p>
+        </div>
+        
         <div>
           <nav className="navbar">
             <Link to="/">Home</Link>

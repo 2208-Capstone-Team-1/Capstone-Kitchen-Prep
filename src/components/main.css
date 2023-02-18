@@ -6,7 +6,6 @@
 
 .main_topbar {
 	margin: 0;
-	border-bottom: 1px solid black;
 	display: flex;
 	justify-content: space-between;
 	align-items: baseline;
@@ -14,7 +13,6 @@
 
 .main_logoPlace {
 	padding: 5px;
-	border-bottom: 1px solid black;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
