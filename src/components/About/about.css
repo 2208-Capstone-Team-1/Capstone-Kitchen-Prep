@@ -3,7 +3,28 @@
 }
 
 .about_p {
-  text-align: center;
-  color: black;
+font-family: "Playfair Display", serif;
+font-size: 16pt;
+}
+
+.withAlexa {
+  margin-top: 50px;
+}
+
+.aboutAlexaH2 {
+  margin-bottom: 60px;
+}
+
+.AboutalexaContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.AboutAlexbox {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
