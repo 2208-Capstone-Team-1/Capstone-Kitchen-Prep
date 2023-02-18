@@ -1,6 +1,6 @@
-.login {
+.userCreateContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 150px;
+  padding-bottom: 400px;
 }
