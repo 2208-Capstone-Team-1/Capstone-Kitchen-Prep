@@ -17,8 +17,6 @@ const app = firebase.initializeApp({
   database: "https://chefs-kiss-d30f4-default-rtdb.firebaseio.com",
 });
 
-//define authorization for firebase
-const auth = firebase.auth() as any;
 const database = getDatabase(app);
 //defining what the chatlog type will be
 interface chatlogType {

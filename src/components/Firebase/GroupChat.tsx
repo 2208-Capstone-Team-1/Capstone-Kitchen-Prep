@@ -5,7 +5,7 @@ import "firebase/compat/auth";
 import "firebase/compat/analytics";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
-import "./chat.css";
+import "./groupChat.css";
 
 //intialize firebase app
 firebase.initializeApp({
@@ -23,7 +23,7 @@ firebase.initializeApp({
 const auth = firebase.auth() as any;
 const firestore = firebase.firestore();
 
-const Chat = () => {
+const GroupChat = () => {
   //take user as an object out of the authorized user
   const [user] = useAuthState(auth);
   return (
@@ -119,4 +119,4 @@ const ChatMessage: React.FC<chatProps> = (chatProps) => {
   );
 };
 
-export default Chat;
+export default GroupChat;
