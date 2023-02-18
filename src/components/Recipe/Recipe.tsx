@@ -70,7 +70,7 @@ const RecipePage = () => {
                 return (
                   <div>
                     <p className="recipe_ptag" key={index}>
-                      {index}: {foodItem.original}
+                      {index + 1}: {foodItem.original}
                     </p>
                   </div>
                 );

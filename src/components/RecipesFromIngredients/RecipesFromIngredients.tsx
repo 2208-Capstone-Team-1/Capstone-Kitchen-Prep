@@ -85,18 +85,17 @@ const RecipesFromIngredients = () => {
               <img className="recipe_img" src={imageURL} />
               <h2 className="recipe_h2">Ingredients</h2>
               <div className="recipe_ingredients">
-                {!recievedRecipesInfo.extendedIngredients.length && // objects are truthy if if they are empty
-                  recievedRecipesInfo.extendedIngredients?.map(
-                    (foodItem: any, index: number) => {
-                      return (
-                        <div key={index}>
-                          <p className="recipe_ptag">
-                            {index}: {foodItem.original}
-                          </p>
-                        </div>
-                      );
-                    }
-                  )}
+                {recievedRecipesInfo.extendedIngredients?.map(
+                  (foodItem: any, index: number) => {
+                    return (
+                      <div key={index}>
+                        <p className="recipe_ptag">
+                          {index + 1}: {foodItem.original}
+                        </p>
+                      </div>
+                    );
+                  }
+                )}
               </div>
               <h2 className="recipe_h2">Recipe</h2>
               <div className="recipe_instruction">
