@@ -58,8 +58,6 @@ const AdminSingleUserTable: React.FC<Props> = ({ user }) => {
     }
   };
 
-  useEffect(() => {}, []);
-
   return (
     <TableRow>
       <TableCell>
