@@ -1,13 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import firebase from "firebase/compat/app";
 import { onValue, ref, getDatabase } from "firebase/database";
-import "firebase/compat/firestore";
-import "firebase/compat/auth";
-import "firebase/compat/analytics";
-import { useCollectionData } from "react-firebase-hooks/firestore";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
+import "./alexaChat.css";
 
 //intialize firebase app
 const app = firebase.initializeApp({
@@ -24,26 +20,62 @@ const app = firebase.initializeApp({
 //define authorization for firebase
 const auth = firebase.auth() as any;
 const database = getDatabase(app);
+//defining what the chatlog type will be
+interface chatlogType {
+  DATE: string;
+  SPEAKER: string;
+  TIME: string;
+  VALUE: string;
+}
 
 const AlexaChat = () => {
-  const [chatlogs, setChatlogs] = useState({});
+  const [chatlogs, setChatlogs] = useState<chatlogType[]>([]);
   const { user } = useSelector((state: RootState) => state.user);
 
-  useEffect(() => {
-    const query = ref(database, "Alexa/" + user.id);
+  const getChatlog = () => {
+    const query = ref(database, "Alexa/" + user.phoneNumber);
     return onValue(query, (snapshot) => {
-      const data = snapshot.val();
-      console.log(data);
-      //   if (snapshot.exists()) {
-      //     Object.values(
-      //       data.map((chatlog: any) => {
-      //         setChatlogs((chatlogs) => [...chatlogs, chatlog]);
-      //       })
-      //     );
-      //   }
+      //snapshot.val() takes a snapshot of the firebase database and stores in the alexaData variable
+      const alexaData = snapshot.val();
+      //initiate empty array
+      let alexaDataArr = [];
+      // push the values in the object into an array because it needs to be iterable
+      if (snapshot.exists()) {
+        for (const alexaInput in alexaData) {
+          alexaDataArr.push(alexaData[alexaInput]);
+        }
+        setChatlogs(alexaDataArr);
+      }
     });
+  };
+
+  useEffect(() => {
+    getChatlog();
   }, []);
-  return <div></div>;
+
+  return (
+    <div className="FirebaseApp">
+      <header style={{ justifyContent: "center" }}>
+        <h1>Chat With Alexa</h1>
+      </header>
+      <main>
+        <div>
+          {chatlogs.map((input, index) => {
+            return (
+              <div key={index} className="messages">
+                <div className="message sent">
+                  <p className="message_p">{input.SPEAKER}</p>
+                </div>
+                <div className="message received">
+                  <p className="message_p">{input.VALUE}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </main>
+    </div>
+  );
 };
 
 export default AlexaChat;

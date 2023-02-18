@@ -16,6 +16,7 @@ firebase.initializeApp({
   messagingSenderId: "376445935624",
   appId: "1:376445935624:web:1cd185df98d8d51beaf1bd",
   measurementId: "G-3T0TQJQNJH",
+  database: "https://chefs-kiss-d30f4-default-rtdb.firebaseio.com",
 });
 
 //define authorization for firebase
@@ -27,8 +28,8 @@ const Chat = () => {
   const [user] = useAuthState(auth);
   return (
     <div className="FirebaseApp">
-      <header>
-        <h1>Chat With Alexa</h1>
+      <header style={{ justifyContent: "center" }}>
+        <h1>Group Chat</h1>
       </header>
       {/* if user is signed in, show ChatRoom, otherwise show text */}
       <section>{user ? <ChatRoom /> : <ChatBox />}</section>
