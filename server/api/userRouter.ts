@@ -87,7 +87,7 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
   }
 });
 
-/* update a new user
+/* update a user
 localhost:3000/api/users/:id */
 router.put("/:id", async (req: Request, res: Response, next: NextFunction) => {
   try {
