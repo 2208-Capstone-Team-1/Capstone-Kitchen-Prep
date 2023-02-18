@@ -5,6 +5,7 @@ import { TableBody, Table, TableRow, TableCell } from "@mui/material";
 import { RootState } from "../../store";
 import AdminSingleUserTable from "./AdminSingleUserTable";
 import { setUsers } from "../../store/userSlice";
+import MuiLoader from "../MuiLoader";
 
 interface Props {
   user: { id: string };
@@ -31,9 +32,8 @@ const AdminUsersList: React.FC<Props> = ({ user }) => {
       const fetchAllUsers = await axios.get(`/api/users`);
       dispatch(setUsers(fetchAllUsers.data));
       setloading(true);
-      console.log(fetchAllUsers.data);
     } catch (err) {
-      //
+      console.error(err);
     }
   };
 
@@ -42,20 +42,18 @@ const AdminUsersList: React.FC<Props> = ({ user }) => {
   }, []);
 
   if (!loading) {
-    return <div>ERROR!</div>;
+    return (
+      <div className="loadingContainer">
+        <MuiLoader />
+      </div>
+    );
   }
 
-  // <UsersTable
-  //   StyledTableCell={StyledTableCell}
-  //   StyledTableRow={StyledTableRow}
-  //   key={user.id}
-  //   user={user}
-  // />
   return (
     <Table>
       <TableBody>
         <TableRow>
-          <TableCell>Edit</TableCell>
+          <TableCell>Action</TableCell>
           <TableCell>First Name</TableCell>
           <TableCell>Last Name</TableCell>
           <TableCell>Email</TableCell>
