@@ -5,14 +5,22 @@
 .about_p {
 font-family: "Playfair Display", serif;
 font-size: 16pt;
+margin-top: 50px;
+}
+
+.instruction_p{
+  font-family: "Playfair Display", serif;
+  font-size: 13pt;
 }
 
 .withAlexa {
   margin-top: 50px;
+  margin-bottom: 100px;
 }
 
 .aboutAlexaH2 {
   margin-bottom: 60px;
+  font-size: 25pt;
 }
 
 .AboutalexaContainer {
@@ -20,6 +28,7 @@ font-size: 16pt;
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  margin-bottom: 60px;
 }
 
 .AboutAlexbox {
