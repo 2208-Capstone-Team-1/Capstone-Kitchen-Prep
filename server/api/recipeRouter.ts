@@ -79,7 +79,7 @@ router.delete(
         throw new Error(NOTFOUNDMESSAGE);
       }
       await recipeToDelete.destroy();
-      res.send(202);
+      res.sendStatus(202);
     } catch (error) {
       return res.sendStatus(404).send(error);
     }

@@ -2,7 +2,6 @@ import db from "./db";
 import User from "./User";
 import recipeSeed from "./dbSeeds/recipeSeed";
 import ingredientSeed from "./dbSeeds/ingredientSeed";
-import chatlogSeed from "./dbSeeds/chatlogSeed";
 
 const seed = async () => {
   console.log("BEGINNING SEEDING...");
@@ -58,7 +57,6 @@ const seed = async () => {
 
   await recipeSeed(users);
   await ingredientSeed(users);
-  await chatlogSeed(users);
 
   return {
     users: {
