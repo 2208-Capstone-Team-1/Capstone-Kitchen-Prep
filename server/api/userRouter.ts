@@ -122,7 +122,7 @@ router.delete(
         throw new Error(NOTFOUNDMESSAGE);
       }
       await userToDelete.destroy();
-      res.send(202);
+      res.sendStatus(202);
     } catch (error) {
       return res.sendStatus(404).send(error);
     }
