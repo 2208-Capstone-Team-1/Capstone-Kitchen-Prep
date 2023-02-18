@@ -1,3 +1,4 @@
+```js
 const axios = require('axios'); 
 
 
@@ -18,4 +19,4 @@ module.exports.fetchIngredientApi = async function fetchIngredientApi(id){
         console.log('ERROR', error);
         return null;
     }
-}
+}```

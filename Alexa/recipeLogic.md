@@ -1,3 +1,4 @@
+```js
 const axios = require("axios");
 
 module.exports.recipeFetcher = async function recipeFetcher(url){
@@ -8,4 +9,4 @@ module.exports.recipeFetcher = async function recipeFetcher(url){
         console.log('ERROR', error)
         return null;
     }
-}
+}```
