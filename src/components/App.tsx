@@ -37,9 +37,9 @@ const App = () => {
   return (
     <div>
       <div className="body">
-        
+
       <div className="main_topbar">
-          
+
           <div className="main_ptag">
             {!user.id ? (
               <Link to="/login">
@@ -73,21 +73,21 @@ const App = () => {
             alt="chef's kiss logo"
             width="70"
             height="90"
-          ></img>       
+          ></img>
         </div>
 
-        
-        
+
+
 
         <div>
           <nav className="navbar">
-            <Link to="/" id="page">Home</Link>
+            {/* <Link to="/" id="page">Home</Link> */}
             <Link to="/about" id="page">About</Link>
             <Link to="/randomRecipe" id="page">Recipe of the Day </Link>
             {/*only logged-in user can view below tabs */}
             {user.id && (
               <>
-                <Link to="/savedRecipe" id="page">Saved Recipes</Link>    
+                <Link to="/savedRecipe" id="page">Saved Recipes</Link>
                 <Link to="/userFridge" id="page">Fridge</Link>
                 <Link to="/recipesFromIngredients" id="page">
                   Recipes From Ingredients

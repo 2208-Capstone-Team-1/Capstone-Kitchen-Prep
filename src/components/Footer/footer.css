@@ -1,9 +1,10 @@
 .footer {
   margin-top: auto;
-  color: white;
+  /* color: white; */
   font-family: "Segoe UI", Segoe UI;
-  background-color: rgba(54, 54, 54, 0.809);
-  padding-top: 3em;
+  font-size: larger;
+  background-color: rgba(236, 207, 43, 0.809);
+  padding-top: 2em;
   bottom: 0;
   width: 100%;
   padding: 1;
