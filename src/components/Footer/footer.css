@@ -1,7 +1,8 @@
 .footer {
   margin-top: auto;
   color: white;
-  background-color: rgb(54, 54, 54);
+  font-family: "Segoe UI", Segoe UI;
+  background-color: rgba(54, 54, 54, 0.809);
   padding-top: 3em;
   bottom: 0;
   width: 100%;
@@ -18,8 +19,4 @@
 
 h3{
   text-decoration: underline;
-}
-ul{
-  margin-bottom: 1px;
-  list-style-type: circle black;
 }

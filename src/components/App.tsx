@@ -38,7 +38,23 @@ const App = () => {
     <div>
       <div className="body">
         
-        
+      <div className="main_topbar">
+          
+          <div className="main_ptag">
+            {!user.id ? (
+              <Link to="/login">
+                <button id= "login" className="slide">Login</button>
+              </Link>
+            ) : (
+              user.id && (
+                <>
+                  <Link to="/user"><button id="account" className="slide">Account</button></Link>
+                  <button id="login" className="slide" onClick={logout}>Logout</button>
+                  </>
+              )
+            )}
+          </div>
+        </div>
 
         <div className="main_logoPlace">
           <img
@@ -60,23 +76,7 @@ const App = () => {
           ></img>       
         </div>
 
-        <div className="main_topbar">
-          
-          <div className="main_ptag">
-            {!user.id ? (
-              <Link to="/login">
-                <button id= "login" className="slide">Login</button>
-              </Link>
-            ) : (
-              user.id && (
-                <>
-                  <Link to="/user"><button id="account" className="slide">Account</button></Link>
-                  <button id="login" className="slide" onClick={logout}>Logout</button>
-                  </>
-              )
-            )}
-          </div>
-        </div>
+        
         
 
         <div>
