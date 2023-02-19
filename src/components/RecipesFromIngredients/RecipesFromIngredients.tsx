@@ -35,14 +35,13 @@ const RecipesFromIngredients = () => {
         const nameStrings = allIngredientsNames(ingredientsLocal);
 
         const { data } = await axios.get(
-          `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${nameStrings}&number=1&apiKey=bd758414abcc4276ab40dd407756e3d9`
+          `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${nameStrings}&number=1&apiKey=7c87c15418854c15bd35639c810f0955`
         );
         if (data[0]?.id) {
           // this is waiting on the new state, not the current state
           const recipeId = data[0].id;
-          console.log("id", recipeId);
           const recipeInfo = await axios.get(
-            `https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=false&apiKey=bd758414abcc4276ab40dd407756e3d9`
+            `https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=false&apiKey=7c87c15418854c15bd35639c810f0955`
           );
           setRecievedRecipesInfo(recipeInfo.data as any);
           setloading(true);
