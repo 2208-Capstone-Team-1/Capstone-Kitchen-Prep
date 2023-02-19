@@ -1,87 +1,85 @@
-
 .body {
-	background-color: rgb(249, 249, 249);
-	padding-bottom: 20px;
-	border-bottom: 1px solid black;
+  background-color: rgb(249, 249, 249);
+  padding-bottom: 20px;
+  border-bottom: 1px solid black;
 }
 
 .main_topbar {
-	/* margin-bottom: 20px; */
-	display: flex;
-	justify-content: right;
-	align-items: baseline;
+  /* margin-bottom: 20px; */
+  display: flex;
+  justify-content: right;
+  align-items: baseline;
 }
 
 .main_ptag {
-	display: flex;
-	flex-direction: row;
-	gap: 5px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 }
 
 .main_logoPlace {
-	width: 100%;
-	/* height: 15%; */
-	/* padding: 10px; */
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	/* gap: 5px; */
+  width: 100%;
+  /* height: 15%; */
+  /* padding: 10px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* gap: 5px; */
 }
 .mainLogoTxt {
-	margin-top: 10px;
-	position: relative;
-	height: min-content;
-	width: auto;
-	text-decoration: none;
-	align-content: center;
-	color: black;
-	font-family: "Oleo Script Swash Caps", cursive;
-	font-size: 50pt;
-	white-space: nowrap;
+  margin-top: 10px;
+  position: relative;
+  height: min-content;
+  width: auto;
+  text-decoration: none;
+  align-content: center;
+  color: black;
+  font-family: "Oleo Script Swash Caps", cursive;
+  font-size: 50pt;
+  white-space: nowrap;
 }
 
 .slide {
-	width: 100%;
-	height: 30px;
-	background-color: rgb(238, 165, 29);
-	color: black;
-	font-weight: bolder;
-	letter-spacing: 1px;
-	border: solid seashell 3px;
-	border-radius: 10px;
-	font-size: 18px;
-	outline: none;
-	font-family: "Segoe UI", Segoe UI;
-
+  width: 100%;
+  height: 30px;
+  background-color: rgb(243, 212, 165);
+  color: black;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  border: solid seashell 3px;
+  border-radius: 10px;
+  font-size: 18px;
+  outline: none;
+  font-family: "Segoe UI", Segoe UI;
 }
 
 .slide {
-	transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .slide:hover {
-	background-color: darksalmon;
-	color: white;
+  background-color: darksalmon;
+  color: white;
 }
 
 .mainLogoTxt::before,
 .mainLogoTxt::after,
 span::before,
 span::after {
-	content: "";
-	position: absolute;
-	width: 20px;
-	height: 20px;
-	background: transparent;
-	transition: 1s;
-	/* -webkit-mix-blend-mode: hue; */
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  transition: 1s;
+  /* -webkit-mix-blend-mode: hue; */
 }
 
 .mainLogoTxt::before {
-	top: -5px;
-	left: -5px;
-	border-top: 5px solid rgb(247, 204, 123);
-	border-left: 5px solid rgb(247, 204, 123);
+  top: -5px;
+  left: -5px;
+  border-top: 5px solid rgb(243, 212, 165);
+  border-left: 5px solid rgb(243, 212, 165);
 }
 /*.mainLogoTxt::after {
 	top: -2px;
@@ -97,46 +95,44 @@ span::after {
 	border-left: 5px solid rgb(247, 204, 123);
 }*/
 span::after {
-	bottom: -5px;
-	right: -5px;
-	border-bottom: 5px solid rgb(247, 204, 123);
-	border-right: 5px solid rgb(247, 204, 123);
+  bottom: -5px;
+  right: -5px;
+  border-bottom: 5px solid rgb(243, 212, 165);
+  border-right: 5px solid rgb(243, 212, 165);
 }
 
 .mainLogoTxt:hover::before,
 .mainLogoTxt:hover::after,
 .mainLogoTxt:hover span::before,
 .mainLogoTxt:hover span::after {
-	width: calc(700px / 2);
-	height: calc(100px / 2);
+  width: calc(700px / 2);
+  height: calc(100px / 2);
 }
 
 #logo {
-	display: flex;
-	justify-self: center;
-	margin: 25px;
+  display: flex;
+  justify-self: center;
+  margin: 25px;
 }
 
 .navbar {
-	background-color: black;
-	margin: 0;
-	border-bottom: 1px solid black;
-	display: flex;
-	justify-content: space-around;
+  background-color: black;
+  margin: 0;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-around;
 }
 
 nav a {
-	text-decoration: none;
-	color: rgb(249, 249, 249);
-	font-family: "Segoe UI", Segoe UI;
-	margin: 2px;
+  text-decoration: none;
+  color: rgb(249, 249, 249);
+  font-family: "Segoe UI", Segoe UI;
+  margin: 2px;
 }
 #page {
-	/* margin: 3px; */
-	/* width: 8%; */
-	height: 100%;
-	align-self: center;
-	text-align: center;
+  /* margin: 3px; */
+  /* width: 8%; */
+  height: 100%;
+  align-self: center;
+  text-align: center;
 }
-
-

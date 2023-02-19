@@ -3,7 +3,7 @@
   /* color: white; */
   font-family: "Segoe UI", Segoe UI;
   font-size: larger;
-  background-color: rgba(236, 207, 43, 0.809);
+  background-color: rgb(243, 212, 165);
   padding-top: 2em;
   bottom: 0;
   width: 100%;
@@ -18,6 +18,6 @@
   margin-right: 50px;
 }
 
-h3{
+h3 {
   text-decoration: underline;
 }
