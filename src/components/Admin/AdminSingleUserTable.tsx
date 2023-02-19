@@ -46,7 +46,6 @@ const AdminSingleUserTable: React.FC<Props> = ({ user }) => {
       const isAdmin = user.isAdmin === true ? false : true;
       // set variable to object
       const update = { isAdmin };
-      console.log(update);
       //send updated admin info to back end
       await axios.put(`/api/users/${userid}`, update);
       //refetch all users
@@ -58,8 +57,6 @@ const AdminSingleUserTable: React.FC<Props> = ({ user }) => {
       console.error(error);
     }
   };
-
-  useEffect(() => {}, []);
 
   return (
     <TableRow>

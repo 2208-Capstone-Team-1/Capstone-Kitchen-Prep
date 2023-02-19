@@ -6,7 +6,7 @@
 }
 
 .main_topbar {
-	margin: 0;
+	margin-bottom: 20px;
 	display: flex;
 	justify-content: right;
 	align-items: baseline;
@@ -47,13 +47,14 @@
 	height: 30px;
 	background-color: rgb(238, 165, 29);
 	color: black;
-	font-weight: 300;
+	font-weight: 500;
 	letter-spacing: 1px;
 	border: outset seashell 3px;
 	border-radius: 100px;
 	font-size: 15px;
 	outline: none;
-	font-family: "Chalkduster", serif;
+	font-family: "Playfair Display", serif;
+	
 }
 
 .slide {
@@ -119,7 +120,7 @@ span::after {
 }
 
 .navbar {
-	background-color: rgb(238, 165, 29);
+	background-color: black;
 	margin: 0;
 	border-bottom: 1px solid black;
 	display: flex;
@@ -129,7 +130,7 @@ span::after {
 nav a {
 	text-decoration: none;
 	color: rgb(249, 249, 249);
-	font-family: "Comic Sans MS", serif;
+	font-family: "Playfair Display", serif;
 	margin: 2px;
 }
 #page {
@@ -140,7 +141,8 @@ nav a {
 	text-align: center;
 }
 #page:hover {
-	background-color: darksalmon;
-	border: coral;
+	background-color: white;
+	border: white;
+	color:black;
 	border-radius: 15px;
 }

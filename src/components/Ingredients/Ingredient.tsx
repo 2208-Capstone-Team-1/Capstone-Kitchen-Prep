@@ -72,7 +72,7 @@ const Ingredient: React.FC<Props> = ({ user }) => {
         values.name = "";
         values.quantity = 0;
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     },
   });

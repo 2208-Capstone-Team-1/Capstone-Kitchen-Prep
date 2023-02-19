@@ -38,6 +38,28 @@ const App = () => {
     <div>
       <div className="body">
         
+        
+
+        <div className="main_logoPlace">
+          <img
+            id="logo"
+            src="/static/ChefsKissLogo.png"
+            alt="chef's kiss logo"
+            width="70"
+            height="90"
+          ></img>
+          <a className="mainLogoTxt" href="/">
+            <span></span>Chef's Kiss
+          </a>
+          <img
+            id="logo"
+            src="/static/ChefsKissLogo.png"
+            alt="chef's kiss logo"
+            width="70"
+            height="90"
+          ></img>       
+        </div>
+
         <div className="main_topbar">
           
           <div className="main_ptag">
@@ -55,27 +77,6 @@ const App = () => {
             )}
           </div>
         </div>
-
-        <div className="main_logoPlace">
-          <img
-            id="logo"
-            src="/static/ChefsKissLogo.png"
-            alt="chef's kiss logo"
-            width="80"
-            height="90"
-          ></img>
-          <a className="mainLogoTxt" href="/">
-            <span></span>Chef's Kiss
-          </a>
-          <img
-            id="logo"
-            src="/static/ChefsKissLogo.png"
-            alt="chef's kiss logo"
-            width="80"
-            height="90"
-          ></img>       
-        </div>
-
         
 
         <div>
@@ -86,14 +87,13 @@ const App = () => {
             {/*only logged-in user can view below tabs */}
             {user.id && (
               <>
-                <Link to="/savedRecipe" id="page">Saved Recipes</Link>
-                <Link to="/groupChat" id="page">Group Chat</Link>
-                <Link to="/alexaChat" id="page">Alexa Chat</Link>
+                <Link to="/savedRecipe" id="page">Saved Recipes</Link>    
                 <Link to="/userFridge" id="page">Fridge</Link>
                 <Link to="/recipesFromIngredients" id="page">
                   Recipes From Ingredients
                 </Link>
-                
+                <Link to="/groupChat" id="page">Group Chat</Link>
+                <Link to="/alexaChat" id="page">Alexa Chat</Link>
               </>
             )}
             {user.isAdmin && <Link to="/admin" id="page">Admin</Link>}
