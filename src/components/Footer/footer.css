@@ -1,10 +1,29 @@
 
-.footer {
-  padding-top: 30px;
+*{
+  font-family: "Comic Sans MS", serif;
+}
+footer {
+  background-color: rgb(238, 165, 29);;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-top: solid black 1px;
+  
 }
 
 .footer_groups {
   display:flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+h3{
+  text-decoration: underline;
+}
+ul{
+  margin-bottom: 1px;
+  list-style-type: circle black;
 }

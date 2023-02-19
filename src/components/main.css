@@ -1,25 +1,34 @@
+
 .body {
 	background-color: rgb(249, 249, 249);
-	padding-bottom: 30px;
+	padding-bottom: 20px;
 	border-bottom: 1px solid black;
 }
 
 .main_topbar {
 	margin: 0;
 	display: flex;
-	justify-content: space-between;
+	justify-content: right;
 	align-items: baseline;
 }
 
+.main_ptag {
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+}
+
 .main_logoPlace {
-	padding: 5px;
+	width: 100%;
+	height: 15%;
+	padding: 10px;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 	gap: 10px;
 }
 .mainLogoTxt {
-	margin-top: 20px;
+	margin-top: 10px;
 	position: relative;
 	height: min-content;
 	width: auto;
@@ -27,10 +36,33 @@
 	align-content: center;
 	color: black;
 	font-family: "Oleo Script Swash Caps", cursive;
-	font-size: 80pt;
+	font-size: 70pt;
 	/* replace & refine when can figure out how to shrink image with it */
 	/* font-size:10vmin; */
 	white-space: nowrap;
+}
+
+.slide {
+	width: 100%;
+	height: 30px;
+	background-color: rgb(238, 165, 29);
+	color: black;
+	font-weight: 300;
+	letter-spacing: 1px;
+	border: outset seashell 3px;
+	border-radius: 100px;
+	font-size: 15px;
+	outline: none;
+	font-family: "Chalkduster", serif;
+}
+
+.slide {
+	transition: all 0.5s ease-in-out;
+}
+
+.slide:hover {
+	background-color: darksalmon;
+	color: white;
 }
 
 .mainLogoTxt::before,
@@ -76,7 +108,7 @@ span::after {
 .mainLogoTxt:hover::after,
 .mainLogoTxt:hover span::before,
 .mainLogoTxt:hover span::after {
-	width: calc(800px / 2);
+	width: calc(700px / 2);
 	height: calc(100px / 2);
 }
 
@@ -86,15 +118,8 @@ span::after {
 	margin: 25px;
 }
 
-.main_ptag {
-	color: black;
-	/* font-family: 'Lora', serif; */
-	font-family: "Playfair Display", serif;
-	margin-bottom: 3px;
-}
-
 .navbar {
-	background-color: black;
+	background-color: rgb(238, 165, 29);
 	margin: 0;
 	border-bottom: 1px solid black;
 	display: flex;
@@ -104,6 +129,18 @@ span::after {
 nav a {
 	text-decoration: none;
 	color: rgb(249, 249, 249);
-	font-family: "Playfair Display", serif;
-	margin: 5px;
+	font-family: "Comic Sans MS", serif;
+	margin: 2px;
+}
+#page {
+	margin: 2px;
+	width: 50%;
+	height: 100%;
+	align-self: center;
+	text-align: center;
+}
+#page:hover {
+	background-color: darksalmon;
+	border: coral;
+	border-radius: 15px;
 }

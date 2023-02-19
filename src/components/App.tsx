@@ -38,66 +38,65 @@ const App = () => {
     <div>
       <div className="body">
         
+        <div className="main_topbar">
+          
+          <div className="main_ptag">
+            {!user.id ? (
+              <Link to="/login">
+                <button id= "login" className="slide">Login</button>
+              </Link>
+            ) : (
+              user.id && (
+                <>
+                  <Link to="/user"><button id="account" className="slide">Account</button></Link>
+                  <button id="login" className="slide" onClick={logout}>Logout</button>
+                  </>
+              )
+            )}
+          </div>
+        </div>
 
         <div className="main_logoPlace">
           <img
             id="logo"
             src="/static/ChefsKissLogo.png"
             alt="chef's kiss logo"
-            width="120"
-            height="150"
+            width="80"
+            height="90"
           ></img>
           <a className="mainLogoTxt" href="/">
             <span></span>Chef's Kiss
           </a>
-          {/*<h1 className="mainLogoTxt">Chef's Kiss</h1>*/}
-
           <img
             id="logo"
             src="/static/ChefsKissLogo.png"
             alt="chef's kiss logo"
-            width="120"
-            height="150"
-          ></img>
+            width="80"
+            height="90"
+          ></img>       
         </div>
 
-        <div className="main_topbar">
-          {/* This ptag should be removed, then use to keep login button right-side */}
-          <p className="main_ptag"></p>
-          <p className="main_ptag">
-            {!user.id ? (
-              <Link to="/login">
-                <Button variant="contained">Login</Button>
-              </Link>
-            ) : (
-              user.id && (
-                <Button variant="contained" onClick={logout}>
-                  Logout
-                </Button>
-              )
-            )}
-          </p>
-        </div>
         
+
         <div>
           <nav className="navbar">
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-            <Link to="/randomRecipe">Recipe of the Day </Link>
+            <Link to="/" id="page">Home</Link>
+            <Link to="/about" id="page">About</Link>
+            <Link to="/randomRecipe" id="page">Recipe of the Day </Link>
             {/*only logged-in user can view below tabs */}
             {user.id && (
               <>
-                <Link to="/user">Account</Link>
-                <Link to="/savedRecipe">Saved Recipes</Link>
-                <Link to="/userFridge">Fridge</Link>
-                <Link to="/recipesFromIngredients">
+                <Link to="/savedRecipe" id="page">Saved Recipes</Link>
+                <Link to="/groupChat" id="page">Group Chat</Link>
+                <Link to="/alexaChat" id="page">Alexa Chat</Link>
+                <Link to="/userFridge" id="page">Fridge</Link>
+                <Link to="/recipesFromIngredients" id="page">
                   Recipes From Ingredients
                 </Link>
-                <Link to="/groupChat">Group Chat</Link>
-                <Link to="/alexaChat">Alexa Chat</Link>
+                
               </>
             )}
-            {user.isAdmin && <Link to="/admin">Admin</Link>}
+            {user.isAdmin && <Link to="/admin" id="page">Admin</Link>}
           </nav>
         </div>
         <RoutesComponent />

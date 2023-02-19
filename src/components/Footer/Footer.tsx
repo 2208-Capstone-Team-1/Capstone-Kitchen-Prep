@@ -10,36 +10,30 @@ const Footer = () => {
         <ul>
           <div className= "footer_groups">
             <div className= "names">
-              <h3>Brought to you by: </h3>
-              <Link href="https://github.com/antongeny" target="_blank">
-                <li>Anton</li>
-              </Link>
-              <Link href="https://github.com/emccormick16" target="_blank">
-                <li>Ed</li>
-              </Link>
-              <Link href="https://github.com/marchingkoala" target="_blank">
-                <li>Carmine</li>
-              </Link>
-              <Link href="https://github.com/lena-A-Al" target="_blank">
-                <li>Lena</li>
-              </Link>
-              <Link href="https://github.com/linglin1638078" target="_blank">
-                <li>Lily</li>
-              </Link>
-              <Link href="https://github.com/2208-Capstone-Team-1/Capstone-Kitchen-Prep" target="_blank">
-                <GitHubIcon/>Our Main Repo
-              </Link>
+              <h3>Brought to you by:</h3>
+              <ul>
+                <li><Link href="https://github.com/antongeny" target="_blank">Anton</Link></li>               
+                <li><Link href="https://github.com/emccormick16" target="_blank">Ed</Link></li>
+                <li><Link href="https://github.com/marchingkoala" target="_blank">Carmine</Link></li>
+                <li><Link href="https://github.com/lena-A-Al" target="_blank">Lena</Link></li>
+                <li><Link href="https://github.com/linglin1638078" target="_blank">Lily</Link></li>
+                <li><Link href="https://github.com/2208-Capstone-Team-1/Capstone-Kitchen-Prep" target="_blank">
+                  <GitHubIcon/>Our Main Repo
+                  </Link></li>
+              </ul>
             </div>
             <div className="technologies">
-              <h3>Technologies</h3>
-              <li>Alexa Developer Console</li>
-              <li>Javascript</li>
-              <li>React</li>
-              <li>Firebase</li>
-              <li>Typescript</li>
-              <li>Webpack</li>
-              <li>Sequelize</li>
-              <li>MUI</li>
+              <h3>Technologies:</h3>
+              <ul>
+                <li>Alexa Developer Console</li>
+                <li>Javascript</li>
+                <li>React</li>
+                <li>Firebase</li>
+                <li>Typescript</li>
+                <li>Webpack</li>
+                <li>Sequelize</li>
+                <li>MUI</li>
+             </ul>
             </div>
           </div>
         </ul>

@@ -16,29 +16,14 @@ const Home = () => {
     <div>
       <div className="home_main">
         <div className="home_image">
-          <img src="../static/Foodphotos/mainPage_photo3.jpg" width="80%" />
+          <img src="../static/Foodphotos/mainPage_photo3.jpg" width="70%" height="75%"/>
         </div>
         <div className="home_copyline">
           <p className="home_ptag">
             Join Chef's Kiss and enjoy curated cuisines at home!
           </p>
         </div>
-        <div className="home_copyline">
-          <p className="home_alexa">
-            Click the microphone below to get started with Alexa!
-          </p>
-        </div>
-        <div className="home_mic">
-          <button style={{ borderRadius: "50%", padding: "10px" }}>
-            <img
-              id="microphone"
-              src="/static/microphone.png"
-              alt="microphone"
-              width="100"
-              height="100"
-            ></img>
-          </button>
-        </div>
+        
       </div>
     </div>
   );
