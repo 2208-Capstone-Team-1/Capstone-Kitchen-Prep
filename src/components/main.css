@@ -105,7 +105,7 @@ span::after {
 .mainLogoTxt:hover::after,
 .mainLogoTxt:hover span::before,
 .mainLogoTxt:hover span::after {
-  width: calc(700px / 2);
+  width: calc(480px / 2);
   height: calc(100px / 2);
 }
 
