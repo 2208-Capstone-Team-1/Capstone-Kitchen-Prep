@@ -25,7 +25,7 @@
 .ingredientForm {
   /* margin: auto; */
   width: 20%;
-  background-color: rgb(226, 219, 190);
+  background-color: rgb(243, 212, 165);
   padding: 100px;
 }
 
@@ -43,7 +43,7 @@
 }
 
 #addIngredient {
-  background-color: rgb(85, 132, 79);
+  background-color: rgba(245, 149, 111, 0.872);
   color: black;
   size: 23px;
   font-weight: bold;

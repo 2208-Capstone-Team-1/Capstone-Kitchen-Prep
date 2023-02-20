@@ -7,7 +7,6 @@
 .home_image {
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid black;
 }
 
 .home_copyline {
@@ -21,10 +20,7 @@
   font-size: 25pt;
 }
 
-.home_mic {
-  display: flex;
-  justify-content: center;
-}
+
 
 .home_alexa {
   color: black;
