@@ -33,12 +33,7 @@ const SavedRecipes = () => {
 
   return (
     <div className="savedRecipe_container">
-      <h1 className="savedRecipe_h1">
-        <span className="userName">
-          {user.first_name + " " + user.last_name}
-        </span>{" "}
-        Saved Recipes
-      </h1>
+      <h1 className="savedRecipe_h1">Saved Recipes</h1>
       <div className="savedRecipeBody">
         {recipes?.length &&
           recipes.map((recipe, index: number) => {
