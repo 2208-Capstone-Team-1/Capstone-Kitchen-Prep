@@ -7,7 +7,6 @@
 .home_image {
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid black;
 }
 
 .home_copyline {
@@ -17,17 +16,14 @@
 
 .home_ptag {
   color: black;
-  font-family: "Playfair Display", serif;
+  font-family: "Apple Chancery", serif;
   font-size: 25pt;
 }
 
-.home_mic {
-  display: flex;
-  justify-content: center;
-}
+
 
 .home_alexa {
   color: black;
-  font-family: "Playfair Display", serif;
+  font-family: "Apple Chancery", serif;
   font-size: 15pt;
 }
