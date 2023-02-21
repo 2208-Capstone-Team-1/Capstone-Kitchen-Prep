@@ -37,7 +37,6 @@ const RoutesComponent = () => {
             <Route path="/user" element={<UserPage />} />
             <Route path="/user/userEdit" element={<UserEdit />} />
             <Route path="/groupChat" element={<GroupChat />} />
-            <Route path="/alexaChat" element={<AlexaChat />} />
           </>
         )}
         {user.isAdmin && <Route path="/admin" element={<AdminPage />} />}
