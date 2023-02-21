@@ -7,30 +7,31 @@ import "./alexaChat.css";
 import axios from "axios";
 import { addIngredient } from "../../store/ingredientSlice";
 
-//intialize firebase app
-// const app = firebase.initializeApp({
-//   apiKey: "AIzaSyACYBhS0y2OHMoflq0g0TRdQiiArnfrrYE",
-//   authDomain: "chefs-kiss-d30f4.firebaseapp.com",
-//   projectId: "chefs-kiss-d30f4",
-//   storageBucket: "chefs-kiss-d30f4.appspot.com",
-//   messagingSenderId: "376445935624",
-//   appId: "1:376445935624:web:1cd185df98d8d51beaf1bd",
-//   measurementId: "G-3T0TQJQNJH",
-//   database: "https://chefs-kiss-d30f4-default-rtdb.firebaseio.com",
-// });
+// intialize firebase app
+const app = firebase.initializeApp({
+  apiKey: "AIzaSyACYBhS0y2OHMoflq0g0TRdQiiArnfrrYE",
+  authDomain: "chefs-kiss-d30f4.firebaseapp.com",
+  projectId: "chefs-kiss-d30f4",
+  storageBucket: "chefs-kiss-d30f4.appspot.com",
+  messagingSenderId: "376445935624",
+  appId: "1:376445935624:web:1cd185df98d8d51beaf1bd",
+  measurementId: "G-3T0TQJQNJH",
+  database: "https://chefs-kiss-d30f4-default-rtdb.firebaseio.com",
+});
 
-// const database = getDatabase(app);
-// //defining what the chatlog type will be
-// interface chatlogType {
-//   DATE: string;
-//   SPEAKER: string;
-//   TIME: string;
-//   VALUE: string;
-// }
+const database = getDatabase(app);
+//defining what the chatlog type will be
+interface chatlogType {
+  DATE: string;
+  SPEAKER: string;
+  TIME: string;
+  VALUE: string;
+}
 
-// interface IngredientInterface {
-//   name: string;
-// }
+interface IngredientInterface {
+  name: string;
+  image: string;
+}
 
 interface chatlogType {
   DATE: string;
@@ -38,9 +39,8 @@ interface chatlogType {
   TIME: string;
   VALUE: string;
 }
-//@ts-ignore
-const AlexaChat: //@ts-ignore
-React.FC<chatlogType> = ({ chatlogs }) => {
+
+const AlexaChat = () => {
   /** customs hooks */
   const dispatch = useDispatch();
 
@@ -80,10 +80,13 @@ React.FC<chatlogType> = ({ chatlogs }) => {
   // ) => {
   //   const addNewIngredient = await axios.post(
   //     `/api/users/${user.id}/ingredients`,
-  //     { name: newIngredient }
+  //     {
+  //       name: newIngredient,
+  //       image: `https://spoonacular.com/cdn/ingredients_100x100/${newIngredient}.jpg`,
+  //     }
   //   );
-  // dispatch new ingredients to the UI
-  // dispatch(addIngredient(addNewIngredient));
+  //   // dispatch new ingredients to the UI
+  //   dispatch(addIngredient(addNewIngredient));
   // };
 
   // useEffect(() => {
@@ -97,7 +100,7 @@ React.FC<chatlogType> = ({ chatlogs }) => {
       </header>
       <main>
         <div>
-          {chatlogs.map((input: any, index: any) => {
+          {chatlogs.map((input, index) => {
             return (
               <div key={index} className="messages">
                 <div className="message sent">

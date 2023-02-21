@@ -36,11 +36,13 @@ interface chatlogType {
 
 interface IngredientInterface {
   name: string;
+  image: string;
 }
 
 const App = () => {
-  const [chatlogs, setChatlogs] = useState<any>("");
-
+  //local states
+  const [chatlogs, setChatlogs] = useState<chatlogType[]>([]);
+  //redux state
   const { user } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch();
   //authorization for firebase
@@ -54,10 +56,20 @@ const App = () => {
       });
       dispatch(setUser(response.data));
     }
+  };
+
+  const logout = () => {
+    window.localStorage.removeItem("token");
+    dispatch(resetUser());
+  };
+
+  //getChatlog function
+  const getChatlog = async () => {
     const query = ref(database, "Alexa/" + user.phoneNumber);
     return onValue(query, (snapshot) => {
       //snapshot.val() takes a snapshot of the firebase database and stores in the alexaData variable
       const alexaData = snapshot.val();
+      console.log("alexaData", alexaData);
       //initiate empty array
       let alexaDataArr = [];
       // push the values in the object into an array because it needs to be iterable
@@ -66,60 +78,22 @@ const App = () => {
           alexaDataArr.push(alexaData[alexaInput]);
         }
         setChatlogs(alexaDataArr);
-        if (user.id) {
-          if (alexaDataArr.length > 0) {
-            console.log("alexaDataArr inside if ", alexaDataArr);
-            // take last value in the array
-            const lastChat = alexaDataArr.pop();
-            // check if the key: TYPE exists, if yes, we'll take the SPEAKER and call the api to add it to the database
-            if (lastChat.TYPE === "ingredient") {
-              let newIngredient: IngredientInterface = lastChat.SPEAKER;
-              console.log("newIngredient", newIngredient);
-              addIngredientSubFunction(newIngredient);
-            }
+        console.log("alexaDataArr line 84 ", alexaDataArr);
+
+        if (alexaDataArr.length > 0) {
+          console.log("alexaDataArr inside if", alexaDataArr);
+          // take last value in the array
+          const lastChat = alexaDataArr.pop();
+          // check if the key: TYPE exists, if yes, we'll take the SPEAKER and call the api to add it to the database
+          if (lastChat.TYPE === "ingredient") {
+            let newIngredient: IngredientInterface = lastChat.SPEAKER;
+            console.log("newIngredient", newIngredient);
+            addIngredientSubFunction(newIngredient);
           }
         }
       }
-      console.log("alexaDataArr line 92 ", alexaDataArr);
+      console.log("alexaDataArr ", alexaDataArr);
     });
-  };
-
-  console.log("userid", user.id);
-  const logout = () => {
-    window.localStorage.removeItem("token");
-    dispatch(resetUser());
-  };
-
-  //getChatlog function
-  const getChatlog = async () => {
-    // const query = ref(database, "Alexa/" + user.phoneNumber);
-    // return onValue(query, (snapshot) => {
-    //   //snapshot.val() takes a snapshot of the firebase database and stores in the alexaData variable
-    //   const alexaData = snapshot.val();
-    //   //initiate empty array
-    //   let alexaDataArr = [];
-    //   // push the values in the object into an array because it needs to be iterable
-    //   if (snapshot.exists()) {
-    //     for (const alexaInput in alexaData) {
-    //       alexaDataArr.push(alexaData[alexaInput]);
-    //     }
-    //     setChatlogs(alexaDataArr);
-    //     if (user.id) {
-    //       if (alexaDataArr.length > 0) {
-    //         console.log("alexaDataArr inside if ", alexaDataArr);
-    //         // take last value in the array
-    //         const lastChat = alexaDataArr.pop();
-    //         // check if the key: TYPE exists, if yes, we'll take the SPEAKER and call the api to add it to the database
-    //         if (lastChat.TYPE === "ingredient") {
-    //           let newIngredient: IngredientInterface = lastChat.SPEAKER;
-    //           console.log("newIngredient", newIngredient);
-    //           addIngredientSubFunction(newIngredient);
-    //         }
-    //       }
-    //     }
-    //   }
-    //   console.log("alexaDataArr line 92 ", alexaDataArr);
-    // });
   };
 
   const addIngredientSubFunction = async (
@@ -127,7 +101,10 @@ const App = () => {
   ) => {
     const addNewIngredient = await axios.post(
       `/api/users/${user.id}/ingredients`,
-      { name: newIngredient }
+      {
+        name: newIngredient,
+        image: `https://spoonacular.com/cdn/ingredients_100x100/${newIngredient}.jpg`,
+      }
     );
     // dispatch new ingredients to the UI
     dispatch(addIngredient(addNewIngredient));
@@ -135,8 +112,8 @@ const App = () => {
 
   useEffect(() => {
     loginWithToken();
-    // getChatlog();
-  }, []);
+    getChatlog();
+  }, [user.id]);
 
   return (
     <div>
@@ -223,13 +200,6 @@ const App = () => {
           </nav>
         </div>
         <RoutesComponent />
-        <Routes>
-          <Route
-            path="/alexaChat"
-            //@ts-ignore
-            element={<AlexaChat chatlogs={chatlogs} />}
-          />
-        </Routes>
       </div>
       <div>
         <Footer />
