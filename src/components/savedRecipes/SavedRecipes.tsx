@@ -34,15 +34,13 @@ const SavedRecipes = () => {
 
   return (
     <div className="savedRecipe_container">
-      <h1 className="savedRecipe_h1">Saved Recipes</h1>
+      <h1>Saved Recipes</h1>
       <Grid container spacing={2}>
         {recipes?.length &&
           recipes.map((recipe, index: number) => {
             return (
               <div className="savedRecipe_item" key={index}>
-                <a href={recipe.url}>
-                  <RecipeCard recipe={recipe} index={index} />
-                </a>
+                <RecipeCard recipe={recipe} index={index} />
               </div>
             );
           })}

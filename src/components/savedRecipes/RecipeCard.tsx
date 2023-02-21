@@ -35,16 +35,24 @@ const RecipeCard: React.FC<Props> = ({ recipe, index }) => {
       <Card
         sx={{
           width: 275,
-          height: 275,
+          minHeight: 275,
           margin: 1,
           backgroundColor: "rgb(243, 212, 165)",
         }}
       >
         <CardContent>
-          <Typography variant="h6" component="div" gutterBottom>
+          <Typography
+            variant="h6"
+            component="div"
+            color="text.secondary"
+            gutterBottom
+          >
             {index + 1}
           </Typography>
-          <Typography variant="h5">{recipe.name}</Typography>
+          <a href={recipe.url}>
+            <Typography variant="h5">{recipe.name}</Typography>
+          </a>
+          <br />
           <Typography variant="body2">{newSentence}</Typography>
         </CardContent>
       </Card>
