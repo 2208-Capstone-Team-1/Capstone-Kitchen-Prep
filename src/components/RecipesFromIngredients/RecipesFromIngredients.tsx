@@ -5,6 +5,8 @@ import { RootState } from "../../store";
 import MuiLoader from "../MuiLoader";
 import "../Recipe/recipe.css";
 import { setIngredients } from "../../store/ingredientSlice";
+import "./recipesFromIngredients.css";
+import { Button } from "@mui/material";
 
 // interface recipesObj {
 //   [key: string]: any;
@@ -60,6 +62,16 @@ const RecipesFromIngredients = () => {
     }
   }
 
+  /**savedRecipeHandler function will do the following
+   * will collect the specific data from the data coming from the API.
+   * send the data to the backend at the route (/:id/recipes)
+   * send the data to the front end.
+   */
+  function savedRecipeHandler() {
+    console.log("hello");
+    console.log("recievedRecipesInfo", recievedRecipesInfo);
+  }
+
   // load
   useEffect(() => {
     if (user.id) {
@@ -69,6 +81,12 @@ const RecipesFromIngredients = () => {
 
   const imageURL = recievedRecipesInfo && `${recievedRecipesInfo.image}`;
 
+  // removing the html tags from summary.
+  const regex = /(<([^>]+)>)/gi;
+  const summary =
+    recievedRecipesInfo.summary &&
+    recievedRecipesInfo.summary.replace(regex, "");
+
   return (
     // if loading is false, display an error message
     !loading ? (
@@ -77,60 +95,55 @@ const RecipesFromIngredients = () => {
       </div>
     ) : (
       <>
-        <div className="recipe_body">
-          <div className="recipe_container">
-            <div className="recipe_box">
-              <h1 className="recipe_h1">Recipe based on What You Have</h1>
-              <h2 className="recipe_h2">{recievedRecipesInfo.title}</h2>
-              <img className="recipe_img" src={imageURL} />
-              <h2 className="recipe_h2">Ingredients</h2>
-              <div className="recipe_ingredients">
-                {!recievedRecipesInfo.extendedIngredients.length && // objects are truthy if if they are empty
-                  recievedRecipesInfo.extendedIngredients?.map(
-                    (foodItem: any, index: number) => {
-                      return (
-                        <div key={index}>
-                          <p className="recipe_ptag">
-                            {index}: {foodItem.original}
-                          </p>
-                        </div>
-                      );
-                    }
-                  )}
-              </div>
-              <h2 className="recipe_h2">Recipe</h2>
-              <div className="recipe_instruction">
-                {recievedRecipesInfo.analyzedInstructions[0].steps!.map(
-                  (step: any) => {
-                    return (
-                      <p className="recipe_ptag" key={step.number}>
-                        {step.number}: {step.step}
-                      </p>
-                    );
-                  }
-                )}
-              </div>
-              <div className="recipe_diet">
-                {recievedRecipesInfo.diets.map(
-                  (diet: string, index: number) => {
-                    return (
-                      <p className="recipe_ptag" key={index}>
-                        {" "}
-                        # {diet}
-                      </p>
-                    );
-                  }
-                )}
-              </div>
-              <div className="recipe_url">
-                Source:{" "}
-                <a className="recipe_atag" href={recievedRecipesInfo.sourceUrl}>
-                  {recievedRecipesInfo.sourceUrl}
-                </a>
+        {
+          <div className="card-container">
+            <div className="card u-clearfix">
+              <div className="card-body">
+                <div className="card-media">
+                  <div>
+                    {" "}
+                    <img src={imageURL} width="350px;" alt="" />
+                  </div>{" "}
+                  <div className="vegan-image">
+                    {recievedRecipesInfo.vegan ? (
+                      <img src="../static/vegan.png" width="60px" alt="" />
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                  <div className="gluten-image">
+                    {recievedRecipesInfo.glutenFree ? (
+                      <img
+                        src="../static/gluten-free.png"
+                        width="60px"
+                        alt=""
+                      />
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                </div>
+                <h2 className="card-title">{recievedRecipesInfo.title}</h2>
+                <span className="card-description subtle">{summary}</span>
+                <div className="card-read">
+                  <a
+                    className="sourceUrl"
+                    href={recievedRecipesInfo.spoonacularSourceUrl}
+                    target="_blank"
+                  >
+                    Read Full Recipe
+                  </a>
+                </div>
+                <div className="saveBtn">
+                  <Button className="textBtn" onClick={savedRecipeHandler}>
+                    Save
+                  </Button>
+                </div>
               </div>
             </div>
+            <div className="card-shadow"></div>
           </div>
-        </div>
+        }
       </>
     )
   );

@@ -43,7 +43,12 @@ const AlexaChat = () => {
           alexaDataArr.push(alexaData[alexaInput]);
         }
         setChatlogs(alexaDataArr);
+        // take last value in the array
+        // check if the key: TYPE exists
+        // if yes, we'll take the SPEAKER and call the api to add to the database
+        // dispatch new ingredients
       }
+      console.log("alexaDataArr ", alexaDataArr);
     });
   };
 

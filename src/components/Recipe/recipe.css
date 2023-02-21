@@ -1,67 +1,154 @@
-.recipe_body {
-  background-color: rgb(249, 249, 249);
-  display: flex;
-  flex-direction: column;
+/* html {
+  background: #faf7f2;
+  background-image: url(https://s3.postimg.org/s1n3ji1ur/paper_fibers_2_X.png);
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+} */
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
-.recipe_container {
-  display: flex;
-  justify-content: center;
+.u-clearfix:before,
+.u-clearfix:after {
+  content: " ";
+  display: table;
 }
 
-.recipe_box {
-  background-color: rgb(243, 212, 165);
-  margin-top: 60px;
-  margin-bottom: 100px;
-  width: 70%;
+.u-clearfix:after {
+  clear: both;
+}
+
+.u-clearfix {
+  *zoom: 1;
+}
+
+.subtle {
+  color: #aaa;
+}
+
+.card-container {
+  margin: 25px auto 0;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 200px;
+  width: 500px;
 }
 
-.recipe_ingredients {
-  display: flex;
-  flex-direction: column;
+.card {
+  background-color: #fff;
   padding: 30px;
-  margin: 20px;
-  margin-top: 0;
-}
-
-.recipe_diet {
+  position: relative;
+  box-shadow: 0 0 5px rgba(75, 75, 75, 0.07);
+  z-index: 1;
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-.recipe_instruction {
+.card-body {
+  display: inline-block;
+  width: 500px;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-number {
+  margin-top: 15px;
+}
+
+.card-circle {
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  display: inline-block;
+  line-height: 22px;
+  font-size: 12px;
+  height: 25px;
+  text-align: center;
+  width: 25px;
+}
+
+.card-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 60px;
+  font-weight: 300;
+  line-height: 60px;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.card-description {
+  display: inline-block;
+  font-weight: 300;
+  line-height: 22px;
+  margin: 10px 0;
+}
+
+.card-read {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  margin: 5px 0 20px;
+  position: relative;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.card-read:after {
+  background-color: #b8bddd;
+  content: "";
+  display: block;
+  height: 1px;
+  position: absolute;
+  top: 9px;
+  width: 50%;
+}
+
+.card-tag {
+  float: right;
+  margin: 5px 0 0;
+}
+
+.card-media {
   display: flex;
-  flex-direction: column;
-  padding: 10px;
-  margin: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
-.recipe_h1 {
-  margin-top: 20px;
-  font-family: "Playfair Display", serif;
-  font-size: 30pt;
+.gluten-image,
+.vegan-image {
+  padding: 20px;
 }
 
-.recipe_h2 {
-  font-family: "Playfair Display", serif;
+.card-shadow {
+  background-color: #fff;
+  box-shadow: 0 2px 25px 2px rgba(0, 0, 0, 1), 0 2px 50px 2px rgba(0, 0, 0, 1),
+    0 0 100px 3px rgba(0, 0, 0, 0.25);
+  height: 1px;
+  margin: -1px auto 0;
+  width: 80%;
+  z-index: -1;
 }
 
-.recipe_ptag {
-  font-family: "Playfair Display", serif;
-  font-size: 14pt;
-}
-
-.recipe_url {
-  padding-bottom: 100px;
-}
-
-.recipe_atag {
+.sourceUrl {
   text-decoration: none;
-  font-family: "Playfair Display", serif;
+  color: #000000;
+}
+
+.saveBtn {
+  text-align: center;
+  background-color: #d6d8e3;
+  width: 50%;
+  margin: auto;
+  cursor: pointer;
+}
+.saveBtn .textBtn {
   color: black;
+  font-size: 15px;
+  font-weight: bold;
 }

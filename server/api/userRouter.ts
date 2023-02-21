@@ -67,6 +67,39 @@ router.post(
   }
 );
 
+/* add a recipe for a specific user
+localhost:3000/api/users/:id/recipe
+ */
+router.post(
+  "/:id/recipes",
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      // find the id of the user from the URL.
+      const id: string = req.params.id;
+      // find the user with this id.
+      const user = await User.findByPk(id, {
+        include: [Ingredient, Recipe],
+      });
+      // if user exists, then create the recipe.
+      if (user) {
+        const { name, url, personal_note, calories } = req.body;
+        const newRecipe = await Recipe.create({
+          name,
+          url,
+          personal_note,
+          calories,
+        });
+
+        // Use magic method to add the ingredient to the specific user.
+        (user as any).addRecipe(newRecipe);
+        res.send(newRecipe);
+      }
+    } catch (error) {
+      return res.sendStatus(501).send(error);
+    }
+  }
+);
+
 /* create a new user
 localhost:3000/api/users */
 router.post("/", async (req: Request, res: Response, next: NextFunction) => {

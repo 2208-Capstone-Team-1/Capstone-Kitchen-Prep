@@ -40,7 +40,7 @@ const SavedRecipes = () => {
             return (
               <div className="savedRecipe_item" key={index}>
                 <a href={recipe.url}>
-                  <RecipeCard recipe={recipe} index={index}/>
+                  <RecipeCard recipe={recipe} index={index} />
                 </a>
               </div>
             );
