@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./userSlice";
 import ingredientReducer from "./ingredientSlice";
 import recipeReducer from "./recipeSlice";
+import chatlogReducer from "./chatlogSlice";
 import { useDispatch } from "react-redux";
 
 const store = configureStore({
@@ -9,6 +10,7 @@ const store = configureStore({
     user: userReducer,
     ingredients: ingredientReducer,
     recipe: recipeReducer,
+    chatlog: chatlogReducer,
   },
 });
 
