@@ -62,6 +62,16 @@ const RecipesFromIngredients = () => {
     }
   }
 
+  /**savedRecipeHandler function will do the following
+   * will collect the specific data from the data coming from the API.
+   * send the data to the backend at the route (/:id/recipes)
+   * send the data to the front end.
+   */
+  function savedRecipeHandler() {
+    console.log("hello");
+    console.log("recievedRecipesInfo", recievedRecipesInfo);
+  }
+
   // load
   useEffect(() => {
     if (user.id) {
@@ -125,7 +135,9 @@ const RecipesFromIngredients = () => {
                   </a>
                 </div>
                 <div className="saveBtn">
-                  <Button className="textBtn">Save</Button>
+                  <Button className="textBtn" onClick={savedRecipeHandler}>
+                    Save
+                  </Button>
                 </div>
               </div>
             </div>
