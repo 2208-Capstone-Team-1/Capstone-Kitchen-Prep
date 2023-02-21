@@ -1,5 +1,5 @@
+import { Card, CardContent, Typography } from "@mui/material";
 import React from "react";
-import "./savedRecipe.css"
 
 // interface for recipe
 interface recipeType {
@@ -9,43 +9,47 @@ interface recipeType {
 }
 
 // interface for prop
-interface Props{
+interface Props {
   recipe: recipeType;
   index: number;
 }
 
-const RecipeCard: React.FC<Props> = ({recipe, index}) => {
+const RecipeCard: React.FC<Props> = ({ recipe, index }) => {
+  //*** slicer function reduces the sentence & puts "..." if the length goes over 85. this is to prevent wrapping error */
+  let newSentence = "";
 
+  const slicer = (sentence: string) => {
+    let el = sentence.split("");
+    if (el.length > 86) {
+      newSentence = el.slice(0, 86).join("") + "...";
+    } else {
+      newSentence = el.join("");
+    }
+    return newSentence;
+  };
 
+  slicer(recipe.personal_note);
 
-//*** slicer function reduces the sentence & puts "..." if the length goes over 85. this is to prevent wrapping error */
-let newSentence = "";
-
-const slicer = (sentence : string) => {
-	let el = sentence.split('');
-	if (el.length > 86) {
-		newSentence = el.slice(0, 86).join('') + "..."
-	} else {
-		newSentence = el.join('');
-	}
-	return newSentence;
-}
-
-slicer(recipe.personal_note);
-
-  return <div className="recipeCard_body">
-    <div className="circle"></div>
-      <div className="recipeCard_container">
-        <div className="recipeCard_number">{index +1}</div>
-          <div className="recipeCard_innerbox">
-              <div className="recipeCard_name"><p className="recipeCard_ptagOne">{recipe.name}</p></div>
-              <div className="recipeCard_note"><p className="recipeCard_ptagTwo">"{newSentence}"</p></div>
-              <div className="recipeCard_url">
-                {/* <a className="recipeCard_atag" href={recipe.url}>Click for full recipe</a> */}
-              </div>
-          </div>
-      </div>
-    </div>;
+  return (
+    <React.Fragment>
+      <Card
+        sx={{
+          width: 275,
+          height: 275,
+          margin: 1,
+          backgroundColor: "rgb(243, 212, 165)",
+        }}
+      >
+        <CardContent>
+          <Typography variant="h6" component="div" gutterBottom>
+            {index + 1}
+          </Typography>
+          <Typography variant="h5">{recipe.name}</Typography>
+          <Typography variant="body2">{newSentence}</Typography>
+        </CardContent>
+      </Card>
+    </React.Fragment>
+  );
 };
 
 export default RecipeCard;

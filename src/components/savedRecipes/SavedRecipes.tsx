@@ -6,6 +6,7 @@ import axios from "axios";
 import { setRecipes } from "../../store/recipeSlice";
 import { RootState } from "../../store";
 import RecipeCard from "./RecipeCard";
+import { Grid } from "@mui/material";
 
 // interface Props {
 //   user: {
@@ -34,18 +35,18 @@ const SavedRecipes = () => {
   return (
     <div className="savedRecipe_container">
       <h1 className="savedRecipe_h1">Saved Recipes</h1>
-      <div className="savedRecipeBody">
+      <Grid container spacing={2}>
         {recipes?.length &&
           recipes.map((recipe, index: number) => {
             return (
               <div className="savedRecipe_item" key={index}>
                 <a href={recipe.url}>
-                  <RecipeCard recipe={recipe} index={index}/>
+                  <RecipeCard recipe={recipe} index={index} />
                 </a>
               </div>
             );
           })}
-      </div>
+      </Grid>
     </div>
   );
 };
