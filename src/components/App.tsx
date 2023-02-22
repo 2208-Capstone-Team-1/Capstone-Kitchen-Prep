@@ -9,6 +9,7 @@ import RoutesComponent from "./routes/RoutesComponent";
 import { onValue, ref, getDatabase } from "firebase/database";
 import firebase from "firebase/compat/app";
 import { addIngredient } from "./../store/ingredientSlice";
+import { setChatlogs, setAddChatlog } from "./../store/chatlogSlice";
 import "./main.css";
 import Footer from "./Footer/Footer";
 import AlexaChat from "./Firebase/AlexaChat";
@@ -41,9 +42,11 @@ interface IngredientInterface {
 
 const App = () => {
   //local states
-  const [chatlogs, setChatlogs] = useState<chatlogType[]>([]);
+  const [chatlogsLocal, setChatlogsLocal] = useState<chatlogType[]>([]);
   //redux state
   const { user } = useSelector((state: RootState) => state.user);
+  const { chatlogs } = useSelector((state: RootState) => state.chatlog);
+
   const dispatch = useDispatch();
   //authorization for firebase
   const loginWithToken = async () => {
@@ -69,7 +72,6 @@ const App = () => {
     return onValue(query, (snapshot) => {
       //snapshot.val() takes a snapshot of the firebase database and stores in the alexaData variable
       const alexaData = snapshot.val();
-      console.log("alexaData", alexaData);
       //initiate empty array
       let alexaDataArr = [];
       // push the values in the object into an array because it needs to be iterable
@@ -77,22 +79,23 @@ const App = () => {
         for (const alexaInput in alexaData) {
           alexaDataArr.push(alexaData[alexaInput]);
         }
-        setChatlogs(alexaDataArr);
-        console.log("alexaDataArr line 84 ", alexaDataArr);
-
+        console.log("alexaDataArr line 82 ", alexaDataArr);
+        setChatlogsLocal(alexaDataArr);
+        dispatch(setChatlogs(alexaDataArr));
         if (alexaDataArr.length > 0) {
-          console.log("alexaDataArr inside if", alexaDataArr);
           // take last value in the array
-          const lastChat = alexaDataArr.pop();
+          const chatCopy = [...alexaDataArr];
+          const lastChat = chatCopy.pop();
           // check if the key: TYPE exists, if yes, we'll take the SPEAKER and call the api to add it to the database
           if (lastChat.TYPE === "ingredient") {
             let newIngredient: IngredientInterface = lastChat.SPEAKER;
-            console.log("newIngredient", newIngredient);
             addIngredientSubFunction(newIngredient);
           }
         }
       }
       console.log("alexaDataArr ", alexaDataArr);
+      console.log("setChatlogsLocal", chatlogsLocal);
+      console.log("chatlogs", chatlogs);
     });
   };
 
@@ -114,6 +117,10 @@ const App = () => {
     loginWithToken();
     getChatlog();
   }, [user.id]);
+
+  useEffect(() => {
+    getChatlog();
+  }, []);
 
   return (
     <div>

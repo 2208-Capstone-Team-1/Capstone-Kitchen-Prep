@@ -40,58 +40,23 @@ interface chatlogType {
   VALUE: string;
 }
 
-const AlexaChat = () => {
+// interface ChildComponentProps {
+//   items: chatlogType[];
+// }
+
+interface ChildComponentProps {
+  [key: string]: any;
+}
+
+const AlexaChat: React.FC<ChildComponentProps> = () => {
   /** customs hooks */
   const dispatch = useDispatch();
 
   // const [chatlogs, setChatlogs] = useState<chatlogType[]>([]);
   const { user } = useSelector((state: RootState) => state.user);
+  const { chatlogs } = useSelector((state: RootState) => state.chatlog);
 
-  // const getChatlog = async () => {
-  //   const query = ref(database, "Alexa/" + user.phoneNumber);
-  //   return onValue(query, (snapshot) => {
-  //     //snapshot.val() takes a snapshot of the firebase database and stores in the alexaData variable
-  //     const alexaData = snapshot.val();
-  //     //initiate empty array
-  //     let alexaDataArr = [];
-  //     // push the values in the object into an array because it needs to be iterable
-  //     if (snapshot.exists()) {
-  //       for (const alexaInput in alexaData) {
-  //         alexaDataArr.push(alexaData[alexaInput]);
-  //       }
-  //       setChatlogs(alexaDataArr);
-  //       if (alexaDataArr.length > 0) {
-  //         // take last value in the array
-  //         const lastChat = alexaDataArr.pop();
-  //         // check if the key: TYPE exists, if yes, we'll take the SPEAKER and call the api to add it to the database
-  //         if (lastChat.TYPE === "ingredient") {
-  //           let newIngredient: IngredientInterface = lastChat.SPEAKER;
-  //           console.log("newIngredient", newIngredient);
-  //           addIngredientSubFunction(newIngredient);
-  //         }
-  //       }
-  //     }
-  //     console.log("alexaDataArr ", alexaDataArr);
-  //   });
-  // };
-
-  // const addIngredientSubFunction = async (
-  //   newIngredient: IngredientInterface
-  // ) => {
-  //   const addNewIngredient = await axios.post(
-  //     `/api/users/${user.id}/ingredients`,
-  //     {
-  //       name: newIngredient,
-  //       image: `https://spoonacular.com/cdn/ingredients_100x100/${newIngredient}.jpg`,
-  //     }
-  //   );
-  //   // dispatch new ingredients to the UI
-  //   dispatch(addIngredient(addNewIngredient));
-  // };
-
-  // useEffect(() => {
-  //   getChatlog();
-  // }, []);
+  useEffect(() => {}, [chatlogs]);
 
   return (
     <div className="FirebaseApp">
@@ -100,7 +65,7 @@ const AlexaChat = () => {
       </header>
       <main>
         <div>
-          {chatlogs.map((input, index) => {
+          {chatlogs?.map((input: any, index: any) => {
             return (
               <div key={index} className="messages">
                 <div className="message sent">
