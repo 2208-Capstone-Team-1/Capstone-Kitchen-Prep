@@ -41,8 +41,6 @@ interface IngredientInterface {
 }
 
 const App = () => {
-  //local states
-  const [chatlogsLocal, setChatlogsLocal] = useState<chatlogType[]>([]);
   //redux state
   const { user } = useSelector((state: RootState) => state.user);
   const { chatlogs } = useSelector((state: RootState) => state.chatlog);
@@ -79,8 +77,6 @@ const App = () => {
         for (const alexaInput in alexaData) {
           alexaDataArr.push(alexaData[alexaInput]);
         }
-        console.log("alexaDataArr line 82 ", alexaDataArr);
-        setChatlogsLocal(alexaDataArr);
         dispatch(setChatlogs(alexaDataArr));
         if (alexaDataArr.length > 0) {
           // take last value in the array
@@ -94,8 +90,6 @@ const App = () => {
         }
       }
       console.log("alexaDataArr ", alexaDataArr);
-      console.log("setChatlogsLocal", chatlogsLocal);
-      console.log("chatlogs", chatlogs);
     });
   };
 

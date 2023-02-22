@@ -48,7 +48,7 @@ interface ChildComponentProps {
   [key: string]: any;
 }
 
-const AlexaChat: React.FC<ChildComponentProps> = () => {
+const AlexaChat = () => {
   /** customs hooks */
   const dispatch = useDispatch();
 
