@@ -31,7 +31,7 @@ router.get("/:id", async (req: Request, res: Response, next: NextFunction) => {
       res.send(user);
     }
   } catch (error) {
-    return res.sendStatus(501).send(error);
+    return res.status(501).send(error);
   }
 });
 
@@ -62,7 +62,7 @@ router.post(
         res.send(newIngredient);
       }
     } catch (error) {
-      return res.sendStatus(501).send(error);
+      return res.status(501).send(error);
     }
   }
 );
@@ -95,7 +95,7 @@ router.post(
         res.send(newRecipe);
       }
     } catch (error) {
-      return res.sendStatus(501).send(error);
+      return res.status(501).send(error);
     }
   }
 );
@@ -138,7 +138,7 @@ router.put("/:id", async (req: Request, res: Response, next: NextFunction) => {
     });
     res.sendStatus(200);
   } catch (error) {
-    return res.sendStatus(501).send(error);
+    return res.status(501).send(error);
   }
 });
 
@@ -157,7 +157,7 @@ router.delete(
       await userToDelete.destroy();
       res.sendStatus(202);
     } catch (error) {
-      return res.sendStatus(404).send(error);
+      return res.status(404).send(error);
     }
   }
 );

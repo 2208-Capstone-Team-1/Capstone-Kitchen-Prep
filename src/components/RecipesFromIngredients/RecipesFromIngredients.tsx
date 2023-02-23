@@ -1,23 +1,20 @@
 import axios from "axios";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import MuiLoader from "../MuiLoader";
 import "../Recipe/recipe.css";
 import { setIngredients } from "../../store/ingredientSlice";
+import { setAddRecipe } from "../../store/recipeSlice";
 import "./recipesFromIngredients.css";
-import { Button } from "@mui/material";
-
-// interface recipesObj {
-//   [key: string]: any;
-// }
+import { Box, Button, TextField } from "@mui/material";
+import * as Yup from "yup";
+import { useFormik } from "formik";
 
 const RecipesFromIngredients = () => {
   const dispatch = useDispatch();
-  /**local states */
   const [recievedRecipesInfo, setRecievedRecipesInfo] = useState({} as any);
   const [loading, setloading] = useState(false);
-  /** selectors */
   const { user } = useSelector((state: RootState) => state.user);
 
   /**
@@ -35,13 +32,13 @@ const RecipesFromIngredients = () => {
         const nameStrings = allIngredientsNames(ingredientsLocal);
 
         const { data } = await axios.get(
-          `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${nameStrings}&number=1&apiKey=bd758414abcc4276ab40dd407756e3d9`
+          `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${nameStrings}&number=1&apiKey=75c3713f848a433f865b2676e9391745`
         );
         if (data[0]?.id) {
           // this is waiting on the new state, not the current state
           const recipeId = data[0].id;
           const recipeInfo = await axios.get(
-            `https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=false&apiKey=bd758414abcc4276ab40dd407756e3d9`
+            `https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=false&apiKey=75c3713f848a433f865b2676e9391745`
           );
           setRecievedRecipesInfo(recipeInfo.data as any);
           setloading(true);
@@ -62,15 +59,37 @@ const RecipesFromIngredients = () => {
     }
   }
 
-  /**savedRecipeHandler function will do the following
-   * will collect the specific data from the data coming from the API.
-   * send the data to the backend at the route (/:id/recipes)
-   * send the data to the front end.
-   */
-  function savedRecipeHandler() {
-    console.log("hello");
-    console.log("recievedRecipesInfo", recievedRecipesInfo);
-  }
+  //validation schema using yup.
+  const formValidation = Yup.object().shape({
+    personal_note: Yup.string().required("Your note about the recipe!!"),
+  });
+
+  const myForm = useFormik({
+    initialValues: {
+      personal_note: "",
+    },
+    validationSchema: formValidation,
+    onSubmit: async (values) => {
+      try {
+        //send the data to the backend
+        const bodyToSubmit = {
+          name: recievedRecipesInfo.title,
+          url: recievedRecipesInfo.spoonacularSourceUrl,
+          personal_note: values.personal_note,
+          calories: 0,
+        };
+
+        const createRecipe2 = await axios.post(
+          `/api/users/${user.id}/recipes`,
+          bodyToSubmit
+        );
+        dispatch(setAddRecipe(createRecipe2.data));
+        values.personal_note = "";
+      } catch (err) {
+        console.error(err);
+      }
+    },
+  });
 
   // load
   useEffect(() => {
@@ -134,10 +153,47 @@ const RecipesFromIngredients = () => {
                     Read Full Recipe
                   </a>
                 </div>
-                <div className="saveBtn">
-                  <Button className="textBtn" onClick={savedRecipeHandler}>
-                    Save
-                  </Button>
+                <div>
+                  {user.id && (
+                    <>
+                      <Box className="form-content" margin={3}>
+                        <div className="saveRecipeSection">
+                          {" "}
+                          <div className="textField">
+                            <TextField
+                              color="secondary"
+                              focused
+                              className="recipeForm"
+                              name="personal_note"
+                              label="Your Note About The Recipe"
+                              variant="outlined"
+                              value={myForm.values.personal_note || ""}
+                              onChange={myForm.handleChange}
+                              onBlur={myForm.handleBlur}
+                              error={
+                                myForm.touched.personal_note &&
+                                Boolean(myForm.errors.personal_note)
+                              }
+                              helperText={
+                                myForm.touched.personal_note &&
+                                myForm.errors.personal_note
+                              }
+                            />
+                          </div>
+                          <div>
+                            <Button
+                              id="addRecipe"
+                              sx={{ m: 5 }}
+                              onClick={myForm.submitForm}
+                              variant="contained"
+                            >
+                              Save the recipe
+                            </Button>
+                          </div>
+                        </div>
+                      </Box>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
