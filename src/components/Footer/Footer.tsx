@@ -11,8 +11,8 @@ const Footer = () => {
           <div className= "footer_groups">
             <div className= "names">
               <h3>Brought to you by:</h3>
-              
-                <li><Link href="https://github.com/antongeny" target="_blank">Anton</Link></li>               
+
+                <li><Link href="https://github.com/antongeny" target="_blank">Anton</Link></li>
                 <li><Link href="https://github.com/emccormick16" target="_blank">Ed</Link></li>
                 <li><Link href="https://github.com/marchingkoala" target="_blank">Carmine</Link></li>
                 <li><Link href="https://github.com/lena-A-Al" target="_blank">Lena</Link></li>
@@ -20,20 +20,20 @@ const Footer = () => {
                 <li><Link href="https://github.com/2208-Capstone-Team-1/Capstone-Kitchen-Prep" target="_blank">
                   <GitHubIcon/>Our Main Repo
                   </Link></li>
-              
+
             </div>
             <div className="technologies">
               <h3>Technologies:</h3>
-              
-                <li>Alexa Developer Console</li>
+
+                <li>AWS Lambda/Alexa</li>
                 <li>Javascript</li>
                 <li>React</li>
                 <li>Firebase</li>
                 <li>Typescript</li>
                 <li>Webpack</li>
                 <li>Sequelize</li>
-                <li>MUI</li>
-             
+                {/* <li>MUI</li> */}
+
             </div>
           </div>
         </ul>
