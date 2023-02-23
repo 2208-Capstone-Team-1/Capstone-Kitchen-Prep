@@ -128,7 +128,6 @@ const App = () => {
             }
           }
         }
-        console.log("alexaDataArr ", alexaDataArr);
       });
     }
   };
