@@ -61,7 +61,7 @@ const AlexaChat = () => {
       <header style={{ justifyContent: "center" }}>
         <h1>Chat With Alexa</h1>
       </header>
-      <main>
+      <main className="alexaMain">
         <div>
           {chatlogs.map((input, index) => {
             return (
