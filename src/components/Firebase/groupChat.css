@@ -31,7 +31,6 @@
 main {
   padding: 10px;
   height: 80vh;
-  margin: 10vh 0 10vh;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
@@ -50,7 +49,7 @@ main::-webkit-scrollbar-thumb {
 }
 
 form {
-  height: 10vh;
+  height: 11vh;
   /* position: fixed; */
   bottom: 0;
   width: 100%;
@@ -67,6 +66,7 @@ form button {
 input {
   line-height: 1.5;
   font-size: 1.5rem;
+  margin-top:50px;
   background: rgb(58, 58, 58);
   color: white;
   outline: none;
