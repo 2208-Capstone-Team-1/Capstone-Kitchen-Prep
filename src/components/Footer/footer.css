@@ -1,6 +1,5 @@
 .footer {
   margin-top: auto;
-  /* color: white; */
   font-family: "Segoe UI", Segoe UI;
   font-size: larger;
   background-color: rgb(243, 212, 165);
@@ -9,14 +8,16 @@
   width: 100%;
   padding: 1;
 }
-
+.footer ul{
+  list-style: none;
+}
 .footer_groups {
   display: flex;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin-left: 50px;
-  margin-right: 50px;
+  /* margin-left: 50px;
+  margin-right: 50px; */
 }
 
 h3 {
