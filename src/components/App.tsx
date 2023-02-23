@@ -9,7 +9,11 @@ import RoutesComponent from "./routes/RoutesComponent";
 import { onValue, ref, getDatabase } from "firebase/database";
 import firebase from "firebase/compat/app";
 import { addIngredient } from "./../store/ingredientSlice";
-import { setChatlogs, setAddChatlog } from "./../store/chatlogSlice";
+import {
+  setChatlogs,
+  setAddChatlog,
+  resetChatlog,
+} from "./../store/chatlogSlice";
 import "./main.css";
 import Footer from "./Footer/Footer";
 import AlexaChat from "./Firebase/AlexaChat";
@@ -62,35 +66,38 @@ const App = () => {
   const logout = () => {
     window.localStorage.removeItem("token");
     dispatch(resetUser());
+    dispatch(resetChatlog());
   };
 
   //getChatlog function
   const getChatlog = async () => {
-    const query = ref(database, "Alexa/" + user.phoneNumber);
-    return onValue(query, (snapshot) => {
-      //snapshot.val() takes a snapshot of the firebase database and stores in the alexaData variable
-      const alexaData = snapshot.val();
-      //initiate empty array
-      let alexaDataArr = [];
-      // push the values in the object into an array because it needs to be iterable
-      if (snapshot.exists()) {
-        for (const alexaInput in alexaData) {
-          alexaDataArr.push(alexaData[alexaInput]);
-        }
-        dispatch(setChatlogs(alexaDataArr));
-        if (alexaDataArr.length > 0) {
-          // take last value in the array
-          const chatCopy = [...alexaDataArr];
-          const lastChat = chatCopy.pop();
-          // check if the key: TYPE exists, if yes, we'll take the SPEAKER and call the api to add it to the database
-          if (lastChat.TYPE === "ingredient") {
-            let newIngredient: IngredientInterface = lastChat.SPEAKER;
-            addIngredientSubFunction(newIngredient);
+    if (user.id) {
+      const query = ref(database, "Alexa/" + user.phoneNumber);
+      return onValue(query, (snapshot) => {
+        //snapshot.val() takes a snapshot of the firebase database and stores in the alexaData variable
+        const alexaData = snapshot.val();
+        //initiate empty array
+        let alexaDataArr = [];
+        // push the values in the object into an array because it needs to be iterable
+        if (snapshot.exists()) {
+          for (const alexaInput in alexaData) {
+            alexaDataArr.push(alexaData[alexaInput]);
+          }
+          dispatch(setChatlogs(alexaDataArr));
+          if (alexaDataArr.length > 0) {
+            // take last value in the array
+            const chatCopy = [...alexaDataArr];
+            const lastChat = chatCopy.pop();
+            // check if the key: TYPE exists, if yes, we'll take the SPEAKER and call the api to add it to the database
+            if (lastChat.TYPE === "ingredient") {
+              let newIngredient: IngredientInterface = lastChat.SPEAKER;
+              addIngredientSubFunction(newIngredient);
+            }
           }
         }
-      }
-      console.log("alexaDataArr ", alexaDataArr);
-    });
+        console.log("alexaDataArr ", alexaDataArr);
+      });
+    }
   };
 
   const addIngredientSubFunction = async (

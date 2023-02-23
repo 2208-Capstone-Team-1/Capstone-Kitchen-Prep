@@ -16,8 +16,12 @@ export const chatlogSlice = createSlice({
     setAddChatlog: (state, action) => {
       state.chatlogs = [...state.chatlogs, action.payload];
     },
+    resetChatlog: (state) => {
+      state.chatlogs = [];
+    },
   },
 });
 
-export const { setChatlogs, setAddChatlog } = chatlogSlice.actions;
+export const { setChatlogs, setAddChatlog, resetChatlog } =
+  chatlogSlice.actions;
 export default chatlogSlice.reducer;
