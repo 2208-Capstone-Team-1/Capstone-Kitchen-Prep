@@ -48,7 +48,7 @@ const RecipesFromIngredients = () => {
       console.error(err);
     }
   };
-
+  // function to format the ingredient names based on the API requirements.
   function allIngredientsNames(ingredientArray: any) {
     let ingredientNamesForRecipes: string[] = [];
     if (user.id && ingredientArray.length >= 0) {
