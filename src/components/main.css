@@ -27,7 +27,7 @@
   /* gap: 5px; */
 }
 .mainLogoTxt {
-  margin-top: 10px;
+  /* margin-top: 15px; */
   position: relative;
   height: min-content;
   width: auto;
@@ -35,7 +35,7 @@
   align-content: center;
   color: black;
   font-family: "Oleo Script Swash Caps", cursive;
-  font-size: 50pt;
+  font-size: 55pt;
   white-space: nowrap;
 }
 
@@ -112,7 +112,7 @@ span::after {
 #logo {
   display: flex;
   justify-self: center;
-  margin: 25px;
+  margin: 15px;
 }
 
 .navbar {

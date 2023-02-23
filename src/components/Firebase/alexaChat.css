@@ -8,7 +8,7 @@
 
 .FirebaseApp header {
   background-color: #464646;
-  height: 10vh;
+  height: 65px;
   min-height: 50px;
   color: white;
   width: 100%;
@@ -22,15 +22,15 @@
   box-sizing: border-box;
 }
 
-.FirebaseApp section {
+/* .FirebaseApp section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
   background-color: rgb(40, 37, 53);
-}
+} */
 
-main {
+.alexaMain {
   padding: 10px;
   height: 80vh;
   /* margin: 10vh 0 10vh; */
@@ -47,7 +47,7 @@ main {
   border-radius: 25px;
   position: relative;
   color: white;
-  text-align: center;
+  text-align: left;
 }
 
 .sent p {

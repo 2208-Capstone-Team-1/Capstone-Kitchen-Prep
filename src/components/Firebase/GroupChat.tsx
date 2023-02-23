@@ -68,8 +68,8 @@ function ChatRoom() {
   };
 
   return (
-    <>
-      <main>
+    <div className="groupChat">
+      <main className="groupMain">
         {messages &&
           messages.map((msg, index) => (
             <ChatMessage key={index} text={msg.text} uid={msg.uid} />
@@ -78,18 +78,19 @@ function ChatRoom() {
         <span ref={ref}></span>
       </main>
 
-      <form onSubmit={sendMessage}>
+      <form className="chatForm" onSubmit={sendMessage}>
         <input
+          className="chatInput"
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}
           placeholder="say something nice!"
         />
 
-        <button type="submit" disabled={!formValue}>
+        <button className="chatButton" type="submit" disabled={!formValue}>
           Send
         </button>
       </form>
-    </>
+    </div>
   );
 }
 
@@ -108,8 +109,6 @@ const ChatMessage: React.FC<chatProps> = (chatProps) => {
   //if the uid equals the current authorized user, show this as sent - otherwise it
   //was sent by another user
   const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
-  //!make a request from alexa
-  //! if text has "alexa"
 
   return (
     <>
