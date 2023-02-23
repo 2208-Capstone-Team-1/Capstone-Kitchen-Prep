@@ -25,7 +25,7 @@ router.get("/:id", async (req: Request, res: Response, next: NextFunction) => {
       res.send(recipe);
     }
   } catch (error) {
-    return res.sendStatus(501).send(error);
+    return res.status(501).send(error);
   }
 });
 
@@ -42,7 +42,7 @@ router.post("/", async (req: Request, res: Response, next: NextFunction) => {
     });
     res.sendStatus(204);
   } catch (error) {
-    return res.sendStatus(501).send(error);
+    return res.status(501).send(error);
   }
 });
 
@@ -61,7 +61,7 @@ router.put("/:id", async (req: Request, res: Response, next: NextFunction) => {
     });
     res.sendStatus(200);
   } catch (error) {
-    return res.sendStatus(501).send(error);
+    return res.status(501).send(error);
   }
 });
 
@@ -81,7 +81,7 @@ router.delete(
       await recipeToDelete.destroy();
       res.sendStatus(202);
     } catch (error) {
-      return res.sendStatus(404).send(error);
+      return res.status(404).send(error);
     }
   }
 );

@@ -22,9 +22,12 @@ export const recipeSlice = createSlice({
     setRecipes: (state, action) => {
       state.recipes = action.payload;
     },
+    setAddRecipe: (state, action) => {
+      state.recipes = [...state.recipes, action.payload];
+    },
   },
 });
 
 //Action creators
-export const { setRecipes } = recipeSlice.actions;
+export const { setRecipes, setAddRecipe } = recipeSlice.actions;
 export default recipeSlice.reducer;

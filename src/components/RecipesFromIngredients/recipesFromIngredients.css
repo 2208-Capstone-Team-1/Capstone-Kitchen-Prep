@@ -146,3 +146,48 @@
   font-size: 15px;
   font-weight: bold;
 }
+
+.personalNote {
+  margin: auto;
+}
+.saveRecipeSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.textField {
+  margin: 50px;
+}
+
+#addRecipe {
+  background-color: rgba(245, 149, 111, 0.872);
+  color: black;
+  size: 23px;
+  font-weight: bold;
+  /* width: 50%; */
+  border-radius: 10%;
+  margin: auto;
+  padding: 10px;
+}
+
+.recipeForm {
+  width: 500px;
+  /* height: 100px; */
+  background-color: rgb(238, 238, 243);
+  margin-bottom: 20px;
+}
+
+#addRecipe:hover {
+  background-color: white;
+  color: rgba(245, 149, 111, 0.872);
+  border: 1px solid rgba(245, 149, 111, 0.872);
+}
+
+.saveRecipeSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
