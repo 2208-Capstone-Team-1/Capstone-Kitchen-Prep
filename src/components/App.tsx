@@ -6,7 +6,7 @@ import axios from "axios";
 import { setUser, resetUser } from "../store/userSlice";
 import { RootState } from "../store";
 import RoutesComponent from "./routes/RoutesComponent";
-import { onValue, ref, getDatabase } from "firebase/database";
+import { onValue, ref, update, getDatabase } from "firebase/database";
 import firebase from "firebase/compat/app";
 import { addIngredient } from "./../store/ingredientSlice";
 import {
@@ -88,10 +88,43 @@ const App = () => {
             // take last value in the array
             const chatCopy = [...alexaDataArr];
             const lastChat = chatCopy.pop();
+            //formatting date to "yyyymmdd" format
+            let lastChatDate = lastChat.DATE;
+            const formattedDateString = lastChatDate.replace(/_/g, " ");
+            const dateObj = new Date(formattedDateString);
+            const year = dateObj.getFullYear().toString();
+            const month = (dateObj.getMonth() + 1).toString().padStart(2, "0");
+            const day = dateObj.getDate().toString().padStart(2, "0");
+            const yyyymmdd = year + month + day;
+            //formatting time to "hhmmss" format
+            let lastChatTime = lastChat.TIME;
+            const timeComponents = lastChatTime.split(":");
+            let hours = parseInt(timeComponents[0]);
+            const minutes = timeComponents[1];
+            const seconds = timeComponents[2].split(" ")[0];
+            const period = timeComponents[2].split(" ")[1];
+
+            if (hours === 12 && period === "AM") {
+              hours = 0;
+            } else if (hours < 12 && period === "PM") {
+              hours += 12;
+            }
+
+            const hh = hours.toString().padStart(2, "0");
+            const mm = minutes.padStart(2, "0");
+            const ss = seconds.padStart(2, "0");
+
+            const hhmmss = hh + mm + ss;
+
+            const newDateTime = yyyymmdd + hhmmss;
             // check if the key: TYPE exists, if yes, we'll take the SPEAKER and call the api to add it to the database
-            if (lastChat.TYPE === "ingredient") {
+            if (lastChat.TYPE === "ingredient" && !lastChat.GRABBED) {
               let newIngredient: IngredientInterface = lastChat.SPEAKER;
               addIngredientSubFunction(newIngredient);
+              const db = getDatabase();
+              update(ref(db, "Alexa/" + user.phoneNumber + "/" + newDateTime), {
+                GRABBED: "Yes",
+              });
             }
           }
         }
