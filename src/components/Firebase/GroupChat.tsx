@@ -105,7 +105,6 @@ interface chatProps {
 const ChatMessage: React.FC<chatProps> = (chatProps) => {
   const uid = chatProps.uid;
   const text = chatProps.text;
-  console.log("text", text);
   //if the uid equals the current authorized user, show this as sent - otherwise it
   //was sent by another user
   const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
