@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import firebase from "firebase/compat/app";
-import { onValue, ref, getDatabase } from "firebase/database";
+import { getDatabase } from "firebase/database";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import "./alexaChat.css";
-import axios from "axios";
-import { addIngredient } from "../../store/ingredientSlice";
 
 // intialize firebase app
 const app = firebase.initializeApp({
