@@ -7,10 +7,6 @@ import {
   Model,
 } from "sequelize";
 
-interface ResponseError extends Error {
-  status?: number;
-}
-
 interface IngredientModel
   extends Model<
     InferAttributes<IngredientModel>,

@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, Route, Routes } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { setUser, resetUser } from "../store/userSlice";
 import { RootState } from "../store";
@@ -9,14 +8,9 @@ import RoutesComponent from "./routes/RoutesComponent";
 import { onValue, ref, update, getDatabase } from "firebase/database";
 import firebase from "firebase/compat/app";
 import { addIngredient } from "./../store/ingredientSlice";
-import {
-  setChatlogs,
-  setAddChatlog,
-  resetChatlog,
-} from "./../store/chatlogSlice";
+import { setChatlogs, resetChatlog } from "./../store/chatlogSlice";
 import "./main.css";
 import Footer from "./Footer/Footer";
-import AlexaChat from "./Firebase/AlexaChat";
 
 //intialize firebase app
 const app = firebase.initializeApp({
@@ -31,13 +25,6 @@ const app = firebase.initializeApp({
 });
 
 const database = getDatabase(app);
-//defining what the chatlog type will be
-interface chatlogType {
-  DATE: string;
-  SPEAKER: string;
-  TIME: string;
-  VALUE: string;
-}
 
 interface IngredientInterface {
   name: string;
@@ -47,7 +34,6 @@ interface IngredientInterface {
 const App = () => {
   //redux state
   const { user } = useSelector((state: RootState) => state.user);
-  const { chatlogs } = useSelector((state: RootState) => state.chatlog);
 
   const dispatch = useDispatch();
   //authorization for firebase

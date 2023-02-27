@@ -8,9 +8,6 @@ import {
   Model,
 } from "sequelize";
 
-interface ResponseError extends Error {
-  status?: number;
-}
 const { STRING, UUID, UUIDV4 } = Sequelize;
 
 export interface RecipeModel

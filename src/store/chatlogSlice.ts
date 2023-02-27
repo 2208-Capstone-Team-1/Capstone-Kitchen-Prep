@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface ChatlogObject {}
-
 const initialState: any = {
   chatlogs: [],
 };
