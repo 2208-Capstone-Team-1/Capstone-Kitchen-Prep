@@ -12,7 +12,7 @@
     "test:dev:quiet": "QUIET=true npm run test:dev",
     "start": "node --experimental-specifier-resolution=node --loader ts-node/esm  server/index.ts --ignore dist/ --ignore src/",
     "start:dev": "JWT=felix nodemon server/index.ts --ignore dist/ --ignore src/ & npm run build:dev",
-    "start:seed": "SEED=true JWT=felix nodemon server/index.ts --ignore dist/ --ignore src/ & npm run build:dev"
+    "start:seed": "nodemon server/db/seed.ts & JWT=felix nodemon server/index.ts --ignore dist/ --ignore src/ & npm run build:dev"
   },
   "keywords": [],
   "author": "",
