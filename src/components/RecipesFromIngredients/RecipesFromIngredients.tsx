@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import MuiLoader from "../MuiLoader";
@@ -32,13 +32,13 @@ const RecipesFromIngredients = () => {
         const nameStrings = allIngredientsNames(ingredientsLocal);
 
         const { data } = await axios.get(
-          `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${nameStrings}&number=1&apiKey=bd758414abcc4276ab40dd407756e3d9`
+          `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${nameStrings}&number=1&apiKey=9a0bda7b9e944e938fa0a538fd4a5a77`
         );
         if (data[0]?.id) {
           // this is waiting on the new state, not the current state
           const recipeId = data[0].id;
           const recipeInfo = await axios.get(
-            `https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=false&apiKey=bd758414abcc4276ab40dd407756e3d9`
+            `https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=false&apiKey=9a0bda7b9e944e938fa0a538fd4a5a77`
           );
           setRecievedRecipesInfo(recipeInfo.data as any);
           setloading(true);

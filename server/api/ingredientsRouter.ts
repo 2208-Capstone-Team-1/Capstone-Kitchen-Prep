@@ -1,6 +1,5 @@
 import db from "../db";
 const Ingredient = db.Ingredient;
-const User = db.User;
 
 import express, { NextFunction, Request, Response } from "express";
 const router = express.Router();
