@@ -11,7 +11,7 @@ const RecipePage = () => {
 
   const recipeHandler = async () => {
     const { data } = await axios.get(
-      "https://api.spoonacular.com/recipes/random?apiKey=9a0bda7b9e944e938fa0a538fd4a5a77"
+      `https://api.spoonacular.com/recipes/random?apiKey=${process.env.API_KEY}`
     );
     const recipe = data.recipes[0];
     setRandomRecipe(recipe as recipeObj);
@@ -102,58 +102,7 @@ const RecipePage = () => {
         <div className="card-shadow"></div>
       </div>
     </>
-    // <div className="recipe_body">
-    //   <div className="recipe_container">
-    //     <div className="recipe_box">
-    //       <h1 className="recipe_h1">Today's recommendation</h1>
-    //       <h2 className="recipe_h2">{randomRecipe.title}</h2>
-    //       <img className="recipe_img" src={imageURL} />
-    //       <h2 className="recipe_h2">Ingredients</h2>
-    //       <div className="recipe_ingredients">
-    //         {randomRecipe.extendedIngredients.map(
-    //           (foodItem: ingredientObj, index: number) => {
-    //             return (
-    //               <div>
-    //                 <p className="recipe_ptag" key={index}>
-    //                   {index + 1}: {foodItem.original}
-    //                 </p>
-    //               </div>
-    //             );
-    //           }
-    //         )}
-    //       </div>
-    //       <h2 className="recipe_h2">Recipe</h2>
-    //       <div className="recipe_instruction">
-    //         {randomRecipe.analyzedInstructions[0].steps.map(
-    //           (step: instructionObj, index: number) => {
-    //             return (
-    //               <p className="recipe_ptag" key={index}>
-    //                 {step.number}: {step.step}
-    //               </p>
-    //             );
-    //           }
-    //         )}
-    //       </div>
-    //       <div className="recipe_diet">
-    //         {randomRecipe.diets.map((diet: string, index: number) => {
-    //           return (
-    //             <p className="recipe_ptag" key={index}>
-    //               {" "}
-    //               # {diet}
-    //             </p>
-    //           );
-    //         })}
-    //       </div>
-    //       <div className="recipe_url">
-    //         Source:{" "}
-    //         <a className="recipe_atag" href={randomRecipe.sourceUrl}>
-    //           {randomRecipe.sourceUrl}
-    //         </a>
-    //       </div>
-    //       {/* <p className="recipe_ptag">{parsedObj.body.textContent}</p> */}
-    //     </div>
-    //   </div>
-    // </div>
+
   );
 };
 
