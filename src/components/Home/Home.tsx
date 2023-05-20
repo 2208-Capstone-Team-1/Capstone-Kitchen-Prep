@@ -6,9 +6,10 @@ const Home = () => {
       <div className="home_main">
         <div className="home_image">
           <img
-            src="../static/Foodphotos/mainPage_photo3.jpg"
+            src="../static/Foodphotos/mainPage_photo3 copy.png"
             width="70%"
             height="75%"
+            alt="food platter with cheese and fruits"
           />
         </div>
         <div className="home_copyline">
