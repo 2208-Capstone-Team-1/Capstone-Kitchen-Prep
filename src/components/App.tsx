@@ -172,7 +172,7 @@ const App = () => {
         <div className="main_logoPlace">
           <img
             id="logo"
-            src="/static/ChefsKissLogo.png"
+            src="/static/ChefsKissLogo copy.png"
             alt="chef's kiss logo"
             width="70"
             height="90"
@@ -182,7 +182,7 @@ const App = () => {
           </a>
           <img
             id="logo"
-            src="/static/ChefsKissLogo.png"
+            src="/static/ChefsKissLogo copy.png"
             alt="chef's kiss logo"
             width="70"
             height="90"
