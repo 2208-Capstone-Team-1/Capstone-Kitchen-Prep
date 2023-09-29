@@ -2,6 +2,8 @@
 
 Chef's Kiss is an Alexa integrated kitchen helper web application.
 
+YOUTUBE WALK THROUGH: https://www.youtube.com/watch?v=FXS6niNCgXs&list=PLx0iOsdUOUmmlnNx8X695RdoNtroWPiju&index=3
+
 With Chef's Kiss, you can...
 
 1. Create your account
