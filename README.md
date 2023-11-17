@@ -14,14 +14,20 @@ With Chef's Kiss, you can...
  
 # Basic Features
 • A user should be able to create an account and log in
+
 • A logged in user should be able to:
   -  add ingredients to their fridge
   -  see the added ingredients in their fridge
   -  remove an item from the fridge
+
 • A user should be create a custom recipe using the ingredients from their fridge
+
 • A user should be able to chat with other users through chat feature
+
 • A non-logged in user should be able to explore the page and use 'Recipe of the day' feature
+
 • A user should be able to use Alexa to add ingredients and find recipes
+
 • An admin should be able to modify and delete users
 
 # How to get set up
