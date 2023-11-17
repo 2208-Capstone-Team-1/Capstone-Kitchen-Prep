@@ -38,3 +38,9 @@ With Chef's Kiss, you can...
 4. npm run start
 
 Enjoy playing with Chef's Kiss!
+
+# Interested in leaning more about building Alexa Skill or Firebase?
+
+• Visit https://developer.amazon.com/en-US/alexa/alexa-skills-kit
+
+• Visit https://firebase.google.com/docs
